@@ -1,0 +1,21 @@
+services:
+  front:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: invfin-front
+    image: invfin_front
+    platform: linux/x86_64
+    entrypoint: /bin/bash
+    volumes:
+      - .:/app:z
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+    tty: true
+    networks:
+      - invfin_network
+
+networks:
+  invfin_network:
