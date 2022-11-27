@@ -6,9 +6,8 @@ services:
     container_name: invfin-front
     image: invfin_front
     platform: linux/x86_64
-    entrypoint: /bin/bash
     volumes:
-      - .:/app:z
+      - .:/app
     expose:
       - 3000
     ports:
