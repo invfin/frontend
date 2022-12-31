@@ -1,17 +1,20 @@
 build:
-	docker compose -f docker-compose.yml build front
+	docker compose build
 
 up:
-	docker compose -f docker-compose.yml up -d front
+	docker compose up ${ar}
 
 logs:
-	docker compose -f docker-compose.yml logs -f front
+	docker compose logs -f
 
 test:
-	docker compose -f docker-compose.yml run --rm front npm run test:unit
+	docker compose run --rm yarn test:unit
+
+test-e2e:
+	docker compose run --rm yarn test:e2e
 
 lint:
-	docker compose -f docker-compose.yml run --rm front npm run lint
+	docker compose run --rm yarn lint
 
 install:
-	docker compose -f docker-compose.yml run --rm front npm run install
+	docker compose run --rm yarn install ${ar}

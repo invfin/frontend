@@ -1,13 +1,22 @@
-FROM node:lts
+FROM node:latest as build
 
+# Create app directory
 WORKDIR /app
 
-COPY package*.json ./
+# Install app dependencies
+COPY package.json yarn.lock ./
+RUN yarn
 
-RUN npm install
-
+# Bundle app source
 COPY . .
 
-EXPOSE 3000
+FROM node:latest as production
 
-CMD [ "npm", "run", "serve"]
+# Create app directory
+WORKDIR /app
+
+# Copy built code from build stage
+COPY --from=build /app .
+
+EXPOSE 7000
+CMD ["yarn", "serve"]

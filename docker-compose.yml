@@ -1,20 +1,10 @@
+version: '3'
+
 services:
-  front:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: invfin-front
-    image: invfin_front
-    platform: linux/x86_64
+  vue:
+    build: .
+    command: yarn serve -- --port 7000
     volumes:
       - .:/app
-    expose:
-      - 3000
     ports:
-      - 3000:3000
-    tty: true
-    networks:
-      - invfin_network
-
-networks:
-  invfin_network:
+      - "7000:7000"
