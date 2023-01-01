@@ -8,13 +8,13 @@ logs:
 	docker compose logs -f
 
 test:
-	docker compose run --rm yarn test:unit
+	docker compose run --rm vue yarn test:unit
 
 test-e2e:
-	docker compose run --rm yarn test:e2e
+	docker compose run --rm vue yarn test:e2e
 
 lint:
-	docker compose run --rm yarn lint
+	docker compose run --rm vue yarn lint
 
 install:
-	docker compose run --rm yarn install ${ar}
+	docker compose run --rm vue yarn install ${ar}
