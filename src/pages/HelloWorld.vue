@@ -1,19 +1,23 @@
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import { useFetch } from "@vueuse/core";
-import {ref, onBeforeMount} from 'vue';
+import { fetchData } from "@/utils/DataFetcher";
+import { onMounted } from "vue";
 
-onBeforeMount( async () => {
-  const { isFetching, error, data } = await useFetch("");
-})
-@Options({
-  props: {
-    msg: String,
+export default {
+  setup() {
+    const { error, loading, data, performRequest } = fetchData();
+
+    onMounted(() => {
+      performRequest("lista-sectores/", {});
+    });
+
+    return {
+      error,
+      loading,
+      data,
+      msg: "HEY",
+    };
   },
-})
-export default class HelloWorld extends Vue {
-  msg!: string;
-}
+};
 </script>
 
 <template>
@@ -27,7 +31,12 @@ export default class HelloWorld extends Vue {
       >.
     </p>
     <h3>Installed CLI Plugins</h3>
-    <button :disabled="pending" @click="isFetching"></button>
+    <ul>
+      <li v-for="industry in data" :key="industry">
+        {{ industry.sector }}
+      </li>
+    </ul>
+    <button class="btn btn-primary">hey</button>
   </div>
 </template>
 

@@ -17,4 +17,4 @@ lint:
 	docker compose run --rm vue yarn lint
 
 install:
-	docker compose run --rm vue yarn install ${ar}
+	docker compose run --rm vue yarn add ${ar}
