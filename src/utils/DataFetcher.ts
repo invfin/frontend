@@ -1,9 +1,9 @@
 import { ref } from "vue";
-import { APIKey } from "../../env";
+import { APIKey, APIBaseEndpoint } from "../../env";
 
 export class DataFetcher {
   private apiKey: string;
-  private baseUrl = "http://example.com:8000/api/v1/";
+  private baseUrl = APIBaseEndpoint + "/api/v1/";
   private retryAttempts = 3;
 
   constructor() {

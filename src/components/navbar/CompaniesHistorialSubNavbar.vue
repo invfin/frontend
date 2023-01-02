@@ -1,5 +1,5 @@
-{% load static i18n extra %}
-{% if companies_visited %}
+<template>
+    {% if companies_visited %}
 <div class="nav-wrapper position-sticky" style="top: 4rem; z-index: 988">
     <ul class="nav nav-pills justify-content-center" id="tabs-icons-text" role="tablist">
       {% for company in companies_visited %}
@@ -16,3 +16,4 @@
     </ul>
 </div>
 {% endif %}
+</template>
