@@ -2,7 +2,7 @@
 
 ## Development Lead
 
-* Lucas Montes <lluc23@hotmail.com>
+- Lucas Montes <lluc23@hotmail.com>
 
 ## Contributors
 

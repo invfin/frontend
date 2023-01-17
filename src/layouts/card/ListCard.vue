@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import { TextContent, Author, Tag } from "@/models/WritenContent";
+import { Options, Vue } from 'vue-class-component'
+import { TextContent, Author, Tag } from '@/models/WritenContent'
 
 @Options({
   props: {
@@ -8,7 +8,7 @@ import { TextContent, Author, Tag } from "@/models/WritenContent";
   },
 })
 export default class ListCard extends Vue {
-  texContent!: TextContent;
+  texContent!: TextContent
 }
 </script>
 

@@ -1,23 +1,23 @@
 <script lang="ts">
-import { fetchData } from "@/utils/DataFetcher";
-import { onMounted } from "vue";
+import { fetchData } from '@/utils/DataFetcher'
+import { onMounted } from 'vue'
 
 export default {
   setup() {
-    const { error, loading, data, performRequest } = fetchData();
+    const { error, loading, data, performRequest } = fetchData()
 
     onMounted(() => {
-      performRequest("lista-sectores/", {});
-    });
+      performRequest('lista-sectores/', {})
+    })
 
     return {
       error,
       loading,
       data,
-      msg: "HEY",
-    };
+      msg: 'HEY',
+    }
   },
-};
+}
 </script>
 
 <template>

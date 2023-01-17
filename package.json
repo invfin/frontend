@@ -7,12 +7,24 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint"
+    "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
+    "lint:style": "stylelint \"**/*.{css,scss,sass,html,vue}\" --ignore-path .gitignore",
+    "lint:prettier": "prettier --check .",
+    "lint": "npm run lint:js && npm run lint:style && npm run lint:prettier",
+    "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix && npm run lint:style -- --fix",
+    "prepare": "husky install",
+    "test": "jest"
+  },
+  "lint-staged": {
+    "*.{js,ts,vue}": "eslint --cache",
+    "*.{css,scss,sass,html,vue}": "stylelint",
+    "*.**": "prettier --check --ignore-unknown"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
     "core-js": "^3.8.3",
+    "husky": "^8.0.3",
     "register-service-worker": "^1.7.2",
     "vue": "^3.2.13",
     "vue-class-component": "^8.0.0-0",
