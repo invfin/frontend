@@ -24,7 +24,11 @@ export default class ListCard extends Vue {
               </p>
             </a>
             <h5 class="font-weight-bolder">
-              <div class="d-flex" v-for="tag in texContent.tags" :key="tag">
+              <div
+                class="d-flex"
+                v-for="tag in texContent.tags"
+                v-bind:key="tag.id"
+              >
                 <a href="#" class="badge badge-info text-center mr-2">
                   <span class="font-weight-bolder">{{ tag.title }}</span>
                 </a>

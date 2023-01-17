@@ -45,7 +45,7 @@ import { Options, Vue } from 'vue-class-component'
 import HelloWorld from '@/pages/HelloWorld.vue' // @ is an alias to /src
 
 export default {
-  name: 'Notifications',
+  name: 'NavbarNotifications',
   setup() {
     const { error, loading, data, performRequest } = fetchData()
 

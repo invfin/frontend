@@ -44,15 +44,15 @@
 import { fetchData } from '@/utils/DataFetcher'
 import { onMounted } from 'vue'
 import { Options, Vue } from 'vue-class-component'
-import Notifications from '@/pages/Notifications.vue'
+import NavbarNotifications from '@/pages/Notifications.vue'
 import AppsAvailables from '@/pages/AppsAvailables.vue'
 import UserIconDropdown from '@/pages/UserIconDropdown.vue'
 import SearchBar from '@/pages/SearchBar.vue'
 
 export default {
-  name: 'Navbar',
+  name: 'BaseNavbar',
   components: {
-    Notifications,
+    NavbarNotifications,
     AppsAvailables,
     UserIconDropdown,
     SearchBar,
