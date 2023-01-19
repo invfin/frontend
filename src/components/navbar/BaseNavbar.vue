@@ -29,7 +29,7 @@
               <i class="text-dark fas fa-search"></i>
             </a>
           </li>
-          <Notifications> </Notifications>
+          <NavbarNotifications> </NavbarNotifications>
           <AppsAvailables> </AppsAvailables>
         </ul>
         <ul class="navbar-nav align-items-center ml-auto ml-md-0">

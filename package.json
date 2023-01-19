@@ -18,13 +18,12 @@
   "lint-staged": {
     "*.{js,ts,vue}": "eslint --cache",
     "*.{css,scss,sass,html,vue}": "stylelint",
-    "*.**": "prettier --check --ignore-unknown"
+    "*.{js,ts,vue,css,scss,sass,html,vue}": "prettier --check --ignore-unknown --no-stash"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
     "core-js": "^3.8.3",
-    "husky": "^8.0.3",
     "register-service-worker": "^1.7.2",
     "vue": "^3.2.13",
     "vue-class-component": "^8.0.0-0",
@@ -53,9 +52,15 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.0.3",
+    "husky": "^8.0.0",
     "jest": "^27.0.5",
-    "lint-staged": "^11.1.2",
+    "lint-staged": "^11.1.4",
+    "postcss-html": "^1.5.0",
     "prettier": "^2.4.1",
+    "stylelint": "^14.16.1",
+    "stylelint-config-prettier": "^9.0.4",
+    "stylelint-config-recommended-vue": "^1.4.0",
+    "stylelint-config-standard": "^29.0.0",
     "ts-jest": "^27.0.4",
     "typescript": "~4.5.5",
     "webp-loader": "^0.6.0"
