@@ -9,10 +9,11 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
 import HelloWorld from '@/pages/HelloWorld.vue' // @ is an alias to /src
-
+import NavBar from '@/components/navbar/NavBar.vue'
 @Options({
   components: {
     HelloWorld,
+    NavBar,
   },
 })
 export default class HomeView extends Vue {}

@@ -31,14 +31,11 @@
     >
       <div class="media align-items-center">
         <span class="avatar avatar-sm rounded-circle">
-          <img
-            alt="Image placeholder"
-            src="{{request.user.user_profile.foto_perfil.url}}"
-          />
+          <img alt="Image placeholder" src="{{user.profile.image}}" />
         </span>
         <div class="media-body ml-2 d-none d-lg-block">
           <span class="mb-0 text-sm text-dark font-weight-bold">{{
-            request.user.username
+            user.username
           }}</span>
         </div>
       </div>
@@ -97,9 +94,7 @@
       >
         <i class="fas fa-coins"></i>
         <span>Créditos</span>
-        <span class="badge badge-danger">{{
-          request.user.user_profile.creditos
-        }}</span>
+        <span class="badge badge-danger">{{ user.profile.creditos }}</span>
       </a>
       <a
         href="#!"
@@ -110,7 +105,7 @@
         <i class="fas fa-award fa-fw"></i>
         <span>Reputación</span>
         <span class="badge badge-success">{{
-          request.user.user_profile.reputation_score
+          user.profile.reputationScore
         }}</span>
       </a>
       <a
@@ -128,27 +123,21 @@
 </template>
 
 <script lang="ts">
-import { fetchData } from '@/utils/DataFetcher'
-import { onMounted } from 'vue'
-import { Options, Vue } from 'vue-class-component'
-import HelloWorld from '@/pages/HelloWorld.vue' // @ is an alias to /src
-
 export default {
   name: 'UserIconDropdown',
   setup() {
-    const { error, loading, data, performRequest } = fetchData()
-
-    onMounted(() => {
-      performRequest('lista-sectores/', {})
-    })
-
+    const Profile = {
+      reputationScore: 15,
+      creditos: 520,
+      image: '../assets/round-logo.png',
+    }
+    const User = {
+      username: 'MyUsername',
+      profile: Profile,
+    }
     return {
-      error,
-      loading,
-      data,
-      msg: 'HEY',
+      user: User,
     }
   },
 }
-export class HomeView extends Vue {}
 </script>

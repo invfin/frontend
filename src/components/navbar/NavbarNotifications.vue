@@ -13,7 +13,7 @@
       <span
         class="badge badge-md badge-circle badge-floating badge-danger border-white"
       >
-        {{ count_notifications }}
+        {{ countNotifications }}
       </span>
       {% endif %}
     </a>
@@ -23,7 +23,7 @@
       <div class="px-3 py-3">
         <h6 class="text-sm text-muted m-0">
           Tienes
-          <strong class="text-primary">{{ count_notifications }}</strong>
+          <strong class="text-primary">{{ countNotifications }}</strong>
           notificaciones
         </h6>
       </div>
@@ -39,27 +39,13 @@
 </template>
 
 <script lang="ts">
-import { fetchData } from '@/utils/DataFetcher'
-import { onMounted } from 'vue'
-import { Options, Vue } from 'vue-class-component'
-import HelloWorld from '@/pages/HelloWorld.vue' // @ is an alias to /src
-
 export default {
   name: 'NavbarNotifications',
   setup() {
-    const { error, loading, data, performRequest } = fetchData()
-
-    onMounted(() => {
-      performRequest('lista-sectores/', {})
-    })
-
+    const countNotifications = 10
     return {
-      error,
-      loading,
-      data,
-      msg: 'HEY',
+      countNotifications: countNotifications,
     }
   },
 }
-export class HomeView extends Vue {}
 </script>

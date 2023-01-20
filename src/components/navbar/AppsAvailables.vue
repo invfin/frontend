@@ -74,27 +74,10 @@
 </template>
 
 <script lang="ts">
-import { fetchData } from '@/utils/DataFetcher'
-import { onMounted } from 'vue'
-import { Options, Vue } from 'vue-class-component'
-import HelloWorld from '@/pages/HelloWorld.vue' // @ is an alias to /src
-
 export default {
   name: 'AppsAvailables',
   setup() {
-    const { error, loading, data, performRequest } = fetchData()
-
-    onMounted(() => {
-      performRequest('lista-sectores/', {})
-    })
-
-    return {
-      error,
-      loading,
-      data,
-      msg: 'HEY',
-    }
+    return {}
   },
 }
-export class HomeView extends Vue {}
 </script>

@@ -4,16 +4,16 @@ import { onMounted } from 'vue'
 
 export default {
   setup() {
-    const { error, loading, data, performRequest } = fetchData()
+    // const { error, loading, data, performRequest } = fetchData()
 
-    onMounted(() => {
-      performRequest('lista-sectores/', {})
-    })
+    // onMounted(() => {
+    //   performRequest('lista-sectores/', {})
+    // })
 
     return {
-      error,
-      loading,
-      data,
+      // error,
+      // loading,
+      // data,
       msg: 'HEY',
     }
   },
@@ -31,11 +31,11 @@ export default {
       >.
     </p>
     <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li v-for="industry in data" :key="industry">
-        {{ industry.sector }}
-      </li>
-    </ul>
+    <!-- <ul> -->
+    <!-- <li v-for="industry in data" :key="industry"> -->
+    <!-- {{ industry.sector }} -->
+    <!-- </li> -->
+    <!-- </ul> -->
     <button class="btn btn-primary">hey</button>
   </div>
 </template>

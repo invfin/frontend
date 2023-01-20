@@ -1,10 +1,26 @@
 <template>
+  <DashBoard>
+    <router-view />
+  </DashBoard>
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </nav>
-  <router-view />
 </template>
+
+<script lang="ts">
+import DashBoard from '@/layouts/DashBoard.vue'
+
+export default {
+  name: 'App',
+  components: {
+    DashBoard,
+  },
+  setup() {
+    return {}
+  },
+}
+</script>
 
 <style>
 #app {

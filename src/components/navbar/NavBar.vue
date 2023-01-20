@@ -41,16 +41,13 @@
 </template>
 
 <script lang="ts">
-import { fetchData } from '@/utils/DataFetcher'
-import { onMounted } from 'vue'
-import { Options, Vue } from 'vue-class-component'
-import NavbarNotifications from '@/pages/Notifications.vue'
-import AppsAvailables from '@/pages/AppsAvailables.vue'
-import UserIconDropdown from '@/pages/UserIconDropdown.vue'
-import SearchBar from '@/pages/SearchBar.vue'
+import NavbarNotifications from '@/components/navbar/NavbarNotifications.vue'
+import AppsAvailables from '@/components/navbar/AppsAvailables.vue'
+import UserIconDropdown from '@/components/navbar/UserIconDropdown.vue'
+import SearchBar from '@/components/navbar/SearchBar.vue'
 
 export default {
-  name: 'BaseNavbar',
+  name: 'NavBar',
   components: {
     NavbarNotifications,
     AppsAvailables,
@@ -58,19 +55,7 @@ export default {
     SearchBar,
   },
   setup() {
-    const { error, loading, data, performRequest } = fetchData()
-
-    onMounted(() => {
-      performRequest('lista-sectores/', {})
-    })
-
-    return {
-      error,
-      loading,
-      data,
-      msg: 'HEY',
-    }
+    return {}
   },
 }
-export class HomeView extends Vue {}
 </script>
