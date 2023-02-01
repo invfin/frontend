@@ -1,9 +1,17 @@
 {
   "recommendations": [
-    "vue.volar",
-    "antfu.iconify",
+    "christian-kohler.path-intellisense",
+    "vscode-icons-team.vscode-icons",
+    "davidanson.vscode-markdownlint",
+    "stylelint.vscode-stylelint",
+    "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "redhat.vscode-yaml",
+    "csstools.postcss",
     "mikestead.dotenv",
-    "sdras.vue-vscode-snippets",
-    "cipchk.cssrem",
+    "eamodio.gitlens",
+    "antfu.iconify",
+    "Vue.volar"
   ]
 }
