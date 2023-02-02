@@ -9,10 +9,12 @@ const loginRules = reactive(<FormRules>{
     {
       validator: (rule, value, callback) => {
         if (value === "") {
-          callback(new Error("请输入密码"));
+          callback(new Error("Este campo no puede estar vacío"));
         } else if (!REGEXP_PWD.test(value)) {
           callback(
-            new Error("密码格式应为8-18位数字、字母、符号的任意两种组合")
+            new Error(
+              "La contraseña debe tener de 8 a 18 dígitos, letras y símbolos."
+            )
           );
         } else {
           callback();
