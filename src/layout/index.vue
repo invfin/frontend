@@ -66,10 +66,8 @@ function toggle(device: string, bool: boolean) {
   useAppStoreHook().toggleSideBar(bool, "resize");
 }
 
-// 判断是否可自动关闭菜单栏
 let isAutoCloseSidebar = true;
 
-// 监听容器
 emitter.on("resize", ({ detail }) => {
   if (isMobile) return;
   const { width } = detail;
@@ -157,7 +155,6 @@ const layoutHeader = defineComponent({
     >
       <div v-if="set.fixedHeader">
         <layout-header />
-        <!-- 主体内容 -->
         <app-main :fixed-header="set.fixedHeader" />
       </div>
       <el-scrollbar v-else>
@@ -168,11 +165,9 @@ const layoutHeader = defineComponent({
           <backTop />
         </el-backtop>
         <layout-header />
-        <!-- 主体内容 -->
         <app-main :fixed-header="set.fixedHeader" />
       </el-scrollbar>
     </div>
-    <!-- 系统设置 -->
     <setting />
   </div>
 </template>
