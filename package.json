@@ -36,8 +36,9 @@
     "@vueuse/motion": "2.0.0-beta.12",
     "animate.css": "^4.1.1",
     "axios": "^1.2.0",
+    "billboard.js": "^3.7.3",
+    "chart.js": "^4.2.0",
     "dayjs": "^1.11.6",
-    "echarts": "^5.4.0",
     "element-plus": "^2.2.27",
     "element-resize-detector": "^1.2.4",
     "js-cookie": "^3.0.1",
@@ -49,6 +50,7 @@
     "qs": "^6.11.0",
     "responsive-storage": "^2.1.0",
     "vue": "^3.2.45",
+    "vue-chartjs": "^5.2.0",
     "vue-router": "^4.1.6",
     "vue-types": "^4.2.1"
   },

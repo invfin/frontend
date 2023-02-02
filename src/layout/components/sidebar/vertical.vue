@@ -26,12 +26,10 @@ const menuData = computed(() => {
 });
 
 function getSubMenuData(path: string) {
-  // path的上级路由组成的数组
   const parentPathArr = getParentPaths(
     path,
     usePermissionStoreHook().wholeMenus
   );
-  // 当前路由的父级路由信息
   const parenetRoute = findRouteByPath(
     parentPathArr[0] || path,
     usePermissionStoreHook().wholeMenus

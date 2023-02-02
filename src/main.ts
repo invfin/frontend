@@ -5,7 +5,6 @@ import ElementPlus from "element-plus";
 import { getServerConfig } from "./config";
 import { createApp, Directive } from "vue";
 import { MotionPlugin } from "@vueuse/motion";
-// import { useEcharts } from "@/plugins/echarts";
 import { injectResponsiveStorage } from "@/utils/responsive";
 
 import "./style/reset.scss";
@@ -40,7 +39,6 @@ getServerConfig(app).then(async config => {
   injectResponsiveStorage(app, config);
   setupStore(app);
   app.use(MotionPlugin).use(ElementPlus);
-  // .use(useEcharts);
   // .use(Table);
   // .use(PureDescriptions);
   app.mount("#app");
