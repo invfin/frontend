@@ -59,7 +59,7 @@ export function useNav() {
   }
 
   function backHome() {
-    router.push("/welcome");
+    router.push("/home");
   }
 
   function onPanel() {

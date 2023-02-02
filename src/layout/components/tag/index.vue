@@ -282,7 +282,7 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
         startIndex: 1,
         length: multiTags.value.length
       });
-      router.push("/welcome");
+      router.push("/home");
       break;
     case 6:
       // 整体页面全屏
@@ -321,7 +321,6 @@ function handleCommand(command: any) {
   onClickDrop(key, item);
 }
 
-/** 触发右键中菜单的点击事件 */
 function selectTag(key, item) {
   onClickDrop(key, item, currentSelect.value);
 }
@@ -338,7 +337,6 @@ function disabledMenus(value: boolean) {
   });
 }
 
-/** 检查当前右键的菜单两边是否存在别的菜单，如果左侧的菜单是首页，则不显示关闭左侧标签页，如果右侧没有菜单，则不显示关闭右侧标签页 */
 function showMenuModel(
   currentPath: string,
   query: object = {},
@@ -359,12 +357,7 @@ function showMenuModel(
     tagsViews[0].show = true;
   }
 
-  /**
-   * currentIndex为1时，左侧的菜单是首页，则不显示关闭左侧标签页
-   * 如果currentIndex等于routeLength-1，右侧没有菜单，则不显示关闭右侧标签页
-   */
   if (currentIndex === 1 && routeLength !== 2) {
-    // 左侧的菜单是首页，右侧存在别的菜单
     tagsViews[2].show = false;
     Array.of(1, 3, 4, 5).forEach(v => {
       tagsViews[v].disabled = false;
@@ -372,20 +365,17 @@ function showMenuModel(
     tagsViews[2].disabled = true;
   } else if (currentIndex === 1 && routeLength === 2) {
     disabledMenus(false);
-    // 左侧的菜单是首页，右侧不存在别的菜单
     Array.of(2, 3, 4).forEach(v => {
       tagsViews[v].show = false;
       tagsViews[v].disabled = true;
     });
   } else if (routeLength - 1 === currentIndex && currentIndex !== 0) {
-    // 当前路由是所有路由中的最后一个
     tagsViews[3].show = false;
     Array.of(1, 2, 4, 5).forEach(v => {
       tagsViews[v].disabled = false;
     });
     tagsViews[3].disabled = true;
-  } else if (currentIndex === 0 || currentPath === "/redirect/welcome") {
-    // 当前路由为首页
+  } else if (currentIndex === 0 || currentPath === "/redirect/home") {
     disabledMenus(true);
   } else {
     disabledMenus(false);
@@ -394,7 +384,7 @@ function showMenuModel(
 
 function openMenu(tag, e) {
   closeMenu();
-  if (tag.path === "/welcome") {
+  if (tag.path === "/home") {
     // 右键菜单为首页，只显示刷新
     showMenus(false);
     tagsViews[0].show = true;
