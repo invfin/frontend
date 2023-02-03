@@ -72,11 +72,6 @@ emitter.on("resize", ({ detail }) => {
   if (isMobile) return;
   const { width } = detail;
   width <= 760 ? setTheme("vertical") : setTheme(useAppStoreHook().layout);
-  /** width app-wrapper类容器宽度
-   * 0 < width <= 760 隐藏侧边栏
-   * 760 < width <= 990 折叠侧边栏
-   * width > 990 展开侧边栏
-   */
   if (width > 0 && width <= 760) {
     toggle("mobile", false);
     isAutoCloseSidebar = true;

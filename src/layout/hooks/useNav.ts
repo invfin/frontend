@@ -10,7 +10,7 @@ import { useAppStoreHook } from "@/store/modules/app";
 import { useUserStoreHook } from "@/store/modules/user";
 import { usePermissionStoreHook } from "@/store/modules/permission";
 
-const errorInfo = "当前路由配置不正确，请检查配置";
+const errorInfo = "Enrutación incorrecta";
 
 export function useNav() {
   const route = useRoute();

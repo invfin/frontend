@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import Search from "./search/index.vue";
+import Search from "@/components/search/index.vue";
 import Notice from "./notice/index.vue";
 import mixNav from "./sidebar/mixNav.vue";
 import { useNav } from "@/layout/hooks/useNav";
 // import Breadcrumb from "./sidebar/breadCrumb.vue";
 import topCollapse from "./sidebar/topCollapse.vue";
-import LogoutCircleRLine from "@iconify-icons/ri/logout-circle-r-line";
+import UserDropdown from "@/components/navbar/UserDropdown.vue";
 // import Setting from "@iconify-icons/ri/settings-3-line";
 
 const {
@@ -40,26 +40,11 @@ const {
     <div v-if="layout === 'vertical'" class="vertical-header-right">
       <Search />
       <Notice id="header-notice" />
-      <el-dropdown trigger="click">
-        <span class="el-dropdown-link navbar-bg-hover select-none">
-          <img
-            src="https://avatars.githubusercontent.com/u/44761321?v=4"
-            :style="avatarsStyle"
-          />
-          <p v-if="username" class="dark:text-white">{{ username }}</p>
-        </span>
-        <template #dropdown>
-          <el-dropdown-menu class="logout">
-            <el-dropdown-item @click="logout">
-              <IconifyIconOffline
-                :icon="LogoutCircleRLine"
-                style="margin: 5px"
-              />
-              Desconectarse
-            </el-dropdown-item>
-          </el-dropdown-menu>
-        </template>
-      </el-dropdown>
+      <UserDropdown
+        :username="username"
+        :logout="logout"
+        :avatarsStyle="avatarsStyle"
+      />
       <!-- <span
         class="set-icon navbar-bg-hover"
         title="打开项目配置"

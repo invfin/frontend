@@ -9,9 +9,9 @@ import { useDebounceFn, onKeyStroke } from "@vueuse/core";
 import { ref, watch, computed, nextTick, shallowRef } from "vue";
 import { usePermissionStoreHook } from "@/store/modules/permission";
 import Search from "@iconify-icons/ep/search";
+import { SearchEngine } from "../utils/searchFunctionality";
 
 interface Props {
-  /** 弹窗显隐 */
   value: boolean;
 }
 
@@ -30,7 +30,6 @@ const inputRef = ref<HTMLInputElement | null>(null);
 const resultOptions = shallowRef([]);
 const handleSearch = useDebounceFn(search, 300);
 
-/** 菜单树形结构 */
 const menusData = computed(() => {
   return deleteChildren(cloneDeep(usePermissionStoreHook().wholeMenus));
 });
@@ -46,13 +45,11 @@ const show = computed({
 
 watch(show, async val => {
   if (val) {
-    /** 自动聚焦 */
     await nextTick();
     inputRef.value?.focus();
   }
 });
 
-/** 将菜单树形结构扁平化为一维数组，用于菜单查询 */
 function flatTree(arr) {
   const res = [];
   function deep(arr) {
@@ -65,15 +62,18 @@ function flatTree(arr) {
   return res;
 }
 
-/** 查询 */
 function search() {
   const flatMenusData = flatTree(menusData.value);
+  const valueSearched = keyword.value;
+  const searchEngine = new SearchEngine();
+  const searchResult = searchEngine.search(valueSearched);
+  console.log(searchResult);
   resultOptions.value = flatMenusData.filter(
     menu =>
-      keyword.value &&
+      valueSearched &&
       menu.meta?.title
         .toLocaleLowerCase()
-        .includes(keyword.value.toLocaleLowerCase().trim())
+        .includes(valueSearched.toLocaleLowerCase().trim())
   );
   if (resultOptions.value?.length > 0) {
     activePath.value = resultOptions.value[0].path;
@@ -84,14 +84,12 @@ function search() {
 
 function handleClose() {
   show.value = false;
-  /** 延时处理防止用户看到某些操作 */
   setTimeout(() => {
     resultOptions.value = [];
     keyword.value = "";
   }, 200);
 }
 
-/** key up */
 function handleUp() {
   const { length } = resultOptions.value;
   if (length === 0) return;
@@ -105,7 +103,6 @@ function handleUp() {
   }
 }
 
-/** key down */
 function handleDown() {
   const { length } = resultOptions.value;
   if (length === 0) return;
@@ -119,7 +116,6 @@ function handleDown() {
   }
 }
 
-/** key enter */
 function handleEnter() {
   const { length } = resultOptions.value;
   if (length === 0 || activePath.value === "") return;
@@ -143,7 +139,7 @@ onKeyStroke("ArrowDown", handleDown);
       ref="inputRef"
       v-model="keyword"
       clearable
-      placeholder="请输入关键词搜索"
+      placeholder="Buscar"
       @input="handleSearch"
     >
       <template #prefix>
@@ -153,7 +149,10 @@ onKeyStroke("ArrowDown", handleDown);
       </template>
     </el-input>
     <div class="search-result-container">
-      <el-empty v-if="resultOptions.length === 0" description="暂无搜索结果" />
+      <el-empty
+        v-if="resultOptions.length === 0"
+        description="No se han encontrado resultados"
+      />
       <SearchResult
         v-else
         v-model:value="activePath"

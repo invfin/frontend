@@ -2,16 +2,16 @@
   <div class="search-footer text-[#333] dark:text-white">
     <span class="search-footer-item">
       <enterOutlined class="icon" />
-      确认
+      Confirmar
     </span>
     <span class="search-footer-item">
       <IconifyIconOffline :icon="ArrowUpLine" class="icon" />
       <IconifyIconOffline :icon="ArrowDownLine" class="icon" />
-      切换
+      Cambiar
     </span>
     <span class="search-footer-item">
       <mdiKeyboardEsc class="icon" />
-      关闭
+      Cerrar
     </span>
   </div>
 </template>
