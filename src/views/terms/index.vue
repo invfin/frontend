@@ -2,7 +2,7 @@
 import BarChart from "@/charts/chartjs/BarChart.vue";
 
 defineOptions({
-  name: "Welcome"
+  name: "Terms"
 });
 </script>
 

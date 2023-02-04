@@ -24,27 +24,15 @@ import { buildHierarchyTree } from "@/utils/tree";
 import { isUrl, openLink, storageSession } from "@pureadmin/utils";
 
 import remainingRouter from "./modules/remaining";
-
-const modules: Record<string, any> = import.meta.glob(
-  ["./modules/**/*.ts", "!./modules/**/remaining.ts"],
-  {
-    eager: true
-  }
-);
-
-const routes = [];
-
-Object.keys(modules).forEach(key => {
-  routes.push(modules[key].default);
-});
+import sidebarRoutes from "./modules/sidebar";
 
 export const constantRoutes: Array<RouteRecordRaw> = formatTwoStageRoutes(
-  formatFlatteningRoutes(buildHierarchyTree(ascending(routes)))
+  formatFlatteningRoutes(buildHierarchyTree(ascending(sidebarRoutes)))
 );
 
-export const constantMenus: Array<RouteComponent> = ascending(routes).concat(
-  ...remainingRouter
-);
+export const constantMenus: Array<RouteComponent> = ascending(
+  sidebarRoutes
+).concat(...remainingRouter);
 
 export const remainingPaths = Object.keys(remainingRouter).map(v => {
   return remainingRouter[v].path;

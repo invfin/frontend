@@ -4,18 +4,32 @@ export default [
   {
     url: "/search",
     method: "get",
-    response: ({ body, query }) => {
-      console.log(body);
-      console.log(query);
+    response: () => {
       return {
         success: true,
-        data: {
-          username: "admin",
-          roles: ["admin"],
-          accessToken: "eyJhbGciOiJIUzUxMiJ9.admin",
-          refreshToken: "eyJhbGciOiJIUzUxMiJ9.adminRefresh",
-          expires: "2023/10/30 00:00:00"
-        }
+        data: [
+          {
+            path: "/home",
+            meta: {
+              icon: "homeFilled",
+              title: "Inicio"
+            }
+          },
+          {
+            path: "/explore",
+            meta: {
+              icon: "homeFilled",
+              title: "Explorar"
+            }
+          },
+          {
+            path: "/diccionario-financiero",
+            meta: {
+              icon: "homeFilled",
+              title: "Términos"
+            }
+          }
+        ]
       };
     }
   }

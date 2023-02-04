@@ -141,7 +141,6 @@ function addPathMatch() {
 }
 
 function handleAsyncRoutes(routeList) {
-  console.log(routeList);
   if (routeList.length === 0) {
     usePermissionStoreHook().handleWholeMenus(routeList);
   } else {

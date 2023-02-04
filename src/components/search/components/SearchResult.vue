@@ -4,18 +4,11 @@ import { useEpThemeStoreHook } from "@/store/modules/epTheme";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import enterOutlined from "@/assets/svg/enter_outlined.svg?component";
 import Bookmark2Line from "@iconify-icons/ri/bookmark-2-line";
-
-interface optionsItem {
-  path: string;
-  meta?: {
-    icon?: string;
-    title?: string;
-  };
-}
+import { SearchItem } from "../types";
 
 interface Props {
   value: string;
-  options: Array<optionsItem>;
+  options: Array<SearchItem>;
 }
 
 interface Emits {

@@ -136,32 +136,36 @@ const layoutHeader = defineComponent({
       class="app-mask"
       @click="useAppStoreHook().toggleSideBar()"
     />
+
     <Vertical
       v-show="
         !pureSetting.hiddenSideBar &&
         (layout.includes('vertical') || layout.includes('mix'))
       "
     />
+
     <div
       :class="[
         'main-container',
         pureSetting.hiddenSideBar ? 'main-hidden' : ''
       ]"
     >
-      <div v-if="set.fixedHeader">
-        <layout-header />
-        <app-main :fixed-header="set.fixedHeader" />
+      <div class="container mx-auto">
+        <div v-if="set.fixedHeader">
+          <layout-header />
+          <app-main :fixed-header="set.fixedHeader" />
+        </div>
+        <el-scrollbar v-else>
+          <el-backtop
+            title="回到顶部"
+            target=".main-container .el-scrollbar__wrap"
+          >
+            <backTop />
+          </el-backtop>
+          <layout-header />
+          <app-main :fixed-header="set.fixedHeader" />
+        </el-scrollbar>
       </div>
-      <el-scrollbar v-else>
-        <el-backtop
-          title="回到顶部"
-          target=".main-container .el-scrollbar__wrap"
-        >
-          <backTop />
-        </el-backtop>
-        <layout-header />
-        <app-main :fixed-header="set.fixedHeader" />
-      </el-scrollbar>
     </div>
     <setting />
   </div>

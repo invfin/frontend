@@ -1,29 +1,25 @@
 import { http } from "@/utils/http";
-
-export type SearchResult = {
-  success: boolean;
-  data: {
-    username: string;
-    roles: Array<string>;
-    accessToken: string;
-    refreshToken: string;
-    expires: Date;
-  };
-};
+import { SearchResult, SearchItem } from "../types";
 
 export class SearchEngine {
-  searchResults: Array<SearchResult> = [];
+  searchResults: Array<SearchItem>;
 
   private callSearchEndpoint(data?: string) {
     return http.request<SearchResult>("get", "/search", { data });
   }
   private updateSearchResults(data?: SearchResult): void {
-    this.searchResults.length = 0;
-    this.searchResults.push(data);
+    this.searchResults = data.data;
   }
-  search(query: string): Array<SearchResult> {
+  search(query: string): Array<SearchItem> {
     const response = this.callSearchEndpoint(query);
-    response.then(data => this.updateSearchResults(data));
-    return this.searchResults;
+    response
+      .then(data => this.updateSearchResults(data))
+      .catch(err => {
+        console.error(err);
+        return this.search(query);
+      })
+      .finally(() => {
+        return this.searchResults;
+      });
   }
 }

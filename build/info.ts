@@ -30,9 +30,9 @@ export function viteBuildInfo(): Plugin {
             console.log(
               bold(
                 green(
-                  `🎉恭喜打包完成（总用时${dayjs
+                  `build time${dayjs
                     .duration(endTime.diff(startTime))
-                    .format("mm分ss秒")}，打包后的大小为${size}）`
+                    .format("mm分ss秒")}，size${size}）`
                 )
               )
             );

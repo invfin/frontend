@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import { cloneDeep } from "@pureadmin/utils";
 import SearchResult from "./SearchResult.vue";
 import SearchFooter from "./SearchFooter.vue";
-import { deleteChildren } from "@/utils/tree";
 import { useNav } from "@/layout/hooks/useNav";
 import { useDebounceFn, onKeyStroke } from "@vueuse/core";
 import { ref, watch, computed, nextTick, shallowRef } from "vue";
-import { usePermissionStoreHook } from "@/store/modules/permission";
 import Search from "@iconify-icons/ep/search";
-import { SearchEngine } from "../utils/searchFunctionality";
+import { SearchResponse } from "../types";
+import { http } from "@/utils/http";
 
 interface Props {
   value: boolean;
@@ -30,10 +28,6 @@ const inputRef = ref<HTMLInputElement | null>(null);
 const resultOptions = shallowRef([]);
 const handleSearch = useDebounceFn(search, 300);
 
-const menusData = computed(() => {
-  return deleteChildren(cloneDeep(usePermissionStoreHook().wholeMenus));
-});
-
 const show = computed({
   get() {
     return props.value;
@@ -50,36 +44,24 @@ watch(show, async val => {
   }
 });
 
-function flatTree(arr) {
-  const res = [];
-  function deep(arr) {
-    arr.forEach(item => {
-      res.push(item);
-      item.children && deep(item.children);
-    });
-  }
-  deep(arr);
-  return res;
+function requestSearch(data) {
+  return http.request<SearchResponse>("get", "/search", { data });
 }
 
 function search() {
-  const flatMenusData = flatTree(menusData.value);
-  const valueSearched = keyword.value;
-  const searchEngine = new SearchEngine();
-  const searchResult = searchEngine.search(valueSearched);
-  console.log(searchResult);
-  resultOptions.value = flatMenusData.filter(
-    menu =>
-      valueSearched &&
-      menu.meta?.title
-        .toLocaleLowerCase()
-        .includes(valueSearched.toLocaleLowerCase().trim())
-  );
-  if (resultOptions.value?.length > 0) {
-    activePath.value = resultOptions.value[0].path;
-  } else {
-    activePath.value = "";
-  }
+  const response = requestSearch(keyword.value);
+  response
+    .then(data => {
+      resultOptions.value = data.data;
+      if (resultOptions.value?.length > 0) {
+        activePath.value = resultOptions.value[0].path;
+      } else {
+        activePath.value = "";
+      }
+    })
+    .catch(err => {
+      console.error(err);
+    });
 }
 
 function handleClose() {
@@ -116,9 +98,11 @@ function handleDown() {
   }
 }
 
+//Handle de redirection if there is any path
 function handleEnter() {
   const { length } = resultOptions.value;
   if (length === 0 || activePath.value === "") return;
+  // window.open(`http://localhost:8848${activePath.value}`, '_blank');
   router.push(activePath.value);
   handleClose();
 }
