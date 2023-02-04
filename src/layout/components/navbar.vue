@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Search from "@/components/search/index.vue";
-import Notice from "./notice/index.vue";
+import Notifications from "@/components/notifications/index.vue";
 import mixNav from "./sidebar/mixNav.vue";
 import { useNav } from "@/layout/hooks/useNav";
 // import Breadcrumb from "./sidebar/breadCrumb.vue";
@@ -39,7 +39,7 @@ const {
 
     <div v-if="layout === 'vertical'" class="vertical-header-right">
       <Search />
-      <Notice id="header-notice" />
+      <Notifications id="header-notice" />
       <UserDropdown
         :username="username"
         :logout="logout"

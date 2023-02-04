@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { PropType } from "vue";
-import { ListItem } from "./data";
+import { NotificationItem } from "./types";
 import NoticeItem from "./noticeItem.vue";
 
 const props = defineProps({
   list: {
-    type: Array as PropType<Array<ListItem>>,
+    type: Array as PropType<Array<NotificationItem>>,
     default: () => []
   }
 });
@@ -19,5 +19,5 @@ const props = defineProps({
       :key="index"
     />
   </div>
-  <el-empty v-else description="暂无数据" />
+  <el-empty v-else description="No hay notificaciones" />
 </template>

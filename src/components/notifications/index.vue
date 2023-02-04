@@ -1,14 +1,34 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { noticesData } from "./data";
+import { ref, onMounted } from "vue";
 import NoticeList from "./noticeList.vue";
 import Bell from "@iconify-icons/ep/bell";
+import { http } from "@/utils/http";
+import { NotificationsResponse } from "./types";
 
 const noticesNum = ref(0);
-const notices = ref(noticesData);
-const activeKey = ref(noticesData[0].key);
+const notifications = ref([]);
+const activeKey = ref(0);
 
-notices.value.map(v => (noticesNum.value += v.list.length));
+function getNotifications() {
+  const response = http.request<NotificationsResponse>(
+    "get",
+    "/notifications",
+    {}
+  );
+  response
+    .then(data => {
+      activeKey.value = data.data[0].key;
+      notifications.value = data.data;
+      notifications.value.map(v => (noticesNum.value += v.list.length));
+    })
+    .catch(err => {
+      console.error(err);
+    });
+}
+
+onMounted(() => {
+  getNotifications();
+});
 </script>
 
 <template>
@@ -23,14 +43,17 @@ notices.value.map(v => (noticesNum.value += v.list.length));
     <template #dropdown>
       <el-dropdown-menu>
         <el-tabs :stretch="true" v-model="activeKey" class="dropdown-tabs">
-          <template v-for="item in notices" :key="item.key">
+          <template
+            v-for="notification in notifications"
+            :key="notification.key"
+          >
             <el-tab-pane
-              :label="`${item.name}(${item.list.length})`"
-              :name="`${item.key}`"
+              :label="`${notification.name}(${notification.list.length})`"
+              :name="`${notification.key}`"
             >
               <el-scrollbar max-height="330px">
                 <div class="noticeList-container">
-                  <NoticeList :list="item.list" />
+                  <NoticeList :list="notification.list" />
                 </div>
               </el-scrollbar>
             </el-tab-pane>

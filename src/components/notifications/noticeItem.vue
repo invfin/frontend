@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { ListItem } from "./data";
+import { NotificationItem } from "./types";
 import { ref, PropType, nextTick } from "vue";
 import { useNav } from "@/layout/hooks/useNav";
 
 const props = defineProps({
   noticeItem: {
-    type: Object as PropType<ListItem>,
+    type: Object as PropType<NotificationItem>,
     default: () => {}
   }
 });
@@ -25,7 +25,6 @@ function hoverTitle() {
 }
 
 function hoverDescription(event, description) {
-  // currentWidth 为文本在页面中所占的宽度，创建标签，加入到页面，获取currentWidth ,最后在移除
   const tempTag = document.createElement("span");
   tempTag.innerText = description;
   tempTag.className = "getDescriptionWidth";
@@ -35,10 +34,11 @@ function hoverDescription(event, description) {
   ).offsetWidth;
   document.querySelector(".getDescriptionWidth").remove();
 
-  // cellWidth为容器的宽度
+  // cellWidth es el ancho del contenedor
   const cellWidth = event.target.offsetWidth;
 
-  // 当文本宽度大于容器宽度两倍时，代表文本显示超过两行
+  // Cuando el ancho del texto es mayor que el doble del ancho del contenedor,
+  // significa que el texto muestra más de dos líneas
   currentWidth > 2 * cellWidth
     ? (descriptionTooltip.value = true)
     : (descriptionTooltip.value = false);
@@ -57,21 +57,21 @@ function hoverDescription(event, description) {
     />
     <div class="notice-container-text">
       <div class="notice-text-title text-[#000000d9] dark:text-white">
-        <el-tooltip
+        <!-- <el-tooltip
           popper-class="notice-title-popper"
           :effect="tooltipEffect"
           :disabled="!titleTooltip"
           :content="props.noticeItem.title"
           placement="top-start"
+        > -->
+        <div
+          ref="titleRef"
+          class="notice-title-content"
+          @mouseover="hoverTitle"
         >
-          <div
-            ref="titleRef"
-            class="notice-title-content"
-            @mouseover="hoverTitle"
-          >
-            {{ props.noticeItem.title }}
-          </div>
-        </el-tooltip>
+          {{ props.noticeItem.title }}
+        </div>
+        <!-- </el-tooltip> -->
         <el-tag
           v-if="props.noticeItem?.extra"
           :type="props.noticeItem?.status"

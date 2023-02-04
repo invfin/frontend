@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Search from "@/components/search/index.vue";
-import Notice from "../notice/index.vue";
+import Notice from "@/components/notifications/index.vue";
 import { useNav } from "@/layout/hooks/useNav";
 import { ref, toRaw, watch, onMounted, nextTick } from "vue";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
