@@ -125,7 +125,7 @@ declare global {
     };
   }
 
-  interface RouteChildrenConfigsTable {
+  interface RouteConfigsTable {
     path: string;
     name?: string;
     redirect?: string;
@@ -138,6 +138,7 @@ declare global {
         name?: string;
       };
       showLink?: boolean;
+      rank?: number;
       showParent?: boolean;
       roles?: Array<string>;
       auths?: Array<string>;
@@ -152,21 +153,7 @@ declare global {
       hiddenTag?: boolean;
       dynamicLevel?: number;
     };
-    children?: Array<RouteChildrenConfigsTable>;
-  }
-
-  interface RouteConfigsTable {
-    path: string;
-    name?: string;
-    component?: RouteComponent;
-    redirect?: string;
-    meta?: {
-      title: string;
-      icon?: string | FunctionalComponent | IconifyIcon;
-      showLink?: boolean;
-      rank?: number;
-    };
-    children?: Array<RouteChildrenConfigsTable>;
+    children?: Array<RouteConfigsTable>;
   }
 
   interface GlobalPropertiesApi {

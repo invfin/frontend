@@ -1,5 +1,4 @@
 // import "@/utils/sso";
-import { getConfig } from "@/config";
 import NProgress from "@/utils/progress";
 import { sessionKey, type DataInfo } from "@/utils/auth";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
@@ -25,6 +24,7 @@ import { isUrl, openLink, storageSession } from "@pureadmin/utils";
 
 import remainingRouter from "./modules/remaining";
 import sidebarRoutes from "./modules/sidebar";
+import errorRoutes from "./modules/error";
 
 export const constantRoutes: Array<RouteRecordRaw> = formatTwoStageRoutes(
   formatFlatteningRoutes(buildHierarchyTree(ascending(sidebarRoutes)))
@@ -38,9 +38,11 @@ export const remainingPaths = Object.keys(remainingRouter).map(v => {
   return remainingRouter[v].path;
 });
 
+const routes = constantRoutes.concat(...(remainingRouter as any), errorRoutes);
+
 export const router: Router = createRouter({
   history: getHistoryMode(),
-  routes: constantRoutes.concat(...(remainingRouter as any)),
+  routes: routes,
   strict: true,
   scrollBehavior(to, from, savedPosition) {
     return new Promise(resolve => {
@@ -72,41 +74,45 @@ export function resetRouter() {
 
 const whiteList = ["/login"];
 
-router.beforeEach((to: toRouteType, _from, next) => {
+// Si ya ha iniciado sesión y tiene información de inicio de sesión,
+// no puede saltar a la lista blanca de enrutamiento, sino permanecer en la página actual.
+function toCorrectRoute(to: toRouteType, _from, next): void {
+  whiteList.includes(to.fullPath) ? next(_from.fullPath) : next();
+}
+
+function manageAliveRoute(to: toRouteType, _from): void {
   if (to.meta?.keepAlive) {
     const newMatched = to.matched;
     handleAliveRoute(newMatched, "add");
+    // Actualización general de la página y actualización de la pestaña del clic
     if (_from.name === undefined || _from.name === "Redirect") {
       handleAliveRoute(newMatched);
     }
   }
+}
+
+router.beforeEach((to: toRouteType, _from, next) => {
+  manageAliveRoute(to, _from);
   const userInfo = storageSession().getItem<DataInfo<number>>(sessionKey);
   NProgress.start();
   const externalLink = isUrl(to?.name as string);
-  if (!externalLink) {
-    to.matched.some(item => {
-      if (!item.meta.title) return "";
-      const Title = getConfig().Title;
-      if (Title) document.title = `${item.meta.title} | ${Title}`;
-      else document.title = item.meta.title as string;
-    });
-  }
-  function toCorrectRoute() {
-    whiteList.includes(to.fullPath) ? next(_from.fullPath) : next();
-  }
+
   if (userInfo) {
+    // Saltar a la página 403 sin permiso
     if (to.meta?.roles && !isOneOfArray(to.meta?.roles, userInfo?.roles)) {
       next({ path: "/error/403" });
     }
     if (_from?.name) {
+      // el nombre es un hipervínculo
       if (externalLink) {
         openLink(to?.name as string);
         NProgress.done();
       } else {
-        toCorrectRoute();
+        toCorrectRoute(to, _from, next);
       }
     } else {
       if (
+        // refrescar
         usePermissionStoreHook().wholeMenus.length === 0 &&
         to.path !== "/login"
       )
@@ -128,7 +134,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
           }
           router.push(to.fullPath);
         });
-      toCorrectRoute();
+      toCorrectRoute(to, _from, next);
     }
   } else {
     if (to.path !== "/login") {

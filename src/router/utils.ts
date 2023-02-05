@@ -165,13 +165,13 @@ function handleAsyncRoutes(routeList) {
     );
     usePermissionStoreHook().handleWholeMenus(routeList);
   }
-  addPathMatch();
 }
 
 function initRouter() {
   return new Promise(resolve => {
     const data = [];
     handleAsyncRoutes(cloneDeep(data));
+    addPathMatch();
     resolve(router);
   });
 }

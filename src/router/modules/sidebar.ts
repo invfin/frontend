@@ -41,7 +41,17 @@ const sidebarRoutes = [
       title: "Términos",
       rank: 2
     }
+  },
+  {
+    path: "/send-to",
+    name: "youtube.com",
+    component: () => import("@/views/terms/index.vue"),
+    meta: {
+      icon: "homeFilled",
+      title: "reeee",
+      rank: 2
+    }
   }
 ];
 
-export default sidebarRoutes;
+export default sidebarRoutes as Array<RouteConfigsTable>;

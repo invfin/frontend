@@ -39,7 +39,5 @@ getServerConfig(app).then(async config => {
   injectResponsiveStorage(app, config);
   setupStore(app);
   app.use(MotionPlugin).use(ElementPlus);
-  // .use(Table);
-  // .use(PureDescriptions);
   app.mount("#app");
 });
