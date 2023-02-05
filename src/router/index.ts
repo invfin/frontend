@@ -12,7 +12,6 @@ import {
 import {
   ascending,
   initRouter,
-  isOneOfArray,
   getHistoryMode,
   findRouteByPath,
   handleAliveRoute,
@@ -20,6 +19,7 @@ import {
   formatFlatteningRoutes
 } from "./utils";
 import { buildHierarchyTree } from "@/utils/tree";
+import { checkAuth } from "@/utils/auth";
 import { isUrl, openLink, storageSession } from "@pureadmin/utils";
 
 import remainingRouter from "./modules/remaining";
@@ -91,6 +91,30 @@ function manageAliveRoute(to: toRouteType, _from): void {
   }
 }
 
+function refreshRoutes(to: toRouteType, _from, next): void {
+  if (
+    // refrescar
+    usePermissionStoreHook().wholeMenus.length === 0 &&
+    to.path !== "/login"
+  )
+    initRouter().then((router: Router) => {
+      if (!useMultiTagsStoreHook().getMultiTagsCache) {
+        const { path } = to;
+        const route = findRouteByPath(path, router.options.routes[0].children);
+        // query、params模式路由传参数的标签页不在此处处理
+        if (route && route.meta?.title) {
+          useMultiTagsStoreHook().handleTags("push", {
+            path: route.path,
+            name: route.name,
+            meta: route.meta
+          });
+        }
+      }
+      router.push(to.fullPath);
+    });
+  toCorrectRoute(to, _from, next);
+}
+
 router.beforeEach((to: toRouteType, _from, next) => {
   manageAliveRoute(to, _from);
   const userInfo = storageSession().getItem<DataInfo<number>>(sessionKey);
@@ -98,10 +122,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
   const externalLink = isUrl(to?.name as string);
 
   if (userInfo) {
-    // Saltar a la página 403 sin permiso
-    if (to.meta?.roles && !isOneOfArray(to.meta?.roles, userInfo?.roles)) {
-      next({ path: "/error/403" });
-    }
+    checkAuth(to, next);
     if (_from?.name) {
       // el nombre es un hipervínculo
       if (externalLink) {
@@ -111,30 +132,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
         toCorrectRoute(to, _from, next);
       }
     } else {
-      if (
-        // refrescar
-        usePermissionStoreHook().wholeMenus.length === 0 &&
-        to.path !== "/login"
-      )
-        initRouter().then((router: Router) => {
-          if (!useMultiTagsStoreHook().getMultiTagsCache) {
-            const { path } = to;
-            const route = findRouteByPath(
-              path,
-              router.options.routes[0].children
-            );
-            // query、params模式路由传参数的标签页不在此处处理
-            if (route && route.meta?.title) {
-              useMultiTagsStoreHook().handleTags("push", {
-                path: route.path,
-                name: route.name,
-                meta: route.meta
-              });
-            }
-          }
-          router.push(to.fullPath);
-        });
-      toCorrectRoute(to, _from, next);
+      refreshRoutes(to, _from, next);
     }
   } else {
     if (to.path !== "/login") {

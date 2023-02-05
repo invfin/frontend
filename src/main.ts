@@ -30,9 +30,6 @@ app.component("IconifyIconOffline", IconifyIconOffline);
 app.component("IconifyIconOnline", IconifyIconOnline);
 app.component("FontIcon", FontIcon);
 
-import { Auth } from "@/components/ReAuth";
-app.component("Auth", Auth);
-
 getServerConfig(app).then(async config => {
   app.use(router);
   await router.isReady();

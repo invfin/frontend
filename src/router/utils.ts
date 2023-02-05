@@ -11,12 +11,10 @@ import { isProxy, toRaw } from "vue";
 import { useTimeoutFn } from "@vueuse/core";
 import { RouteConfigs } from "@/layout/types";
 import {
-  isString,
   cloneDeep,
   isAllEmpty,
   intersection,
-  storageSession,
-  isIncludeAllChildren
+  storageSession
 } from "@pureadmin/utils";
 import { buildHierarchyTree } from "@/utils/tree";
 import { sessionKey, type DataInfo } from "@/utils/auth";
@@ -281,23 +279,7 @@ function getHistoryMode(): RouterHistory {
   }
 }
 
-function getAuths(): Array<string> {
-  return router.currentRoute.value.meta.auths as Array<string>;
-}
-
-function hasAuth(value: string | Array<string>): boolean {
-  if (!value) return false;
-  const metaAuths = getAuths();
-  if (!metaAuths) return false;
-  const isAuths = isString(value)
-    ? metaAuths.includes(value)
-    : isIncludeAllChildren(value, metaAuths);
-  return isAuths ? true : false;
-}
-
 export {
-  hasAuth,
-  getAuths,
   ascending,
   filterTree,
   initRouter,

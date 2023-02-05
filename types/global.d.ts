@@ -119,7 +119,8 @@ declare global {
 
   interface toRouteType extends RouteLocationNormalized {
     meta: {
-      roles: Array<string>;
+      requiresRoles?: boolean;
+      requiresAuth?: boolean;
       keepAlive?: boolean;
       dynamicLevel?: string;
     };
@@ -140,8 +141,8 @@ declare global {
       showLink?: boolean;
       rank?: number;
       showParent?: boolean;
-      roles?: Array<string>;
-      auths?: Array<string>;
+      requiresRoles?: boolean;
+      requiresAuth?: boolean;
       keepAlive?: boolean;
       frameSrc?: string;
       frameLoading?: boolean;

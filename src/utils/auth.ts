@@ -1,6 +1,7 @@
 import Cookies from "js-cookie";
 import { storageSession } from "@pureadmin/utils";
 import { useUserStoreHook } from "@/store/modules/user";
+import { http } from "@/utils/http";
 
 export interface DataInfo<T> {
   /** token */
@@ -72,6 +73,22 @@ export const formatToken = (token: string): string => {
   return "Bearer " + token;
 };
 
-export function hasRoutePermission(): boolean {
-  return false;
+interface AuthResponse {
+  success: boolean;
+  data: boolean;
+}
+
+export function checkAuth(to: toRouteType, next) {
+  if (to.meta?.requiresRoles || to.meta?.requiresAuth) {
+    const response = http.request<AuthResponse>("get", "/check-auth", {});
+    response
+      .then(data => {
+        if (!data.data) {
+          next({ path: "/error/403" });
+        }
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
 }
