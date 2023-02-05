@@ -92,6 +92,7 @@ function manageAliveRoute(to: toRouteType, _from): void {
 }
 
 function refreshRoutes(to: toRouteType, _from, next): void {
+  checkAuth(to, router);
   if (
     // refrescar
     usePermissionStoreHook().wholeMenus.length === 0 &&
@@ -120,9 +121,8 @@ router.beforeEach((to: toRouteType, _from, next) => {
   const userInfo = storageSession().getItem<DataInfo<number>>(sessionKey);
   NProgress.start();
   const externalLink = isUrl(to?.name as string);
-
   if (userInfo) {
-    checkAuth(to, next);
+    checkAuth(to, router);
     if (_from?.name) {
       // el nombre es un hipervínculo
       if (externalLink) {

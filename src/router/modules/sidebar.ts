@@ -49,7 +49,8 @@ const sidebarRoutes = [
     meta: {
       icon: "homeFilled",
       title: "reeee",
-      rank: 2
+      rank: 2,
+      requiresRoles: true
     }
   }
 ];

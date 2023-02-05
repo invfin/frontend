@@ -62,6 +62,7 @@ function filterChildrenTree(data: RouteComponent[]) {
   return newTree;
 }
 
+// could be deleted
 function isOneOfArray(a: Array<string>, b: Array<string>) {
   return Array.isArray(a) && Array.isArray(b)
     ? intersection(a, b).length > 0
@@ -70,6 +71,7 @@ function isOneOfArray(a: Array<string>, b: Array<string>) {
     : true;
 }
 
+// could be deleted
 function filterNoPermissionTree(data: RouteComponent[]) {
   const currentRoles =
     storageSession().getItem<DataInfo<number>>(sessionKey)?.roles ?? [];

@@ -7,7 +7,7 @@ export default [
     response: () => {
       return {
         success: true,
-        data: true
+        data: false
       };
     }
   }

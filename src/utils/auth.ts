@@ -78,13 +78,13 @@ interface AuthResponse {
   data: boolean;
 }
 
-export function checkAuth(to: toRouteType, next) {
+export function checkAuth(to: toRouteType, router) {
   if (to.meta?.requiresRoles || to.meta?.requiresAuth) {
     const response = http.request<AuthResponse>("get", "/check-auth", {});
     response
       .then(data => {
         if (!data.data) {
-          next({ path: "/error/403" });
+          router.push({ name: "403" });
         }
       })
       .catch(err => {
