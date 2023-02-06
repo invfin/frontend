@@ -78,7 +78,14 @@ interface AuthResponse {
   data: boolean;
 }
 
-export function checkAuth(to: toRouteType, router) {
+function checkLocalKeys(): void {
+  // Check that the user has either the auth, the perm or both tokens
+  // if it has one of them up to date we can assume that is legit, otherwise
+  // call the server to verify everything
+}
+
+export function checkAuth(to: toRouteType, router): void {
+  checkLocalKeys();
   if (to.meta?.requiresRoles || to.meta?.requiresAuth) {
     const response = http.request<AuthResponse>("get", "/check-auth", {});
     response

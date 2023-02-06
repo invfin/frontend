@@ -1,5 +1,6 @@
 // import "@/utils/sso";
 import NProgress from "@/utils/progress";
+import { getConfig } from "@/config";
 import { sessionKey, type DataInfo } from "@/utils/auth";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { usePermissionStoreHook } from "@/store/modules/permission";
@@ -116,11 +117,23 @@ function refreshRoutes(to: toRouteType, _from, next): void {
   toCorrectRoute(to, _from, next);
 }
 
+function setPageTitle(to: toRouteType, externalLink: boolean): void {
+  if (!externalLink) {
+    to.matched.some(item => {
+      if (!item.meta.title) return "";
+      const Title = getConfig().Title;
+      if (Title) document.title = `${item.meta.title} | ${Title}`;
+      else document.title = item.meta.title as string;
+    });
+  }
+}
+
 router.beforeEach((to: toRouteType, _from, next) => {
   manageAliveRoute(to, _from);
   const userInfo = storageSession().getItem<DataInfo<number>>(sessionKey);
   NProgress.start();
   const externalLink = isUrl(to?.name as string);
+  setPageTitle(to, externalLink);
   if (userInfo) {
     checkAuth(to, router);
     if (_from?.name) {
