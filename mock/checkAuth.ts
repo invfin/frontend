@@ -7,7 +7,7 @@ export default [
     response: () => {
       return {
         success: true,
-        data: false
+        data: { token: false, expires: 124343 }
       };
     }
   }

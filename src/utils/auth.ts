@@ -30,7 +30,7 @@ export function getToken(): DataInfo<number> {
 export function setToken(data: DataInfo<Date>) {
   let expires = 0;
   const { accessToken, refreshToken } = data;
-  expires = new Date(data.expires).getTime(); // 如果后端直接设置时间戳，将此处代码改为expires = data.expires，然后把上面的DataInfo<Date>改成DataInfo<number>即可
+  expires = new Date(data.expires).getTime();
   const cookieString = JSON.stringify({ accessToken, expires });
 
   expires > 0
@@ -75,13 +75,51 @@ export const formatToken = (token: string): string => {
 
 interface AuthResponse {
   success: boolean;
-  data: boolean;
+  data: { token: string; expires: number };
+}
+
+const authenticationTokenKey = "auth";
+const permissionTokenKey = "perm";
+const sessionTokenKey = "sessionid";
+
+function setCookie(
+  key: string,
+  authenticationToken: string,
+  expires: number
+): void {
+  const cookieDict = { token: authenticationToken, exp: expires };
+  const cookieString = JSON.stringify(cookieDict);
+  Cookies.set(key, cookieString);
+}
+
+function getAuthResponse(key: string): void {
+  const response = http.request<AuthResponse>("get", "/check-auth", {});
+  response
+    .then(data => {
+      if (data.success) {
+        setCookie(key, data.data.token, data.data.expires);
+      }
+    })
+    .catch(err => {
+      console.error(err);
+    });
+}
+
+function checkKey(key: string): boolean {
+  const cookieKey = Cookies.get(key);
+  if (cookieKey === undefined) {
+    getAuthResponse(key);
+  }
+  return true;
 }
 
 function checkLocalKeys(): void {
   // Check that the user has either the auth, the perm or both tokens
   // if it has one of them up to date we can assume that is legit, otherwise
   // call the server to verify everything
+  checkKey(authenticationTokenKey);
+  checkKey(permissionTokenKey);
+  checkKey(sessionTokenKey);
 }
 
 export function checkAuth(to: toRouteType, router): void {
