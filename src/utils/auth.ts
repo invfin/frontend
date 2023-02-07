@@ -1,7 +1,6 @@
 import Cookies from "js-cookie";
 import { storageSession } from "@pureadmin/utils";
 import { useUserStoreHook } from "@/store/modules/user";
-import { http } from "@/utils/http";
 
 export interface DataInfo<T> {
   /** token */
@@ -73,67 +72,34 @@ export const formatToken = (token: string): string => {
   return "Bearer " + token;
 };
 
-interface AuthResponse {
-  success: boolean;
-  data: { token: string; expires: number };
-}
-
 const authenticationTokenKey = "auth";
 const permissionTokenKey = "perm";
-const sessionTokenKey = "sessionid";
+const sessionidKey = "sessionid";
 
-function setCookie(
-  key: string,
-  authenticationToken: string,
-  expires: number
-): void {
-  const cookieDict = { token: authenticationToken, exp: expires };
-  const cookieString = JSON.stringify(cookieDict);
-  Cookies.set(key, cookieString);
-}
-
-function getAuthResponse(key: string): void {
-  const response = http.request<AuthResponse>("get", "/check-auth", {});
-  response
-    .then(data => {
-      if (data.success) {
-        setCookie(key, data.data.token, data.data.expires);
-      }
-    })
-    .catch(err => {
-      console.error(err);
-    });
-}
-
-function checkKey(key: string): boolean {
-  const cookieKey = Cookies.get(key);
-  if (cookieKey === undefined) {
-    getAuthResponse(key);
+function checkKey(key: string, router, redirectTo: string): void {
+  if (Cookies.get(key) === undefined) {
+    router.push({ name: redirectTo });
   }
-  return true;
 }
 
-function checkLocalKeys(): void {
-  // Check that the user has either the auth, the perm or both tokens
-  // if it has one of them up to date we can assume that is legit, otherwise
-  // call the server to verify everything
-  checkKey(authenticationTokenKey);
-  checkKey(permissionTokenKey);
-  checkKey(sessionTokenKey);
-}
-
-export function checkAuth(to: toRouteType, router): void {
-  checkLocalKeys();
-  if (to.meta?.requiresRoles || to.meta?.requiresAuth) {
-    const response = http.request<AuthResponse>("get", "/check-auth", {});
-    response
-      .then(data => {
-        if (!data.data) {
-          router.push({ name: "403" });
-        }
-      })
-      .catch(err => {
-        console.error(err);
-      });
+function checkPermissions(to: toRouteType, router): void {
+  if (to.meta?.requiresRoles) {
+    checkKey(permissionTokenKey, router, "403");
   }
+}
+
+function checkAuthentication(to: toRouteType, router): void {
+  if (to.meta?.requiresAuth) {
+    checkKey(authenticationTokenKey, router, "login");
+  }
+}
+
+function checkSessionid(to: toRouteType, router): void {
+  checkKey(sessionidKey, router, to.path);
+}
+
+export function checkAuthorization(to: toRouteType, router): void {
+  checkSessionid(to, router);
+  checkPermissions(to, router);
+  checkAuthentication(to, router);
 }

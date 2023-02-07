@@ -1,7 +1,7 @@
 // import "@/utils/sso";
 import NProgress from "@/utils/progress";
 import { getConfig } from "@/config";
-import { sessionKey, type DataInfo } from "@/utils/auth";
+import { sessionKey, type DataInfo, checkAuthorization } from "@/utils/auth";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { usePermissionStoreHook } from "@/store/modules/permission";
 import {
@@ -20,7 +20,6 @@ import {
   formatFlatteningRoutes
 } from "./utils";
 import { buildHierarchyTree } from "@/utils/tree";
-import { checkAuth } from "@/utils/auth";
 import { isUrl, openLink, storageSession } from "@pureadmin/utils";
 
 import remainingRouter from "./modules/remaining";
@@ -39,6 +38,7 @@ export const remainingPaths = Object.keys(remainingRouter).map(v => {
   return remainingRouter[v].path;
 });
 
+// @ts-ignore
 const routes = constantRoutes.concat(...(remainingRouter as any), errorRoutes);
 
 export const router: Router = createRouter({
@@ -93,7 +93,7 @@ function manageAliveRoute(to: toRouteType, _from): void {
 }
 
 function refreshRoutes(to: toRouteType, _from, next): void {
-  checkAuth(to, router);
+  checkAuthorization(to, router);
   if (
     // refrescar
     usePermissionStoreHook().wholeMenus.length === 0 &&
@@ -135,7 +135,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
   const externalLink = isUrl(to?.name as string);
   setPageTitle(to, externalLink);
   if (userInfo) {
-    checkAuth(to, router);
+    checkAuthorization(to, router);
     if (_from?.name) {
       // el nombre es un hipervínculo
       if (externalLink) {
@@ -148,15 +148,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
       refreshRoutes(to, _from, next);
     }
   } else {
-    if (to.path !== "/login") {
-      if (whiteList.indexOf(to.path) !== -1) {
-        next();
-      } else {
-        next({ path: "/login" });
-      }
-    } else {
-      next();
-    }
+    next();
   }
 });
 

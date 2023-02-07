@@ -21,6 +21,7 @@ const defaultConfig: AxiosRequestConfig = {
     Accept: "application/json, text/plain, */*",
     "Content-Type": "application/json",
     "X-Requested-With": "XMLHttpRequest"
+    // Add custom header
   },
   paramsSerializer: {
     serialize: stringify as unknown as CustomParamsSerializer
