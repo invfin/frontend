@@ -7,7 +7,7 @@ const authenticationTokenKey = "auth";
 const permissionTokenKey = "perm";
 const sessionidKey = "sessionid";
 
-class Authorization {
+export default class Authorization {
   static setToken(key: string, value: string, expires: number): void {
     Cookies.set(key, value, { expires: expires });
     storageSession();

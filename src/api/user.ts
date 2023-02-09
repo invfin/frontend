@@ -1,22 +1,26 @@
 import { http } from "@/utils/http";
 
+type TokensResult = {
+  tokens: {
+    refresh: { token: string; expires: string };
+    auth: { token: string; expires: string };
+    perm: { token: string; expires: string };
+    sessionid: { token: string; expires: string };
+  };
+};
+
 export type UserResult = {
   success: boolean;
   data: {
     username: string;
-    roles: Array<string>;
-    accessToken: string;
-    refreshToken: string;
-    expires: Date;
+    tokens: TokensResult;
   };
 };
 
 export type RefreshTokenResult = {
   success: boolean;
   data: {
-    accessToken: string;
-    refreshToken: string;
-    expires: Date;
+    tokens: TokensResult;
   };
 };
 
