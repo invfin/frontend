@@ -10,18 +10,15 @@ import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { type DataInfo, setToken, removeToken, sessionKey } from "@/utils/auth";
 
 export const useUserStore = defineStore({
-  id: "pure-user",
+  id: "user",
   state: (): userType => ({
     username:
-      storageSession().getItem<DataInfo<number>>(sessionKey)?.username ?? "",
-    roles: storageSession().getItem<DataInfo<number>>(sessionKey)?.roles ?? []
+      storageSession().getItem<DataInfo<number>>(sessionKey)?.username ??
+      "Únete"
   }),
   actions: {
-    SET_USERNAME(username: string) {
+    setUsername(username: string) {
       this.username = username;
-    },
-    SET_ROLES(roles: Array<string>) {
-      this.roles = roles;
     },
     async loginByUsername(data) {
       return new Promise<UserResult>((resolve, reject) => {
@@ -38,8 +35,7 @@ export const useUserStore = defineStore({
       });
     },
     logOut() {
-      this.username = "";
-      this.roles = [];
+      this.username = "Únete";
       removeToken();
       useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
       resetRouter();

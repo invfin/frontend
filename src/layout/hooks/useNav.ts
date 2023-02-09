@@ -20,11 +20,11 @@ export function useNav() {
   const tooltipEffect = getConfig()?.TooltipEffect ?? "light";
 
   const username = computed(() => {
-    return useUserStoreHook()?.username;
+    return useUserStoreHook().username;
   });
 
   const avatarsStyle = computed(() => {
-    return username.value ? { marginRight: "10px" } : "";
+    return { marginRight: "10px" };
   });
 
   const isCollapse = computed(() => {

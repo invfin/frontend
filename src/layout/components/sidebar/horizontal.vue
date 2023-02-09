@@ -59,11 +59,8 @@ watch(
       />
     </el-menu>
     <div class="horizontal-header-right">
-      <!-- 菜单搜索 -->
       <Search />
-      <!-- 通知 -->
       <Notice id="header-notice" />
-      <!-- 退出登录 -->
       <el-dropdown trigger="click">
         <span class="el-dropdown-link navbar-bg-hover">
           <img
@@ -79,14 +76,14 @@ watch(
                 :icon="LogoutCircleRLine"
                 style="margin: 5px"
               />
-              退出系统
+              Salir
             </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
       <span
         class="set-icon navbar-bg-hover"
-        title="打开项目配置"
+        title="Configuración"
         @click="onPanel"
       >
         <IconifyIconOffline :icon="Setting" />
