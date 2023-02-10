@@ -1,22 +1,55 @@
 import Cookies from "js-cookie";
-import { storageSession } from "@pureadmin/utils";
 import { useUserStoreHook } from "@/store/modules/user";
 
 const refreshTokenKey = "refresh";
 const authenticationTokenKey = "auth";
 const permissionTokenKey = "perm";
 const sessionidKey = "sessionid";
+const userInfoKey = "userinfo";
+
+type TokensResult = {
+  tokens: {
+    refresh: { token: string; expires: string };
+    auth: { token: string; expires: string };
+    perm: { token: string; expires: string };
+    sessionid: { token: string; expires: string };
+  };
+};
+
+export type UserResult = {
+  success: boolean;
+  data: {
+    username: string;
+    tokens: TokensResult;
+  };
+};
 
 export default class Authorization {
+  static setResponseTokens(tokens: TokensResult): void {
+    for (const [key, value] of Object.entries(tokens)) {
+      this.setToken(key, value[key].token, value[key].expires);
+    }
+  }
+  static getUserInfo(): UserResult["data"] {
+    const userInfo = this.getToken(userInfoKey);
+    return JSON.parse(userInfo).data;
+  }
   static setToken(key: string, value: string, expires: number): void {
     Cookies.set(key, value, { expires: expires });
-    storageSession();
     useUserStoreHook();
   }
   static removeToken(key: string): void {
     Cookies.remove(key);
   }
-  static getToken(key: string): String {
+  static removeAllTokens(): void {
+    [
+      refreshTokenKey,
+      authenticationTokenKey,
+      permissionTokenKey,
+      sessionidKey
+    ].map(key => this.removeToken(key));
+  }
+  static getToken(key: string): string {
     return Cookies.get(key);
   }
   static checkKey(key: string, router, redirectTo: string): void {

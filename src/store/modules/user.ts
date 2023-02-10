@@ -3,24 +3,16 @@ import { store } from "@/store";
 import { userType } from "./types";
 import { routerArrays } from "@/layout/types";
 import { router, resetRouter } from "@/router";
-import { storageSession } from "@pureadmin/utils";
 import { getLogin, refreshTokenApi } from "@/api/user";
 import { UserResult, RefreshTokenResult } from "@/api/user";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
-import Authorization, {
-  type DataInfo,
-  setToken,
-  removeToken,
-  sessionKey
-} from "@/utils/auth";
+import Authorization from "@/utils/auth";
 
 Authorization.getToken("");
 export const useUserStore = defineStore({
   id: "user",
   state: (): userType => ({
-    username:
-      storageSession().getItem<DataInfo<number>>(sessionKey)?.username ??
-      "Únete"
+    username: Authorization.getUserInfo()?.username ?? "Únete"
   }),
   actions: {
     setUsername(username: string) {
@@ -31,7 +23,7 @@ export const useUserStore = defineStore({
         getLogin(data)
           .then(data => {
             if (data) {
-              setToken(data.data);
+              Authorization.setResponseTokens(data.data.tokens);
               resolve(data);
             }
           })
@@ -42,7 +34,7 @@ export const useUserStore = defineStore({
     },
     logOut() {
       this.username = "Únete";
-      removeToken();
+      Authorization.removeAllTokens();
       useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
       resetRouter();
       router.push("/login");
@@ -53,7 +45,7 @@ export const useUserStore = defineStore({
         refreshTokenApi(data)
           .then(data => {
             if (data) {
-              setToken(data.data);
+              Authorization.setResponseTokens(data.data.tokens);
               resolve(data);
             }
           })
