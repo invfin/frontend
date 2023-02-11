@@ -13,11 +13,11 @@ import { RouteConfigs } from "@/layout/types";
 import {
   cloneDeep,
   isAllEmpty,
-  intersection,
-  storageSession
+  intersection
+  // storageSession
 } from "@pureadmin/utils";
 import { buildHierarchyTree } from "@/utils/tree";
-import { sessionKey, type DataInfo } from "@/utils/auth";
+// import Authorization from "@/utils/auth";
 import { usePermissionStoreHook } from "@/store/modules/permission";
 const IFrame = () => import("@/layout/frameView.vue");
 // https://cn.vitejs.dev/guide/features.html#glob-import
@@ -69,8 +69,7 @@ function isOneOfArray(a: Array<string>, b: Array<string>) {
 
 // could be deleted
 function filterNoPermissionTree(data: RouteComponent[]) {
-  const currentRoles =
-    storageSession().getItem<DataInfo<number>>(sessionKey)?.roles ?? [];
+  const currentRoles = [];
   const newTree = cloneDeep(data).filter((v: any) =>
     isOneOfArray(v.meta?.roles, currentRoles)
   );
@@ -79,7 +78,6 @@ function filterNoPermissionTree(data: RouteComponent[]) {
   );
   return filterChildrenTree(newTree);
 }
-
 function delAliveRoutes(delAliveRouteList: Array<RouteConfigs>) {
   delAliveRouteList.forEach(route => {
     usePermissionStoreHook().cacheOperate({
@@ -90,9 +88,31 @@ function delAliveRoutes(delAliveRouteList: Array<RouteConfigs>) {
 }
 
 function getParentPaths(path: string, routes: RouteRecordRaw[]) {
+  console.log("refreshRoutes");
+  console.log(
+    "************************************************************************************************"
+  );
+  console.log(routes);
+  console.log(
+    "************************************************************************************************"
+  );
   function dfs(routes: RouteRecordRaw[], path: string, parents: string[]) {
+    console.log(path);
+    console.log(
+      "************************************************************************************************"
+    );
     for (let i = 0; i < routes.length; i++) {
+      console.log(routes);
+      console.log(
+        "************************************************************************************************"
+      );
+
       const item = routes[i];
+      console.log("item");
+      console.log(item);
+      console.log(
+        "************************************************************************************************"
+      );
       if (item.path === path) return parents;
       if (!item.children || !item.children.length) continue;
       parents.push(item.path);
@@ -137,6 +157,7 @@ function addPathMatch() {
 }
 
 function handleAsyncRoutes(routeList) {
+  console.log("handleAsyncRoutes");
   if (routeList.length === 0) {
     usePermissionStoreHook().handleWholeMenus(routeList);
   } else {
@@ -164,6 +185,7 @@ function handleAsyncRoutes(routeList) {
 }
 
 function initRouter() {
+  console.log("initRouter");
   return new Promise(resolve => {
     const data = [];
     handleAsyncRoutes(cloneDeep(data));
@@ -232,6 +254,10 @@ function handleAliveRoute(matched: RouteRecordNormalized[], mode?: string) {
 }
 
 function addAsyncRoutes(arrRoutes: Array<RouteRecordRaw>) {
+  console.log("addAsyncRoutes");
+  console.log(
+    "************************************************************************************************"
+  );
   if (!arrRoutes || !arrRoutes.length) return;
   const modulesRoutesKeys = Object.keys(modulesRoutes);
   arrRoutes.forEach((v: RouteRecordRaw) => {

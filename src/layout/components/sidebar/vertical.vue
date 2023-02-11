@@ -26,16 +26,33 @@ const menuData = computed(() => {
 });
 
 function getSubMenuData(path: string) {
+  console.log("getSubMenuData");
+  console.log(
+    "************************************************************************************************"
+  );
+  console.log(path);
   const parentPathArr = getParentPaths(
     path,
     usePermissionStoreHook().wholeMenus
+  );
+  console.log(parentPathArr);
+  console.log(
+    "************************************************************************************************"
   );
   const parenetRoute = findRouteByPath(
     parentPathArr[0] || path,
     usePermissionStoreHook().wholeMenus
   );
+  console.log(parenetRoute);
+  console.log(
+    "************************************************************************************************"
+  );
   if (!parenetRoute?.children) return;
   subMenuData.value = parenetRoute?.children;
+  console.log("final getSubMenuData");
+  console.log(
+    "************************************************************************************************"
+  );
 }
 
 getSubMenuData(route.path);

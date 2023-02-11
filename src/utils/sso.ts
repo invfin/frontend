@@ -1,8 +1,8 @@
-import { removeToken, setToken, type DataInfo } from "./auth";
+import Authorization from "./auth";
 import { subBefore, getQueryMap } from "@pureadmin/utils";
 
 (function () {
-  const params = getQueryMap(location.href) as DataInfo<Date>;
+  const params = getQueryMap(location.href);
   const must = ["username", "roles", "accessToken"];
   const mustLength = must.length;
   if (Object.keys(params).length !== mustLength) return;
@@ -20,9 +20,9 @@ import { subBefore, getQueryMap } from "@pureadmin/utils";
   }
 
   if (sso.length === mustLength) {
-    removeToken();
-
-    setToken(params);
+    Authorization.removeAllTokens();
+    // TODO Fix this
+    Authorization.setToken(params, params, params);
 
     delete params["roles"];
     delete params["accessToken"];

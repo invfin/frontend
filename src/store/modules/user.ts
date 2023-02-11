@@ -12,10 +12,16 @@ Authorization.getToken("");
 export const useUserStore = defineStore({
   id: "user",
   state: (): userType => ({
-    username: Authorization.getUserInfo()?.username ?? "Únete"
+    username: Authorization.getUserInfo()?.username ?? "Únete",
+    isLoggedIn: false
   }),
   actions: {
-    setUsername(username: string) {
+    updateUserState(username: string) {
+      if (username === "Únete") {
+        this.isLoggedIn = false;
+      } else {
+        this.isLoggedIn = true;
+      }
       this.username = username;
     },
     async loginByUsername(data) {
@@ -23,6 +29,7 @@ export const useUserStore = defineStore({
         getLogin(data)
           .then(data => {
             if (data) {
+              this.updateUserState(data.data.username);
               Authorization.setResponseTokens(data.data.tokens);
               resolve(data);
             }
@@ -33,7 +40,7 @@ export const useUserStore = defineStore({
       });
     },
     logOut() {
-      this.username = "Únete";
+      this.updateUserState("Únete");
       Authorization.removeAllTokens();
       useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
       resetRouter();

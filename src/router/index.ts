@@ -1,7 +1,7 @@
 // import "@/utils/sso";
 import NProgress from "@/utils/progress";
 import { getConfig } from "@/config";
-import { sessionKey, type DataInfo, checkAuthorization } from "@/utils/auth";
+import Authorization, { checkAuthorization } from "@/utils/auth";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { usePermissionStoreHook } from "@/store/modules/permission";
 import {
@@ -20,7 +20,7 @@ import {
   formatFlatteningRoutes
 } from "./utils";
 import { buildHierarchyTree } from "@/utils/tree";
-import { isUrl, openLink, storageSession } from "@pureadmin/utils";
+import { isUrl, openLink } from "@pureadmin/utils";
 
 import remainingRouter from "./modules/remaining";
 import sidebarRoutes from "./modules/sidebar";
@@ -94,6 +94,10 @@ function manageAliveRoute(to: toRouteType, _from): void {
 
 function refreshRoutes(to: toRouteType, _from, next): void {
   checkAuthorization(to, router);
+  console.log("refreshRoutes");
+  console.log(
+    "************************************************************************************************"
+  );
   if (
     // refrescar
     usePermissionStoreHook().wholeMenus.length === 0 &&
@@ -130,12 +134,12 @@ function setPageTitle(to: toRouteType, externalLink: boolean): void {
 
 router.beforeEach((to: toRouteType, _from, next) => {
   manageAliveRoute(to, _from);
-  const userInfo = storageSession().getItem<DataInfo<number>>(sessionKey);
+  const userInfo = Authorization.getUserInfo();
   NProgress.start();
   const externalLink = isUrl(to?.name as string);
   setPageTitle(to, externalLink);
   if (userInfo) {
-    checkAuthorization(to, router);
+    // checkAuthorization(to, router);
     if (_from?.name) {
       // el nombre es un hipervínculo
       if (externalLink) {
@@ -148,6 +152,11 @@ router.beforeEach((to: toRouteType, _from, next) => {
       refreshRoutes(to, _from, next);
     }
   } else {
+    // if user isn't logged it, do something
+    console.log("next");
+    console.log(
+      "************************************************************************************************"
+    );
     next();
   }
 });

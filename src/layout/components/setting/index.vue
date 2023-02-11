@@ -20,7 +20,7 @@ import { useRouter } from "vue-router";
 import panel from "../panel/index.vue";
 import { emitter } from "@/utils/mitt";
 import { resetRouter } from "@/router";
-import { removeToken } from "@/utils/auth";
+import Authorization from "@/utils/auth";
 import { routerArrays } from "@/layout/types";
 import { useNav } from "@/layout/hooks/useNav";
 import { useAppStoreHook } from "@/store/modules/app";
@@ -131,7 +131,7 @@ const multiTagsCacheChange = () => {
 
 /** 清空缓存并返回登录页 */
 function onReset() {
-  removeToken();
+  Authorization.removeAllTokens();
   storageLocal().clear();
   storageSession().clear();
   const { Grey, Weak, MultiTagsCache, EpThemeColor, Layout } = getConfig();

@@ -10,10 +10,15 @@ export default [
           success: true,
           data: {
             username: "admin",
-            roles: ["admin"],
-            accessToken: "eyJhbGciOiJIUzUxMiJ9.admin",
-            refreshToken: "eyJhbGciOiJIUzUxMiJ9.adminRefresh",
-            expires: "2023/10/30 00:00:00"
+            tokens: {
+              refresh: {
+                token: "eyJhbGciOiJIUzUxMiJ9.adminRefresh",
+                expires: 2
+              },
+              auth: { token: "eyJhbGciOiJIUzUxMiJ9.auth", expires: 2 },
+              perm: { token: "eyJhbGciOiJIUzUxMiJ9.perm", expires: 2 },
+              sessionid: { token: "eyJhbGciOiJIUzUxMiJ9.sessionid", expires: 2 }
+            }
           }
         };
       } else {
@@ -21,10 +26,18 @@ export default [
           success: true,
           data: {
             username: "common",
-            roles: ["common"],
-            accessToken: "eyJhbGciOiJIUzUxMiJ9.common",
-            refreshToken: "eyJhbGciOiJIUzUxMiJ9.commonRefresh",
-            expires: "2023/10/30 00:00:00"
+            tokens: {
+              refresh: {
+                token: "eyJhbGciOiJIUzUxMiJ9.commonRefresh",
+                expires: 2
+              },
+              auth: { token: "eyJhbGciOiJIUzUxMiJ9.commonauth", expires: 2 },
+              perm: { token: "eyJhbGciOiJIUzUxMiJ9.commonperm", expires: 2 },
+              sessionid: {
+                token: "eyJhbGciOiJIUzUxMiJ9.commonsessionid",
+                expires: 2
+              }
+            }
           }
         };
       }

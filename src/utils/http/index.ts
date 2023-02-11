@@ -11,7 +11,7 @@ import {
 } from "./types.d";
 import { stringify } from "qs";
 import NProgress from "../progress";
-import { getToken, formatToken } from "@/utils/auth";
+import Authorization, { formatToken } from "@/utils/auth";
 import { useUserStoreHook } from "@/store/modules/user";
 
 //www.axios-js.com/zh-cn/docs/#axios-request-config-1
@@ -67,7 +67,7 @@ class PureHttp {
         return whiteList.some(v => config.url.indexOf(v) > -1)
           ? config
           : new Promise(resolve => {
-              const data = getToken();
+              const data = Authorization.getAuthToken();
               if (data) {
                 const now = new Date().getTime();
                 const expired = parseInt(data.expires) - now <= 0;

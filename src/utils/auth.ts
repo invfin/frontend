@@ -1,6 +1,5 @@
 import Cookies from "js-cookie";
-import { useUserStoreHook } from "@/store/modules/user";
-
+// import { useUserStoreHook } from "@/store/modules/user";
 const refreshTokenKey = "refresh";
 const authenticationTokenKey = "auth";
 const permissionTokenKey = "perm";
@@ -27,16 +26,33 @@ export type UserResult = {
 export default class Authorization {
   static setResponseTokens(tokens: TokensResult): void {
     for (const [key, value] of Object.entries(tokens)) {
-      this.setToken(key, value[key].token, value[key].expires);
+      this.setToken(key, value["token"], value["expires"]);
     }
   }
   static getUserInfo(): UserResult["data"] {
     const userInfo = this.getToken(userInfoKey);
+    // TODO Fix that. Retreive the data at some moment
+    if (userInfo === undefined) {
+      return undefined;
+    }
     return JSON.parse(userInfo).data;
   }
-  static setToken(key: string, value: string, expires: number): void {
-    Cookies.set(key, value, { expires: expires });
-    useUserStoreHook();
+  static setToken(
+    key: string,
+    value: string,
+    expires: number,
+    path = "/login",
+    domain = "localhost",
+    secure = true,
+    sameSite: "strict" | "Strict" | "lax" | "Lax" | "none" | "None" = "strict"
+  ): void {
+    Cookies.set(key, value, {
+      expires: expires,
+      path: path,
+      domain: domain,
+      secure: secure,
+      sameSite: sameSite
+    });
   }
   static removeToken(key: string): void {
     Cookies.remove(key);
@@ -48,6 +64,13 @@ export default class Authorization {
       permissionTokenKey,
       sessionidKey
     ].map(key => this.removeToken(key));
+  }
+  static getAuthToken(): TokensResult["tokens"]["auth"] {
+    const token = Cookies.get(authenticationTokenKey);
+    if (token === undefined) {
+      return undefined;
+    }
+    return JSON.parse(token);
   }
   static getToken(key: string): string {
     return Cookies.get(key);
@@ -88,5 +111,6 @@ export const formatToken = (token: string): string => {
 };
 
 export function checkAuthorization(to: toRouteType, router): void {
+  console.log("checkAuthorization");
   Authorization.checkAuthorization(to, router);
 }

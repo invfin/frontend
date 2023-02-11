@@ -4,26 +4,29 @@ import NoticeList from "./noticeList.vue";
 import Bell from "@iconify-icons/ep/bell";
 import { http } from "@/utils/http";
 import { NotificationsResponse } from "./types";
+import { useUserStoreHook } from "@/store/modules/user";
 
 const noticesNum = ref(0);
 const notifications = ref([]);
 const activeKey = ref(0);
 
 function getNotifications() {
-  const response = http.request<NotificationsResponse>(
-    "get",
-    "/notifications",
-    {}
-  );
-  response
-    .then(data => {
-      activeKey.value = data.data[0].key;
-      notifications.value = data.data;
-      notifications.value.map(v => (noticesNum.value += v.list.length));
-    })
-    .catch(err => {
-      console.error(err);
-    });
+  if (useUserStoreHook().isLoggedIn === true) {
+    const response = http.request<NotificationsResponse>(
+      "get",
+      "/notifications",
+      {}
+    );
+    response
+      .then(data => {
+        activeKey.value = data.data[0].key;
+        notifications.value = data.data;
+        notifications.value.map(v => (noticesNum.value += v.list.length));
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
 }
 
 onMounted(() => {

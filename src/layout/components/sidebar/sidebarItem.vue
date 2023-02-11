@@ -92,17 +92,13 @@ const expandCloseIcon = computed(() => {
 });
 
 const onlyOneChild: childrenType = ref(null);
-// 存放菜单是否存在showTooltip属性标识
 const hoverMenuMap = new WeakMap();
-// 存储菜单文本dom元素
 const menuTextRef = ref(null);
 
 function hoverMenu(key) {
-  // 如果当前菜单showTooltip属性已存在，退出计算
   if (hoverMenuMap.get(key)) return;
 
   nextTick(() => {
-    // 如果文本内容的整体宽度大于其可视宽度，则文本溢出
     menuTextRef.value?.scrollWidth > menuTextRef.value?.clientWidth
       ? Object.assign(key, {
           showTooltip: true
@@ -143,7 +139,6 @@ function resolvePath(routePath) {
   if (httpReg.test(routePath) || httpReg.test(props.basePath)) {
     return routePath || props.basePath;
   } else {
-    // 使用path.posix.resolve替代path.resolve 避免windows环境下使用electron出现盘符问题
     return path.posix.resolve(props.basePath, routePath);
   }
 }
