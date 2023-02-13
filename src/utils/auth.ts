@@ -16,6 +16,15 @@ type TokensResult = {
   };
 };
 
+type UserTokens = {
+  tokens: {
+    refresh: string;
+    auth: string;
+    perm: string;
+    sessionid: string;
+  };
+};
+
 export type UserResult = {
   success: boolean;
   data: {
@@ -48,6 +57,16 @@ export default class Authorization {
       permissionTokenKey,
       sessionidKey
     ].map(key => this.removeToken(key));
+  }
+  static getAllTokens(): UserTokens {
+    return {
+      tokens: {
+        refresh: this.getToken(refreshTokenKey),
+        auth: this.getToken(authenticationTokenKey),
+        perm: this.getToken(permissionTokenKey),
+        sessionid: this.getToken(sessionidKey)
+      }
+    };
   }
   static getToken(key: string): string {
     return Cookies.get(key);
