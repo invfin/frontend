@@ -100,7 +100,7 @@ export default class Authorization {
     this.checkKey(sessionidKey, router, to.path);
   }
   static checkAuthorization(to: toRouteType, router): void {
-    this.checkSessionid(to, router);
+    // this.checkSessionid(to, router);
     this.checkPermissions(to, router);
     this.checkAuthentication(to, router);
   }

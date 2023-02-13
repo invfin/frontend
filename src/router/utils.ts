@@ -88,31 +88,10 @@ function delAliveRoutes(delAliveRouteList: Array<RouteConfigs>) {
 }
 
 function getParentPaths(path: string, routes: RouteRecordRaw[]) {
-  console.log("refreshRoutes");
-  console.log(
-    "************************************************************************************************"
-  );
-  console.log(routes);
-  console.log(
-    "************************************************************************************************"
-  );
   function dfs(routes: RouteRecordRaw[], path: string, parents: string[]) {
-    console.log(path);
-    console.log(
-      "************************************************************************************************"
-    );
     for (let i = 0; i < routes.length; i++) {
-      console.log(routes);
-      console.log(
-        "************************************************************************************************"
-      );
-
       const item = routes[i];
-      console.log("item");
-      console.log(item);
-      console.log(
-        "************************************************************************************************"
-      );
+
       if (item.path === path) return parents;
       if (!item.children || !item.children.length) continue;
       parents.push(item.path);
@@ -157,7 +136,6 @@ function addPathMatch() {
 }
 
 function handleAsyncRoutes(routeList) {
-  console.log("handleAsyncRoutes");
   if (routeList.length === 0) {
     usePermissionStoreHook().handleWholeMenus(routeList);
   } else {
@@ -185,7 +163,6 @@ function handleAsyncRoutes(routeList) {
 }
 
 function initRouter() {
-  console.log("initRouter");
   return new Promise(resolve => {
     const data = [];
     handleAsyncRoutes(cloneDeep(data));
@@ -254,10 +231,6 @@ function handleAliveRoute(matched: RouteRecordNormalized[], mode?: string) {
 }
 
 function addAsyncRoutes(arrRoutes: Array<RouteRecordRaw>) {
-  console.log("addAsyncRoutes");
-  console.log(
-    "************************************************************************************************"
-  );
   if (!arrRoutes || !arrRoutes.length) return;
   const modulesRoutesKeys = Object.keys(modulesRoutes);
   arrRoutes.forEach((v: RouteRecordRaw) => {

@@ -39,7 +39,7 @@ export const remainingPaths = Object.keys(remainingRouter).map(v => {
 });
 
 // @ts-ignore
-const routes = constantRoutes.concat(...(remainingRouter as any), errorRoutes);
+const routes = constantRoutes.concat(remainingRouter, errorRoutes);
 
 export const router: Router = createRouter({
   history: getHistoryMode(),
@@ -73,7 +73,11 @@ export function resetRouter() {
   usePermissionStoreHook().clearAllCachePage();
 }
 
-const whiteList = ["/login"];
+const whiteList = [
+  routes.map(route => {
+    return route.path;
+  })
+];
 
 // Si ya ha iniciado sesión y tiene información de inicio de sesión,
 // no puede saltar a la lista blanca de enrutamiento, sino permanecer en la página actual.
@@ -93,11 +97,6 @@ function manageAliveRoute(to: toRouteType, _from): void {
 }
 
 function refreshRoutes(to: toRouteType, _from, next): void {
-  checkAuthorization(to, router);
-  console.log("refreshRoutes");
-  console.log(
-    "************************************************************************************************"
-  );
   if (
     // refrescar
     usePermissionStoreHook().wholeMenus.length === 0 &&
@@ -132,32 +131,24 @@ function setPageTitle(to: toRouteType, externalLink: boolean): void {
   }
 }
 
-router.beforeEach((to: toRouteType, _from, next) => {
+router.beforeEach(async (to: toRouteType, _from, next) => {
+  checkAuthorization(to, router);
   manageAliveRoute(to, _from);
-  const userInfo = Authorization.getUserInfo();
+  Authorization.getUserInfo();
   NProgress.start();
   const externalLink = isUrl(to?.name as string);
   setPageTitle(to, externalLink);
-  if (userInfo) {
-    // checkAuthorization(to, router);
-    if (_from?.name) {
-      // el nombre es un hipervínculo
-      if (externalLink) {
-        openLink(to?.name as string);
-        NProgress.done();
-      } else {
-        toCorrectRoute(to, _from, next);
-      }
+
+  if (_from?.name) {
+    // el nombre es un hipervínculo
+    if (externalLink) {
+      openLink(to?.name as string);
+      NProgress.done();
     } else {
-      refreshRoutes(to, _from, next);
+      toCorrectRoute(to, _from, next);
     }
   } else {
-    // if user isn't logged it, do something
-    console.log("next");
-    console.log(
-      "************************************************************************************************"
-    );
-    next();
+    refreshRoutes(to, _from, next);
   }
 });
 
