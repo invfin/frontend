@@ -15,6 +15,7 @@ const {
   // onPanel,
   pureApp,
   username,
+  photo,
   avatarsStyle,
   toggleSideBar
 } = useNav();
@@ -41,6 +42,7 @@ const {
       <Search />
       <Notifications id="header-notice" />
       <UserDropdown
+        :photo="photo"
         :username="username"
         :logout="logout"
         :avatarsStyle="avatarsStyle"

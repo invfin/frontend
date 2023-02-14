@@ -22,6 +22,9 @@ export function useNav() {
   const username = computed(() => {
     return useUserStoreHook().username;
   });
+  const photo = computed(() => {
+    return useUserStoreHook().photo;
+  });
 
   const avatarsStyle = computed(() => {
     return { marginRight: "10px" };
@@ -131,6 +134,7 @@ export function useNav() {
     isCollapse,
     pureApp,
     username,
+    photo,
     avatarsStyle,
     tooltipEffect
   };

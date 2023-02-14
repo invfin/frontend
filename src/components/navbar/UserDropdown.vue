@@ -3,6 +3,7 @@ import LogoutCircleRLine from "@iconify-icons/ri/logout-circle-r-line";
 
 defineProps<{
   username?: string;
+  photo?: string;
   avatarsStyle?: Object;
   logout?: Function;
 }>();
@@ -11,10 +12,7 @@ defineProps<{
 <template>
   <el-dropdown trigger="click">
     <span class="el-dropdown-link navbar-bg-hover select-none">
-      <img
-        src="https://avatars.githubusercontent.com/u/44761321?v=4"
-        :style="avatarsStyle"
-      />
+      <img :src="photo" :style="avatarsStyle" />
       <p v-if="username" class="dark:text-white">{{ username }}</p>
     </span>
     <template #dropdown>

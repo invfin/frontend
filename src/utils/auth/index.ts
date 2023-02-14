@@ -1,27 +1,14 @@
 import Cookies from "js-cookie";
-// import { useUserStoreHook } from "@/store/modules/user";
-const refreshTokenKey = "refresh";
-const authenticationTokenKey = "auth";
-const permissionTokenKey = "perm";
-const sessionidKey = "sessionid";
-const userInfoKey = "userinfo";
 
-type TokensResult = {
-  tokens: {
-    refresh: { token: string; expires: string };
-    auth: { token: string; expires: string };
-    perm: { token: string; expires: string };
-    sessionid: { token: string; expires: string };
-  };
-};
+import {
+  refreshTokenKey,
+  authenticationTokenKey,
+  permissionTokenKey,
+  sessionidKey,
+  userInfoKey
+} from "./constants";
 
-export type UserResult = {
-  success: boolean;
-  data: {
-    username: string;
-    tokens: TokensResult;
-  };
-};
+import { TokensResult, UserResult } from "./types";
 
 export default class Authorization {
   static setResponseTokens(tokens: TokensResult): void {
@@ -29,19 +16,36 @@ export default class Authorization {
       this.setToken(key, value["token"], value["expires"]);
     }
   }
-  static getUserInfo(): UserResult["data"] {
+  static logInUser(result: UserResult["data"]): void {
+    this.setResponseTokens(result.tokens);
+    this.setUserInfo(result.username, result.photo);
+  }
+  static setUserInfo(username: string, photo: string): void {
+    const value = JSON.stringify({ username: username, photo: photo });
+    this.setToken(userInfoKey, value);
+  }
+  static getUserInfo(): {
+    username: string;
+    photo: string;
+    isLoggedIn: boolean;
+  } {
     const userInfo = this.getToken(userInfoKey);
-    // TODO Fix that. Retreive the data at some moment
     if (userInfo === undefined) {
-      return undefined;
+      return {
+        username: "Únete",
+        photo: "src/assets/general/anonymus.WebP",
+        isLoggedIn: false
+      };
     }
-    return JSON.parse(userInfo).data;
+    const result = JSON.parse(userInfo);
+    result["isLoggedIn"] = true;
+    return result;
   }
   static setToken(
     key: string,
     value: string,
-    expires: number,
-    path = "/login",
+    expires?: number,
+    path = "/",
     domain = "localhost",
     secure = true,
     sameSite: "strict" | "Strict" | "lax" | "Lax" | "none" | "None" = "strict"
@@ -65,12 +69,12 @@ export default class Authorization {
       sessionidKey
     ].map(key => this.removeToken(key));
   }
-  static getAuthToken(): TokensResult["tokens"]["auth"] {
+  static getAuthToken(): string {
     const token = Cookies.get(authenticationTokenKey);
     if (token === undefined) {
       return undefined;
     }
-    return JSON.parse(token);
+    return token;
   }
   static getToken(key: string): string {
     return Cookies.get(key);
@@ -103,6 +107,7 @@ export default class Authorization {
     // this.checkSessionid(to, router);
     this.checkPermissions(to, router);
     this.checkAuthentication(to, router);
+    this.checkRefreshToken(to, router);
   }
 }
 
@@ -111,6 +116,5 @@ export const formatToken = (token: string): string => {
 };
 
 export function checkAuthorization(to: toRouteType, router): void {
-  console.log("checkAuthorization");
   Authorization.checkAuthorization(to, router);
 }
