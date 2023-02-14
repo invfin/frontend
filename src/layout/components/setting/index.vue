@@ -129,7 +129,6 @@ const multiTagsCacheChange = () => {
   useMultiTagsStoreHook().multiTagsCacheChange(multiTagsCache);
 };
 
-/** 清空缓存并返回登录页 */
 function onReset() {
   Authorization.removeAllTokens();
   storageLocal().clear();

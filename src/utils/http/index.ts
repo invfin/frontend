@@ -105,6 +105,8 @@ class PureHttp {
     );
   }
 
+  private prepareConfig() {}
+
   private httpInterceptorsResponse(): void {
     const instance = PureHttp.axiosInstance;
     instance.interceptors.response.use(
