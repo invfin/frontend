@@ -12,25 +12,26 @@ Authorization.getToken("");
 export const useUserStore = defineStore({
   id: "user",
   state: (): userType => ({
-    username: Authorization.getUserInfo()?.username ?? "Únete",
-    isLoggedIn: false
+    username: Authorization.getUserInfo().username,
+    photo: Authorization.getUserInfo().photo,
+    isLoggedIn: Authorization.getUserInfo().isLoggedIn
   }),
   actions: {
-    updateUserState(username: string) {
-      if (username === "Únete") {
-        this.isLoggedIn = false;
-      } else {
-        this.isLoggedIn = true;
-      }
+    updateUserState(
+      username: string,
+      photo = "src/assets/general/anonymus.WebP"
+    ) {
+      this.isLoggedIn = username !== "Únete";
       this.username = username;
+      this.photo = photo;
     },
-    async loginByUsername(data) {
+    async logIn(data) {
       return new Promise<UserResult>((resolve, reject) => {
         getLogin(data)
           .then(data => {
-            if (data) {
-              this.updateUserState(data.data.username);
-              Authorization.setResponseTokens(data.data.tokens);
+            if (data.success) {
+              this.updateUserState(data.data.username, data.data.photo);
+              Authorization.logInUser(data.data);
               resolve(data);
             }
           })

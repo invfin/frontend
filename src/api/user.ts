@@ -13,6 +13,7 @@ export type UserResult = {
   success: boolean;
   data: {
     username: string;
+    photo: string;
     tokens: TokensResult;
   };
 };

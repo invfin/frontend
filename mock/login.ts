@@ -10,6 +10,7 @@ export default [
           success: true,
           data: {
             username: "admin",
+            photo: "https://avatars.githubusercontent.com/u/44761321?v=4",
             tokens: {
               refresh: {
                 token: "eyJhbGciOiJIUzUxMiJ9.adminRefresh",
