@@ -32,7 +32,7 @@ export function viteBuildInfo(): Plugin {
                 green(
                   `build time${dayjs
                     .duration(endTime.diff(startTime))
-                    .format("mm分ss秒")}，size${size}）`
+                    .format("mm:ss")}，size${size}）`
                 )
               )
             );

@@ -8,13 +8,9 @@ export const configCompressPlugin = (
   if (compress === "none") return null;
 
   const gz = {
-    // 生成的压缩包后缀
     ext: ".gz",
-    // 体积大于threshold才会被压缩
     threshold: 0,
-    // 默认压缩.js|mjs|json|css|html后缀文件，设置成true，压缩全部文件
     filter: () => true,
-    // 压缩后是否删除原始文件
     deleteOriginFile: false
   };
   const br = {

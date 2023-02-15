@@ -1,4 +1,4 @@
-import Cookies from "js-cookie";
+import { CookieStorage } from "../clientStorage";
 
 import {
   refreshTokenKey,
@@ -13,7 +13,7 @@ import { TokensResult, UserResult } from "./types";
 export default class Authorization {
   static setResponseTokens(tokens: TokensResult): void {
     for (const [key, value] of Object.entries(tokens)) {
-      this.setToken(key, value["token"], value["expires"]);
+      CookieStorage.set(key, value["token"], value["expires"]);
     }
   }
   static logInUser(result: UserResult["data"]): void {
@@ -22,14 +22,14 @@ export default class Authorization {
   }
   static setUserInfo(username: string, photo: string): void {
     const value = JSON.stringify({ username: username, photo: photo });
-    this.setToken(userInfoKey, value);
+    CookieStorage.set(userInfoKey, value);
   }
   static getUserInfo(): {
     username: string;
     photo: string;
     isLoggedIn: boolean;
   } {
-    const userInfo = this.getToken(userInfoKey);
+    const userInfo = CookieStorage.get(userInfoKey);
     if (userInfo === undefined) {
       return {
         username: "Únete",
@@ -41,46 +41,24 @@ export default class Authorization {
     result["isLoggedIn"] = true;
     return result;
   }
-  static setToken(
-    key: string,
-    value: string,
-    expires?: number,
-    path = "/",
-    domain = "localhost",
-    secure = true,
-    sameSite: "strict" | "Strict" | "lax" | "Lax" | "none" | "None" = "strict"
-  ): void {
-    Cookies.set(key, value, {
-      expires: expires,
-      path: path,
-      domain: domain,
-      secure: secure,
-      sameSite: sameSite
-    });
-  }
-  static removeToken(key: string): void {
-    Cookies.remove(key);
-  }
   static removeAllTokens(): void {
     [
       refreshTokenKey,
       authenticationTokenKey,
       permissionTokenKey,
       sessionidKey
-    ].map(key => this.removeToken(key));
+    ].map(key => CookieStorage.remove(key));
   }
   static getAuthToken(): string {
-    const token = Cookies.get(authenticationTokenKey);
+    const token = CookieStorage.get(authenticationTokenKey);
     if (token === undefined) {
       return undefined;
     }
     return token;
   }
-  static getToken(key: string): string {
-    return Cookies.get(key);
-  }
+
   static checkKey(key: string, router, redirectTo: string): void {
-    const cookie = this.getToken(key);
+    const cookie = CookieStorage.get(key);
     if (cookie === undefined) {
       router.push({ name: redirectTo });
     }

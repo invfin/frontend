@@ -8,7 +8,6 @@ import { UserResult, RefreshTokenResult } from "@/api/user";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import Authorization from "@/utils/auth";
 
-Authorization.getToken("");
 export const useUserStore = defineStore({
   id: "user",
   state: (): userType => ({
@@ -48,9 +47,9 @@ export const useUserStore = defineStore({
       router.push("/login");
     },
     /**`token` */
-    async handRefreshToken(data) {
+    async handRefreshToken() {
       return new Promise<RefreshTokenResult>((resolve, reject) => {
-        refreshTokenApi(data)
+        refreshTokenApi({ username: this.usernmae })
           .then(data => {
             if (data) {
               Authorization.setResponseTokens(data.data.tokens);

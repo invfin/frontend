@@ -51,6 +51,27 @@ class PureHttp {
     });
   }
 
+  private setConfigHeaders(config: PureHttpRequestConfig, tokensData): void {
+    // const token = tokensData.tokens["refresh"].token;
+    config.headers["Authorization"] = formatToken(tokensData);
+  }
+
+  private handlePureHttpNotRefreshing(config: PureHttpRequestConfig) {
+    if (!PureHttp.isRefreshing) {
+      PureHttp.isRefreshing = true;
+      useUserStoreHook()
+        .handRefreshToken()
+        .then(res => {
+          this.setConfigHeaders(config, res);
+          // PureHttp.requests.forEach(cb => cb(token));
+          PureHttp.requests = [];
+        })
+        .finally(() => {
+          PureHttp.isRefreshing = false;
+        });
+    }
+  }
+
   private httpInterceptorsRequest(): void {
     PureHttp.axiosInstance.interceptors.request.use(
       async (config: PureHttpRequestConfig) => {
@@ -68,33 +89,11 @@ class PureHttp {
           ? config
           : new Promise(resolve => {
               const data = Authorization.getAuthToken();
-              if (data) {
-                const now = new Date().getTime();
-                const expired = parseInt(data.expires) - now <= 0;
-                if (expired) {
-                  if (!PureHttp.isRefreshing) {
-                    PureHttp.isRefreshing = true;
-                    useUserStoreHook()
-                      .handRefreshToken(data)
-                      .then(res => {
-                        const token = res.data.tokens["refresh"].token;
-                        // TODO check what tokens we want to set on headers
-                        config.headers["Authorization"] = formatToken(token);
-                        PureHttp.requests.forEach(cb => cb(token));
-                        PureHttp.requests = [];
-                      })
-                      .finally(() => {
-                        PureHttp.isRefreshing = false;
-                      });
-                  }
-                  resolve(PureHttp.retryOriginalRequest(config));
-                } else {
-                  config.headers["Authorization"] = formatToken(
-                    data.accessToken
-                  );
-                  resolve(config);
-                }
+              if (data === undefined) {
+                this.handlePureHttpNotRefreshing(config);
+                resolve(PureHttp.retryOriginalRequest(config));
               } else {
+                this.setConfigHeaders(config, data);
                 resolve(config);
               }
             });
@@ -104,8 +103,6 @@ class PureHttp {
       }
     );
   }
-
-  private prepareConfig() {}
 
   private httpInterceptorsResponse(): void {
     const instance = PureHttp.axiosInstance;

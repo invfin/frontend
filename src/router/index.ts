@@ -82,6 +82,7 @@ const whiteList = [
 // Si ya ha iniciado sesión y tiene información de inicio de sesión,
 // no puede saltar a la lista blanca de enrutamiento, sino permanecer en la página actual.
 function toCorrectRoute(to: toRouteType, _from, next): void {
+  // @ts-ignore
   whiteList.includes(to.fullPath) ? next(_from.fullPath) : next();
 }
 
@@ -106,7 +107,7 @@ function refreshRoutes(to: toRouteType, _from, next): void {
       if (!useMultiTagsStoreHook().getMultiTagsCache) {
         const { path } = to;
         const route = findRouteByPath(path, router.options.routes[0].children);
-        // query、params模式路由传参数的标签页不在此处处理
+        // query、params
         if (route && route.meta?.title) {
           useMultiTagsStoreHook().handleTags("push", {
             path: route.path,
