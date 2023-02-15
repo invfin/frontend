@@ -1,16 +1,16 @@
 import { http } from "@/utils/http";
-import { SearchResult, SearchItem } from "../types";
+import { SearchResponse, SearchItem } from "../types";
 
 export class SearchEngine {
   searchResults: Array<SearchItem>;
 
   private callSearchEndpoint(data?: string) {
-    return http.request<SearchResult>("get", "/search", { data });
+    return http.request<SearchResponse>("get", "/search", { data });
   }
-  private updateSearchResults(data?: SearchResult): void {
+  private updateSearchResults(data?: SearchResponse): void {
     this.searchResults = data.data;
   }
-  search(query: string): Array<SearchItem> {
+  search(query: string): void {
     const response = this.callSearchEndpoint(query);
     response
       .then(data => this.updateSearchResults(data))
