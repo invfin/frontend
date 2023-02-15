@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import LogoutCircleRLine from "@iconify-icons/ri/logout-circle-r-line";
+import UserDropdownOptions from "./UserDropdownOptions.vue";
 
 defineProps<{
-  username?: string;
-  photo?: string;
+  user?: Object;
   avatarsStyle?: Object;
   logout?: Function;
 }>();
@@ -12,16 +11,11 @@ defineProps<{
 <template>
   <el-dropdown trigger="click">
     <span class="el-dropdown-link navbar-bg-hover select-none">
-      <img :src="photo" :style="avatarsStyle" />
-      <p v-if="username" class="dark:text-white">{{ username }}</p>
+      <img :src="user.photo" :style="avatarsStyle" />
+      <p class="dark:text-white">{{ user.username }}</p>
     </span>
     <template #dropdown>
-      <el-dropdown-menu class="logout">
-        <el-dropdown-item @click="logout">
-          <IconifyIconOffline :icon="LogoutCircleRLine" style="margin: 5px" />
-          Salir
-        </el-dropdown-item>
-      </el-dropdown-menu>
+      <UserDropdownOptions />
     </template>
   </el-dropdown>
 </template>

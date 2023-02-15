@@ -19,6 +19,10 @@ export function useNav() {
   const { wholeMenus } = storeToRefs(usePermissionStoreHook());
   const tooltipEffect = getConfig()?.TooltipEffect ?? "light";
 
+  const user = computed(() => {
+    return useUserStoreHook().user;
+  });
+
   const username = computed(() => {
     return useUserStoreHook().username;
   });
@@ -135,6 +139,7 @@ export function useNav() {
     pureApp,
     username,
     photo,
+    user,
     avatarsStyle,
     tooltipEffect
   };

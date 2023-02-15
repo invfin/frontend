@@ -13,7 +13,8 @@ export const useUserStore = defineStore({
   state: (): userType => ({
     username: Authorization.getUserInfo().username,
     photo: Authorization.getUserInfo().photo,
-    isLoggedIn: Authorization.getUserInfo().isLoggedIn
+    isLoggedIn: Authorization.getUserInfo().isLoggedIn,
+    user: Authorization.getUserInfo()
   }),
   actions: {
     updateUserState(
@@ -23,6 +24,11 @@ export const useUserStore = defineStore({
       this.isLoggedIn = username !== "Únete";
       this.username = username;
       this.photo = photo;
+      this.user = {
+        username: username,
+        photo: photo,
+        isLoggedIn: this.isLoggedIn
+      };
     },
     async logIn(data) {
       return new Promise<UserResult>((resolve, reject) => {

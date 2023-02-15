@@ -36,8 +36,15 @@ export type setType = {
   hiddenSideBar: boolean;
 };
 
+type User = {
+  username?: string;
+  photo?: string;
+  isLoggedIn?: boolean;
+};
+
 export type userType = {
   username?: string;
   photo?: string;
   isLoggedIn?: boolean;
+  user?: User;
 };

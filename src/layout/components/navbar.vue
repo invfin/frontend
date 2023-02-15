@@ -5,7 +5,7 @@ import mixNav from "./sidebar/mixNav.vue";
 import { useNav } from "@/layout/hooks/useNav";
 // import Breadcrumb from "./sidebar/breadCrumb.vue";
 import topCollapse from "./sidebar/topCollapse.vue";
-import UserDropdown from "@/components/navbar/UserDropdown.vue";
+import UserDropdown from "@/components/UserDropdown/UserDropdown.vue";
 // import Setting from "@iconify-icons/ri/settings-3-line";
 
 const {
@@ -14,8 +14,7 @@ const {
   logout,
   // onPanel,
   pureApp,
-  username,
-  photo,
+  user,
   avatarsStyle,
   toggleSideBar
 } = useNav();
@@ -42,8 +41,7 @@ const {
       <Search />
       <Notifications id="header-notice" />
       <UserDropdown
-        :photo="photo"
-        :username="username"
+        :user="user"
         :logout="logout"
         :avatarsStyle="avatarsStyle"
       />
