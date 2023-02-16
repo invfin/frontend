@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import UserDropdownOptions from "./UserDropdownOptions.vue";
+import { useUserStoreHook } from "@/store/modules/user";
 
 defineProps<{
-  user?: Object;
   avatarsStyle?: Object;
-  logout?: Function;
 }>();
+
+const user = useUserStoreHook().user;
 </script>
 
 <template>

@@ -3,21 +3,10 @@ import Search from "@/components/search/index.vue";
 import Notifications from "@/components/notifications/index.vue";
 import mixNav from "./sidebar/mixNav.vue";
 import { useNav } from "@/layout/hooks/useNav";
-// import Breadcrumb from "./sidebar/breadCrumb.vue";
 import topCollapse from "./sidebar/topCollapse.vue";
 import UserDropdown from "@/components/UserDropdown/UserDropdown.vue";
-// import Setting from "@iconify-icons/ri/settings-3-line";
 
-const {
-  layout,
-  // device,
-  logout,
-  // onPanel,
-  pureApp,
-  user,
-  avatarsStyle,
-  toggleSideBar
-} = useNav();
+const { layout, pureApp, avatarsStyle, toggleSideBar } = useNav();
 </script>
 
 <template>
@@ -40,14 +29,10 @@ const {
     <div v-if="layout === 'vertical'" class="vertical-header-right">
       <Search />
       <Notifications id="header-notice" />
-      <UserDropdown
-        :user="user"
-        :logout="logout"
-        :avatarsStyle="avatarsStyle"
-      />
+      <UserDropdown :avatarsStyle="avatarsStyle" />
       <!-- <span
         class="set-icon navbar-bg-hover"
-        title="打开项目配置"
+        title=""
         @click="onPanel"
       >
         <IconifyIconOffline :icon="Setting" />
@@ -101,16 +86,6 @@ const {
   .breadcrumb-container {
     float: left;
     margin-left: 16px;
-  }
-}
-
-.logout {
-  max-width: 120px;
-
-  ::v-deep(.el-dropdown-menu__item) {
-    min-width: 100%;
-    display: inline-flex;
-    flex-wrap: wrap;
   }
 }
 </style>

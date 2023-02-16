@@ -52,6 +52,9 @@ export const useUserStore = defineStore({
       resetRouter();
       router.push("/login");
     },
+    register() {
+      router.push("register");
+    },
     /**`token` */
     async handRefreshToken() {
       return new Promise<RefreshTokenResult>((resolve, reject) => {
