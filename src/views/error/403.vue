@@ -42,7 +42,7 @@ defineOptions({
           }
         }"
       >
-        抱歉，你无权访问该页面
+        No estás autorizado
       </p>
       <el-button
         type="primary"
@@ -60,7 +60,7 @@ defineOptions({
           }
         }"
       >
-        返回首页
+        Inicio
       </el-button>
     </div>
   </div>

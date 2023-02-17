@@ -42,7 +42,7 @@ defineOptions({
           }
         }"
       >
-        抱歉，你访问的页面不存在
+        No hemos encontrado este resultado
       </p>
       <el-button
         type="primary"
@@ -60,7 +60,7 @@ defineOptions({
           }
         }"
       >
-        返回首页
+        Inicio
       </el-button>
     </div>
   </div>

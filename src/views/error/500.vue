@@ -42,7 +42,7 @@ defineOptions({
           }
         }"
       >
-        抱歉，服务器出错了
+        Perdón nos hemos roto
       </p>
       <el-button
         type="primary"
@@ -60,7 +60,7 @@ defineOptions({
           }
         }"
       >
-        返回首页
+        Inicio
       </el-button>
     </div>
   </div>

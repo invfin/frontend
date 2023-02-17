@@ -9,6 +9,16 @@ type TokensResult = {
   };
 };
 
+export type RegisterResult = {
+  success: boolean;
+  data: {
+    username: string;
+    photo: string;
+    tokens: TokensResult;
+    errors: { username: string; email: string };
+  };
+};
+
 export type UserResult = {
   success: boolean;
   data: {
@@ -24,6 +34,10 @@ export type RefreshTokenResult = {
     tokens: TokensResult;
   };
 };
+
+export function getRegister(data?: object) {
+  return http.request<RegisterResult>("post", "/register", { data });
+}
 
 export const getLogin = (data?: object) => {
   return http.request<UserResult>("post", "/login", { data });

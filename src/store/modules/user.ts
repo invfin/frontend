@@ -3,8 +3,14 @@ import { store } from "@/store";
 import { userType } from "./types";
 import { routerArrays } from "@/layout/types";
 import { router, resetRouter } from "@/router";
-import { getLogin, refreshTokenApi } from "@/api/user";
-import { UserResult, RefreshTokenResult } from "@/api/user";
+import {
+  getLogin,
+  getRegister,
+  refreshTokenApi,
+  RegisterResult,
+  UserResult,
+  RefreshTokenResult
+} from "@/api/user";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import Authorization from "@/utils/auth";
 
@@ -33,6 +39,21 @@ export const useUserStore = defineStore({
     async logIn(data) {
       return new Promise<UserResult>((resolve, reject) => {
         getLogin(data)
+          .then(data => {
+            if (data.success) {
+              this.updateUserState(data.data.username, data.data.photo);
+              Authorization.logInUser(data.data);
+              resolve(data);
+            }
+          })
+          .catch(error => {
+            reject(error);
+          });
+      });
+    },
+    async register(data) {
+      return new Promise<RegisterResult>((resolve, reject) => {
+        getRegister(data)
           .then(data => {
             if (data.success) {
               this.updateUserState(data.data.username, data.data.photo);

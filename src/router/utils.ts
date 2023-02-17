@@ -255,7 +255,7 @@ function addAsyncRoutes(arrRoutes: Array<RouteRecordRaw>) {
 }
 
 function getHistoryMode(): RouterHistory {
-  const routerHistory = import.meta.env.VITE_ROUTER_HISTORY;
+  const routerHistory = "h5";
   const historyMode = routerHistory.split(",");
   const leftMode = historyMode[0];
   const rightMode = historyMode[1];
