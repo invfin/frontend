@@ -73,7 +73,7 @@ export const useUserStore = defineStore({
       resetRouter();
       router.push("/login");
     },
-    register() {
+    RedirectRegister() {
       router.push("register");
     },
     /**`token` */
