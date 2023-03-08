@@ -39,7 +39,7 @@ export const remainingPaths = Object.keys(remainingRouter).map(v => {
 });
 
 // @ts-ignore
-const routes = constantRoutes.concat(remainingRouter, errorRoutes);
+export const routes = constantRoutes.concat(remainingRouter, errorRoutes);
 
 export const router: Router = createRouter({
   history: getHistoryMode(),

@@ -25,6 +25,8 @@ const menuData = computed(() => {
     : usePermissionStoreHook().wholeMenus;
 });
 
+// const menuData = [];
+
 function getSubMenuData(path: string) {
   const parentPathArr = getParentPaths(
     path,
@@ -86,11 +88,6 @@ watch(
         />
       </el-menu>
     </el-scrollbar>
-    <!-- <leftCollapse
-      v-if="device !== 'mobile'"
-      :is-active="pureApp.sidebar.opened"
-      @toggleClick="toggleSideBar"
-    /> -->
   </div>
 </template>
 

@@ -290,10 +290,10 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
       setTimeout(() => {
         if (isFullscreen.value) {
           tagsViews[6].icon = ExitFullscreen;
-          tagsViews[6].text = "退出全屏";
+          tagsViews[6].text = "Salir pantalla completa";
         } else {
           tagsViews[6].icon = Fullscreen;
-          tagsViews[6].text = "全屏";
+          tagsViews[6].text = "Pantalla completa";
         }
       }, 100);
       break;
@@ -303,10 +303,10 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
       setTimeout(() => {
         if (pureSetting.hiddenSideBar) {
           tagsViews[7].icon = ExitFullscreen;
-          tagsViews[7].text = "内容区退出全屏";
+          tagsViews[7].text = "Salir pantalla completa";
         } else {
           tagsViews[7].icon = Fullscreen;
-          tagsViews[7].text = "内容区全屏";
+          tagsViews[7].text = "Pantalla completa";
         }
       }, 100);
       break;
