@@ -14,7 +14,7 @@ import tag from "./components/tag/index.vue";
 import appMain from "./components/appMain.vue";
 import setting from "./components/setting/index.vue";
 import Vertical from "./components/sidebar/vertical.vue";
-import Horizontal from "./components/sidebar/horizontal.vue";
+
 import backTop from "@/assets/svg/back_top.svg?component";
 
 const { isDark } = useDark();
@@ -113,9 +113,6 @@ const layoutHeader = defineComponent({
           !pureSetting.hiddenSideBar &&
           (layout.value.includes("vertical") || layout.value.includes("mix"))
             ? h(navbar)
-            : null,
-          !pureSetting.hiddenSideBar && layout.value.includes("horizontal")
-            ? h(Horizontal)
             : null,
           h(tag)
         ]
