@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import Search from "@/components/search/index.vue";
 import Notifications from "@/components/notifications/index.vue";
-import mixNav from "./sidebar/mixNav.vue";
+
 import { useNav } from "@/layout/hooks/useNav";
 import topCollapse from "./sidebar/topCollapse.vue";
 import UserDropdown from "@/components/UserDropdown/UserDropdown.vue";
 
-const { layout, pureApp, avatarsStyle, toggleSideBar } = useNav();
+const { pureApp, avatarsStyle, toggleSideBar } = useNav();
 </script>
 
 <template>
@@ -19,14 +19,7 @@ const { layout, pureApp, avatarsStyle, toggleSideBar } = useNav();
       @toggleClick="toggleSideBar"
     />
 
-    <!-- <Breadcrumb
-      v-if="layout !== 'mix' && device !== 'mobile'"
-      class="breadcrumb-container"
-    /> -->
-
-    <mixNav v-if="layout === 'mix'" />
-
-    <div v-if="layout === 'vertical'" class="vertical-header-right">
+    <div class="vertical-header-right">
       <Search />
       <Notifications id="header-notice" />
       <UserDropdown :avatarsStyle="avatarsStyle" />

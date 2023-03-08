@@ -43,9 +43,6 @@ export function useNav() {
   });
 
   const { $storage, $config } = useGlobal<GlobalPropertiesApi>();
-  const layout = computed(() => {
-    return $storage?.layout?.layout;
-  });
 
   const title = computed(() => {
     return $config.Title;
@@ -124,7 +121,6 @@ export function useNav() {
     route,
     title,
     device,
-    layout,
     logout,
     routers,
     $storage,
