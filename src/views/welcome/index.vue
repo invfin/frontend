@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import BaseChart from "@/charts/chartjs/BaseChart.vue";
+import BaseChart from "@/components/Charts/chartjs/BaseChart.vue";
+import Statement from "@/components/Tables/Statement.vue";
 
 defineOptions({
   name: "Welcome"
@@ -17,6 +18,9 @@ const chartInformation = { chartType: "Bar" };
     <h1>Pure-Admin-</h1>
     <div>
       <BaseChart :chartData="chartData" :chartInformation="chartInformation" />
+    </div>
+    <div>
+      <Statement ticker="aapl" />
     </div>
   </div>
 </template>

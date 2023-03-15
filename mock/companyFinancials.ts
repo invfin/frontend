@@ -2,11 +2,10 @@ import { MockMethod } from "vite-plugin-mock";
 
 export default [
   {
-    url: "/company/aapl",
+    url: "/company/income-statement/aapl/",
     method: "get",
     response: () => {
       return {
-        success: true,
         data: [
           {
             id: 163349,
