@@ -12,7 +12,7 @@ import { TokensResult, UserResult } from "./types";
 
 export default class Authorization {
   static setResponseTokens(tokens: TokensResult): void {
-    if (tokens) {
+    if (tokens !== undefined) {
       for (const [key, value] of Object.entries(tokens)) {
         CookieStorage.set(key, value["token"], value["expires"]);
       }
