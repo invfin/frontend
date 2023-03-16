@@ -9,14 +9,14 @@ const chartData = {
   labels: ["January", "February", "March"],
   datasets: [{ data: [40, 20, 12] }]
 };
-const chartInformation = { chartType: "Bar" };
+const chartInformation = { chartType: "Bar", chartData: chartData };
 </script>
 
 <template>
   <div class="ml-10">
     <h1>Pure-Admin-</h1>
     <div>
-      <BaseChart :chartData="chartData" :chartInformation="chartInformation" />
+      <BaseChart :chartInformation="chartInformation" />
     </div>
   </div>
 </template>

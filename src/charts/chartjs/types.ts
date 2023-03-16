@@ -1,5 +1,6 @@
 export interface ChartDataDataset {
   data: Array<number>;
+  backgroundColor: Array<string>;
 }
 export interface ChartData {
   labels: Array<string>;
@@ -8,4 +9,10 @@ export interface ChartData {
 
 export interface ChartInformation {
   chartType: string;
+  chartTitle: string;
+  displayTitle: boolean;
+  usePan: boolean;
+  useWheel: boolean;
+  usePinch: boolean;
+  chartData: ChartData;
 }
