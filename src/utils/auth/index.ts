@@ -10,6 +10,15 @@ import {
 
 import { TokensResult, UserResult } from "./types";
 
+export class User {
+  username = "Únete";
+  image = "src/assets/general/anonymus.WebP";
+  isLoggedIn = false;
+  tokens: TokensResult;
+
+  updateInformation() {}
+}
+
 export default class Authorization {
   static setResponseTokens(tokens: TokensResult): void {
     if (tokens !== undefined) {
@@ -52,11 +61,7 @@ export default class Authorization {
     ].map(key => CookieStorage.remove(key));
   }
   static getAuthToken(): string {
-    const token = CookieStorage.get(authenticationTokenKey);
-    if (token === undefined) {
-      return undefined;
-    }
-    return token;
+    return CookieStorage.get(authenticationTokenKey);
   }
 
   static checkKey(key: string, router, redirectTo: string): void {

@@ -11,14 +11,18 @@ const props = defineProps<{
 const data = ref(null);
 // var loading = ref(true);
 
-getIncomeStatement(props.ticker)
-  .then(value => {
-    data.value = value;
-    console.log(value);
-  })
-  .catch(error => {
-    console.error(error);
-  });
+const fetchIncomeStatement = async () => {
+  getIncomeStatement(props.ticker)
+    .then(value => {
+      data.value = value;
+      console.log(value);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+};
+
+fetchIncomeStatement();
 </script>
 
 <template>
