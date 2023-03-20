@@ -16,7 +16,24 @@ export class User {
   isLoggedIn = false;
   tokens: TokensResult;
 
-  updateInformation() {}
+  updateStatus(
+    username: string,
+    image: string,
+    isLoggedIn: boolean,
+    tokens: TokensResult
+  ): void {
+    this.username = username;
+    this.image = image;
+    this.isLoggedIn = isLoggedIn;
+    this.tokens = tokens;
+  }
+  setUserInfoCookies(): void {
+    const value = JSON.stringify({
+      username: this.username,
+      photo: this.image
+    });
+    CookieStorage.set(userInfoKey, value);
+  }
 }
 
 export default class Authorization {
@@ -28,12 +45,9 @@ export default class Authorization {
     }
   }
   static logInUser(result: UserResult["data"]): void {
+    const user = new User();
     this.setResponseTokens(result.tokens);
-    this.setUserInfo(result.username, result.photo);
-  }
-  static setUserInfo(username: string, photo: string): void {
-    const value = JSON.stringify({ username: username, photo: photo });
-    CookieStorage.set(userInfoKey, value);
+    user.setUserInfoCookies();
   }
   static getUserInfo(): {
     username: string;
