@@ -6,6 +6,7 @@ export default [
     method: "get",
     response: () => {
       return {
+        success: true,
         data: [
           {
             id: 163349,

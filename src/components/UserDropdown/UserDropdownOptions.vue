@@ -4,7 +4,7 @@ import { useUserStoreHook } from "@/store/modules/user";
 
 const logout = useUserStoreHook().logOut;
 const user = useUserStoreHook().user;
-const register = useUserStoreHook().register;
+const register = useUserStoreHook().redirectRegister;
 </script>
 
 <template>

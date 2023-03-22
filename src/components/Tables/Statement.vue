@@ -1,32 +1,41 @@
 <script setup lang="ts">
 import { ref } from "vue";
-// import { onBeforeMount } from 'vue'
 
+import BaseChart from "@/components/Charts/chartjs/BaseChart.vue";
 import { getIncomeStatement } from "@/api/company";
+// import statement from "@/components/Tables/Statement.vue";
 
 const props = defineProps<{
   ticker: string;
 }>();
 
-const data = ref(null);
-// var loading = ref(true);
-
-const fetchIncomeStatement = async () => {
+const data = ref({});
+const loading = ref(true);
+const fetchIncomeStatement = () => {
   getIncomeStatement(props.ticker)
     .then(value => {
-      data.value = value;
       console.log(value);
+      data.value = value;
+      loading.value = false;
     })
     .catch(error => {
       console.error(error);
     });
 };
 
+// function buildChartInfo(response) {
+//   response.data.forEach(statementInfo => {
+//     statementInfo.forEach(statement => {
+//       statement;
+//     });
+//   });
+// }
+
 fetchIncomeStatement();
 </script>
 
 <template>
-  <div
-    class="max-w-[45rem] p-6 h-96 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-  />
+  <div>
+    <BaseChart :chartInformation="data" :loading="loading" />
+  </div>
 </template>
