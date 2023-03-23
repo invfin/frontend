@@ -7,6 +7,7 @@ export interface StatementItem {
 }
 
 export interface Statement {
+  success: boolean;
   data: Array<StatementItem>;
 }
 
