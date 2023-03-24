@@ -16,16 +16,15 @@ export class User {
   isLoggedIn = false;
   tokens: TokensResult;
 
-  updateStatus(
-    username: string,
-    image: string,
-    isLoggedIn: boolean,
-    tokens: TokensResult
-  ): void {
-    this.username = username;
-    this.image = image;
-    this.isLoggedIn = isLoggedIn;
-    this.tokens = tokens;
+  logIn(response: UserResult["data"]): void {
+    this.saveUserInfo(response);
+    this.setUserInfoCookies();
+  }
+  saveUserInfo(response: UserResult["data"]): void {
+    this.username = response.username;
+    this.image = response.photo;
+    this.isLoggedIn = true;
+    this.tokens = response.tokens;
   }
   setUserInfoCookies(): void {
     const value = JSON.stringify({
@@ -44,10 +43,12 @@ export default class Authorization {
       }
     }
   }
-  static logInUser(result: UserResult["data"]): void {
-    const user = new User();
+  static logInUser(result: UserResult["data"]): User {
+    console.log(result);
     this.setResponseTokens(result.tokens);
-    user.setUserInfoCookies();
+    const user = new User();
+    user.logIn(result);
+    return user;
   }
   static getUserInfo(): {
     username: string;

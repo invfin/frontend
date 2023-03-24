@@ -22,7 +22,7 @@ const fetchIncomeStatement = () => {
           "Income Statement",
           value.data
         );
-        // loading.value = false;
+        loading.value = false;
       }
     })
     .catch(error => {

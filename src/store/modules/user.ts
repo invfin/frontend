@@ -12,7 +12,7 @@ import {
   RefreshTokenResult
 } from "@/api/user";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
-import Authorization from "@/utils/auth";
+import Authorization, { User } from "@/utils/auth";
 
 export const useUserStore = defineStore({
   id: "user",
@@ -23,26 +23,12 @@ export const useUserStore = defineStore({
     user: Authorization.getUserInfo()
   }),
   actions: {
-    updateUserState(
-      username: string,
-      photo = "src/assets/general/anonymus.WebP"
-    ) {
-      this.isLoggedIn = username !== "Únete";
-      this.username = username;
-      this.photo = photo;
-      this.user = {
-        username: username,
-        photo: photo,
-        isLoggedIn: this.isLoggedIn
-      };
-    },
     async logIn(data) {
       return new Promise<UserResult>((resolve, reject) => {
         getLogin(data)
           .then(data => {
             if (data.success) {
-              this.updateUserState(data.data.username, data.data.photo);
-              Authorization.logInUser(data.data);
+              this.user = Authorization.logInUser(data.data);
               resolve(data);
             }
           })
@@ -67,7 +53,7 @@ export const useUserStore = defineStore({
       });
     },
     logOut() {
-      this.updateUserState("Únete");
+      this.user = new User();
       Authorization.removeAllTokens();
       useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
       resetRouter();

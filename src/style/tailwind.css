@@ -22,4 +22,16 @@
   .item-card {
     @apply max-w-[45rem] p-6 h-96 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700;
   }
+  .chart-skeleton {
+    @apply flex items-baseline mt-4 space-x-6 max-h-fit;
+  }
+  .animated-chart-skeleton {
+    @apply chart-skeleton animate-pulse;
+  }
+  .table-skeleton {
+    @apply max-w-sm animate-pulse;
+  }
+  .animated-table-skeleton {
+    @apply table-skeleton animate-pulse;
+  }
 }
