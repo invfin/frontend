@@ -15,6 +15,27 @@ export class User {
   image = "src/assets/general/anonymus.WebP";
   isLoggedIn = false;
   tokens: TokensResult;
+  constructor() {
+    this.checkStorage();
+  }
+
+  checkStorage(): void {
+    const baseUserInfo = CookieStorage.get("userInfoKey");
+    try {
+      const userInfo = JSON.parse(baseUserInfo);
+      this.username = userInfo["username"];
+      this.image = userInfo["image"];
+      this.isLoggedIn = true;
+    } catch {
+      /* empty */
+    }
+  }
+
+  needsRefreshTokens(): boolean {
+    return !this.isLoggedIn
+      ? this.isLoggedIn
+      : parseInt(this.tokens["tokens"]["refresh"]["expires"]) > 0;
+  }
 
   logIn(response: UserResult["data"]): void {
     this.saveUserInfo(response);
@@ -22,14 +43,14 @@ export class User {
   }
   saveUserInfo(response: UserResult["data"]): void {
     this.username = response.username;
-    this.image = response.photo;
+    this.image = response.image;
     this.isLoggedIn = true;
     this.tokens = response.tokens;
   }
   setUserInfoCookies(): void {
     const value = JSON.stringify({
       username: this.username,
-      photo: this.image
+      image: this.image
     });
     CookieStorage.set(userInfoKey, value);
   }
@@ -37,6 +58,7 @@ export class User {
 
 export default class Authorization {
   static setResponseTokens(tokens: TokensResult): void {
+    console.log(Object.entries(tokens));
     if (tokens !== undefined) {
       for (const [key, value] of Object.entries(tokens)) {
         CookieStorage.set(key, value["token"], value["expires"]);
@@ -52,14 +74,14 @@ export default class Authorization {
   }
   static getUserInfo(): {
     username: string;
-    photo: string;
+    image: string;
     isLoggedIn: boolean;
   } {
     const userInfo = CookieStorage.get(userInfoKey);
     if (userInfo === undefined) {
       return {
         username: "Únete",
-        photo: "src/assets/general/anonymus.WebP",
+        image: "src/assets/general/anonymus.WebP",
         isLoggedIn: false
       };
     }

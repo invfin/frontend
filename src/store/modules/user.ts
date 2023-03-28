@@ -18,9 +18,9 @@ export const useUserStore = defineStore({
   id: "user",
   state: (): userType => ({
     username: Authorization.getUserInfo().username,
-    photo: Authorization.getUserInfo().photo,
+    image: Authorization.getUserInfo().image,
     isLoggedIn: Authorization.getUserInfo().isLoggedIn,
-    user: Authorization.getUserInfo()
+    user: new User()
   }),
   actions: {
     async logIn(data) {
@@ -42,8 +42,7 @@ export const useUserStore = defineStore({
         getRegister(data)
           .then(data => {
             if (data.success) {
-              this.updateUserState(data.data.username, data.data.photo);
-              Authorization.logInUser(data.data);
+              this.user = Authorization.logInUser(data.data);
               resolve(data);
             }
           })
@@ -64,19 +63,21 @@ export const useUserStore = defineStore({
     },
     /**`token` */
     async handRefreshToken() {
-      return new Promise<RefreshTokenResult>((resolve, reject) => {
-        refreshTokenApi({ username: this.username })
-          .then(data => {
-            console.log(data.data);
-            if (data) {
-              Authorization.setResponseTokens(data.data);
-              resolve(data);
-            }
-          })
-          .catch(error => {
-            reject(error);
-          });
-      });
+      if (this.user.needsRefreshTokens()) {
+        return new Promise<RefreshTokenResult>((resolve, reject) => {
+          refreshTokenApi({ username: this.username })
+            .then(data => {
+              console.log(data);
+              if (data.success) {
+                Authorization.setResponseTokens(data.data["tokens"]);
+                resolve(data);
+              }
+            })
+            .catch(error => {
+              reject(error);
+            });
+        });
+      }
     }
   }
 });

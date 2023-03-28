@@ -13,7 +13,7 @@ export type RegisterResult = {
   success: boolean;
   data: {
     username: string;
-    photo: string;
+    image: string;
     tokens: TokensResult;
     errors: { username: string; email: string };
   };
@@ -23,7 +23,7 @@ export type UserResult = {
   success: boolean;
   data: {
     username: string;
-    photo: string;
+    image: string;
     tokens: TokensResult;
   };
 };

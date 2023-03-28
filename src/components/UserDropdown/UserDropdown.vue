@@ -7,12 +7,13 @@ defineProps<{
 }>();
 
 const user = useUserStoreHook().user;
+console.log(user);
 </script>
 
 <template>
   <el-dropdown trigger="click">
     <span class="el-dropdown-link navbar-bg-hover select-none">
-      <img :src="user.photo" :style="avatarsStyle" />
+      <img :src="user.image" :style="avatarsStyle" />
       <p class="dark:text-white">{{ user.username }}</p>
     </span>
     <template #dropdown>

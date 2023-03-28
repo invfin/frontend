@@ -38,13 +38,13 @@ export type setType = {
 
 type User = {
   username?: string;
-  photo?: string;
+  image?: string;
   isLoggedIn?: boolean;
 };
 
 export type userType = {
   username?: string;
-  photo?: string;
+  image?: string;
   isLoggedIn?: boolean;
   user?: User;
 };

@@ -11,7 +11,7 @@ export type UserResult = {
   success: boolean;
   data: {
     username: string;
-    photo: string;
+    image: string;
     tokens: TokensResult;
   };
 };
