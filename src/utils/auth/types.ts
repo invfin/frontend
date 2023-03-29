@@ -1,17 +1,17 @@
-export type TokensResult = {
-  tokens: {
-    refresh: { token: string; expires: string };
-    auth: { token: string; expires: string };
-    perm: { token: string; expires: string };
-    sessionid: { token: string; expires: string };
-  };
+export type TokenInfo = {
+  token: string;
+  expires: number;
 };
 
-export type UserResult = {
-  success: boolean;
-  data: {
-    username: string;
-    image: string;
-    tokens: TokensResult;
-  };
+export type TokensInfo = {
+  refresh: TokenInfo;
+  auth: TokenInfo;
+  perm: TokenInfo;
+  sessionid: TokenInfo;
+};
+
+export type UserInfo = {
+  username: string;
+  image: string;
+  tokens: TokensInfo;
 };

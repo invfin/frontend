@@ -1,7 +1,7 @@
 // import "@/utils/sso";
 import NProgress from "@/utils/progress";
 import { getConfig } from "@/config";
-import Authorization, { checkAuthorization } from "@/utils/auth";
+import { checkAuthorization } from "@/utils/auth";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { usePermissionStoreHook } from "@/store/modules/permission";
 import {
@@ -135,7 +135,6 @@ function setPageTitle(to: toRouteType, externalLink: boolean): void {
 router.beforeEach(async (to: toRouteType, _from, next) => {
   checkAuthorization(to, router);
   manageAliveRoute(to, _from);
-  Authorization.getUserInfo();
   NProgress.start();
   const externalLink = isUrl(to?.name as string);
   setPageTitle(to, externalLink);

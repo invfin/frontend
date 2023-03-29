@@ -24,10 +24,10 @@ export function useNav() {
   });
 
   const username = computed(() => {
-    return useUserStoreHook().username;
+    return useUserStoreHook().user.username;
   });
   const image = computed(() => {
-    return useUserStoreHook().image;
+    return useUserStoreHook().user.image;
   });
 
   const avatarsStyle = computed(() => {

@@ -11,7 +11,7 @@ const notifications = ref([]);
 const activeKey = ref(0);
 
 function getNotifications() {
-  if (useUserStoreHook().isLoggedIn === true) {
+  if (useUserStoreHook().user.isLoggedIn) {
     const response = http.request<NotificationsResponse>(
       "get",
       "/notifications",

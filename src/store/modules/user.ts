@@ -17,9 +17,6 @@ import Authorization, { User } from "@/utils/auth";
 export const useUserStore = defineStore({
   id: "user",
   state: (): userType => ({
-    username: Authorization.getUserInfo().username,
-    image: Authorization.getUserInfo().image,
-    isLoggedIn: Authorization.getUserInfo().isLoggedIn,
     user: new User()
   }),
   actions: {

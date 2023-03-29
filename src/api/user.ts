@@ -1,38 +1,27 @@
 import { http } from "@/utils/http";
+import { TokensInfo, UserInfo } from "@/utils/auth/types";
 
-type TokensResult = {
-  tokens: {
-    refresh: { token: string; expires: string };
-    auth: { token: string; expires: string };
-    perm: { token: string; expires: string };
-    sessionid: { token: string; expires: string };
-  };
+type RequestResult = {
+  success: boolean;
 };
 
-export type RegisterResult = {
-  success: boolean;
+export type RegisterResult = RequestResult & {
   data: {
-    username: string;
-    image: string;
-    tokens: TokensResult;
+    user: UserInfo;
     errors: { username: string; email: string };
   };
 };
 
-export type UserResult = {
-  success: boolean;
-  data: {
-    username: string;
-    image: string;
-    tokens: TokensResult;
-  };
+export type TokensResult = RequestResult & {
+  data: TokensInfo;
 };
 
-export type RefreshTokenResult = {
-  success: boolean;
-  data: {
-    tokens: TokensResult;
-  };
+export type UserResult = RequestResult & {
+  data: UserInfo;
+};
+
+export type RefreshTokenResult = RequestResult & {
+  data: TokensResult;
 };
 
 export function getRegister(data?: object) {

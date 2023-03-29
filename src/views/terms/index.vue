@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import BarChart from "@/charts/chartjs/BarChart.vue";
+import Statement from "@/components/Tables/Statement.vue";
 
 defineOptions({
   name: "Terms"
@@ -10,7 +10,7 @@ defineOptions({
   <div class="ml-10">
     <h1>Pure-Admin-</h1>
     <div>
-      <BarChart />
+      <Statement ticker="aapl" />
     </div>
   </div>
 </template>

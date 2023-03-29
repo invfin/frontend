@@ -7,7 +7,6 @@ defineProps<{
 }>();
 
 const user = useUserStoreHook().user;
-console.log(user);
 </script>
 
 <template>

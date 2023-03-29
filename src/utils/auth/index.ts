@@ -8,40 +8,57 @@ import {
   userInfoKey
 } from "./constants";
 
-import { TokensResult, UserResult } from "./types";
+import { TokensInfo, UserInfo } from "@/utils/auth/types";
 
 export class User {
   username = "Únete";
   image = "src/assets/general/anonymus.WebP";
   isLoggedIn = false;
-  tokens: TokensResult;
+  tokens = {} as TokensInfo;
   constructor() {
     this.checkStorage();
   }
 
   checkStorage(): void {
-    const baseUserInfo = CookieStorage.get("userInfoKey");
+    this.checkStorageUserInfo();
+    this.checkStorageUserTokens();
+  }
+  checkStorageUserInfo(): boolean {
+    const baseUserInfo = CookieStorage.get(userInfoKey);
     try {
       const userInfo = JSON.parse(baseUserInfo);
       this.username = userInfo["username"];
       this.image = userInfo["image"];
       this.isLoggedIn = true;
+      return true;
     } catch {
-      /* empty */
+      return false;
     }
+  }
+  checkStorageUserTokens(): void {
+    [
+      refreshTokenKey,
+      authenticationTokenKey,
+      permissionTokenKey,
+      sessionidKey
+    ].map(key => this.setToken(key, CookieStorage.get(key)));
+  }
+
+  setToken(token: string, value: string): void {
+    this.tokens[token] = value;
   }
 
   needsRefreshTokens(): boolean {
     return !this.isLoggedIn
       ? this.isLoggedIn
-      : parseInt(this.tokens["tokens"]["refresh"]["expires"]) > 0;
+      : parseInt(this.tokens.refresh.expires) > 0;
   }
 
-  logIn(response: UserResult["data"]): void {
+  logIn(response: UserInfo): void {
     this.saveUserInfo(response);
     this.setUserInfoCookies();
   }
-  saveUserInfo(response: UserResult["data"]): void {
+  saveUserInfo(response: UserInfo): void {
     this.username = response.username;
     this.image = response.image;
     this.isLoggedIn = true;
@@ -57,40 +74,22 @@ export class User {
 }
 
 export default class Authorization {
-  static setResponseTokens(tokens: TokensResult): void {
-    console.log(Object.entries(tokens));
+  static setResponseTokens(tokens: TokensInfo): void {
     if (tokens !== undefined) {
       for (const [key, value] of Object.entries(tokens)) {
-        CookieStorage.set(key, value["token"], value["expires"]);
+        CookieStorage.set(key, value.token, value.expires);
       }
     }
   }
-  static logInUser(result: UserResult["data"]): User {
-    console.log(result);
+  static logInUser(result: UserInfo): User {
     this.setResponseTokens(result.tokens);
     const user = new User();
     user.logIn(result);
     return user;
   }
-  static getUserInfo(): {
-    username: string;
-    image: string;
-    isLoggedIn: boolean;
-  } {
-    const userInfo = CookieStorage.get(userInfoKey);
-    if (userInfo === undefined) {
-      return {
-        username: "Únete",
-        image: "src/assets/general/anonymus.WebP",
-        isLoggedIn: false
-      };
-    }
-    const result = JSON.parse(userInfo);
-    result["isLoggedIn"] = true;
-    return result;
-  }
   static removeAllTokens(): void {
     [
+      userInfoKey,
       refreshTokenKey,
       authenticationTokenKey,
       permissionTokenKey,
