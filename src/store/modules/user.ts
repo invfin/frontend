@@ -39,7 +39,7 @@ export const useUserStore = defineStore({
         getRegister(data)
           .then(data => {
             if (data.success) {
-              this.user = Authorization.logInUser(data.data);
+              this.user = Authorization.logInUser(data.data.user);
               resolve(data);
             }
           })

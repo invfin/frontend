@@ -9,11 +9,9 @@ export default [
         success: true,
         data: [
           {
-            id: 163349,
             date: 2021,
             year: 17 / 3 / 2022,
             is_ttm: false,
-            from_average: false,
             revenue: 365817000000.0,
             cost_of_revenue: 212981000000.0,
             gross_profit: 152836000000.0,
@@ -36,11 +34,9 @@ export default [
             weighted_average_diluated_shares_outstanding: 16701272000.0
           },
           {
-            id: 163350,
             date: 2020,
             year: 17 / 3 / 2022,
             is_ttm: false,
-            from_average: false,
             revenue: 274515000000.0,
             cost_of_revenue: 169559000000.0,
             gross_profit: 104956000000.0,

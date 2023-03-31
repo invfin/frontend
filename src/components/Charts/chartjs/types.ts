@@ -1,6 +1,11 @@
 export interface ChartDataDataset {
+  label?: string;
   data: Array<number>;
-  backgroundColor: Array<string>;
+  backgroundColor: Array<string> | string;
+  borderColor?: string;
+  borderWidth?: number;
+  borderRadius?: number;
+  borderSkipped?: boolean;
 }
 export interface ChartData {
   labels: Array<string>;
@@ -8,11 +13,16 @@ export interface ChartData {
 }
 
 export interface ChartInformation {
-  chartType: string;
   chartTitle: string;
   displayTitle: boolean;
   usePan: boolean;
   useWheel: boolean;
   usePinch: boolean;
   chartData: ChartData;
+}
+
+export interface RawChartInformation {
+  chartType: string;
+  chartTitle: string;
+  responseData: Array<any>;
 }

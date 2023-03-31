@@ -1,99 +1,15 @@
 <script setup lang="ts">
-import { ChartInformation } from "./types";
+import { RawChartInformation } from "./types";
 import { uuidv4 } from "@/utils/general";
-
-import {
-  Bar,
-  Doughnut,
-  Line,
-  Pie,
-  PolarArea,
-  Radar,
-  Bubble,
-  Scatter
-} from "vue-chartjs";
-
-import {
-  Chart as ChartJS,
-  BarController,
-  BubbleController,
-  DoughnutController,
-  LineController,
-  PieController,
-  PolarAreaController,
-  RadarController,
-  ScatterController,
-  ArcElement,
-  BarElement,
-  LineElement,
-  PointElement,
-  Decimation,
-  Filler,
-  Legend,
-  SubTitle,
-  Title,
-  Tooltip,
-  CategoryScale,
-  LinearScale,
-  LogarithmicScale,
-  RadialLinearScale,
-  TimeScale,
-  TimeSeriesScale
-} from "chart.js";
-
-ChartJS.register(
-  BarController,
-  BubbleController,
-  DoughnutController,
-  LineController,
-  PieController,
-  PolarAreaController,
-  RadarController,
-  ScatterController,
-  ArcElement,
-  BarElement,
-  LineElement,
-  PointElement,
-  Decimation,
-  Filler,
-  Legend,
-  SubTitle,
-  Title,
-  Tooltip,
-  CategoryScale,
-  LinearScale,
-  LogarithmicScale,
-  RadialLinearScale,
-  TimeScale,
-  TimeSeriesScale
-);
+import BuildChartData from "@/components/Charts/chartjs/utils";
 
 const props = defineProps<{
-  chartInformation: ChartInformation;
+  rawChartInformation: RawChartInformation;
 }>();
 
-function getChartType(chartType) {
-  switch (chartType) {
-    case "Bar":
-      return Bar;
-    case "Doughnut":
-      return Doughnut;
-    case "Line":
-      return Line;
-    case "Pie":
-      return Pie;
-    case "PolarArea":
-      return PolarArea;
-    case "Radar":
-      return Radar;
-    case "Bubble":
-      return Bubble;
-    case "Scatter":
-      return Scatter;
-  }
-}
-
-const ChartType = getChartType(props.chartInformation.chartType);
+const [ChartType, chartData] = BuildChartData.getChartTypeAndChartData(
+  props.rawChartInformation
+);
 
 const chartOptions = {
   responsive: true,
@@ -103,19 +19,19 @@ const chartOptions = {
       position: "top"
     },
     title: {
-      display: props.chartInformation.displayTitle,
-      text: props.chartInformation.chartTitle
+      display: chartData.displayTitle,
+      text: chartData.chartTitle
     },
     zoom: {
       pan: {
-        enabled: props.chartInformation.usePan
+        enabled: chartData.usePan
       },
       zoom: {
         wheel: {
-          enabled: props.chartInformation.useWheel
+          enabled: chartData.useWheel
         },
         pinch: {
-          enabled: props.chartInformation.usePinch
+          enabled: chartData.usePinch
         },
         mode: "x"
       }
@@ -129,7 +45,7 @@ const chartOptions = {
     <ChartType
       :id="uuidv4()"
       :options="chartOptions"
-      :data="props.chartInformation.chartData"
+      :data="chartData.chartData"
     />
   </div>
 </template>
