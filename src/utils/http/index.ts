@@ -11,8 +11,8 @@ import {
 } from "./types.d";
 import { stringify } from "qs";
 import NProgress from "../progress";
-import Authorization, { formatToken } from "@/utils/auth";
-import { useUserStoreHook } from "@/store/modules/user";
+import { formatToken } from "@/utils/auth";
+// import { useUserStoreHook } from "@/store/modules/user";
 
 //www.axios-js.com/zh-cn/docs/#axios-request-config-1
 const defaultConfig: AxiosRequestConfig = {
@@ -29,6 +29,7 @@ const defaultConfig: AxiosRequestConfig = {
 };
 
 class PureHttp {
+  private _config: PureHttpRequestConfig;
   constructor() {
     this.httpInterceptorsRequest();
     this.httpInterceptorsResponse();
@@ -51,25 +52,28 @@ class PureHttp {
     });
   }
 
-  private setConfigHeaders(config: PureHttpRequestConfig, tokensData): void {
-    // const token = tokensData.tokens["refresh"].token;
-    config.headers["Authorization"] = formatToken(tokensData);
-  }
+  // private setConfigHeaders(config: PureHttpRequestConfig, tokensData): void {
+  //   const token = tokensData.tokens["refresh"].token;
+  //   config.headers["Authorization"] = formatToken(tokensData);
+  // }
 
   private handlePureHttpNotRefreshing(config: PureHttpRequestConfig) {
-    if (!PureHttp.isRefreshing) {
-      PureHttp.isRefreshing = true;
-      useUserStoreHook()
-        .handRefreshToken()
-        .then(res => {
-          this.setConfigHeaders(config, res);
-          // PureHttp.requests.forEach(cb => cb(token));
-          PureHttp.requests = [];
-        })
-        .finally(() => {
-          PureHttp.isRefreshing = false;
-        });
-    }
+    this._config = config;
+    // if (!PureHttp.isRefreshing) {
+    //   PureHttp.isRefreshing = true;
+    //   useUserStoreHook()
+    //     .handRefreshToken()
+    //     .then(res => {
+    //       this.setConfigHeaders(config, res);
+    //       PureHttp.requests = [];
+    //     })
+    //     .finally(() => {
+    //       PureHttp.isRefreshing = false;
+    //     });
+    // }
+    PureHttp.requests = [];
+    // this.setConfigHeaders(config, {});
+    PureHttp.isRefreshing = false;
   }
 
   private httpInterceptorsRequest(): void {
@@ -88,14 +92,16 @@ class PureHttp {
         return whiteList.some(v => config.url.indexOf(v) > -1)
           ? config
           : new Promise(resolve => {
-              const data = Authorization.getAuthToken();
-              if (data === undefined) {
-                this.handlePureHttpNotRefreshing(config);
-                resolve(PureHttp.retryOriginalRequest(config));
-              } else {
-                this.setConfigHeaders(config, data);
-                resolve(config);
-              }
+              // const data = Authorization.getAuthToken();
+              // This part is the one blocking if there isn't a token
+              // if (data === undefined) {
+              //   this.handlePureHttpNotRefreshing(config);
+              //   resolve(PureHttp.retryOriginalRequest(config));
+              // } else {
+              //   this.setConfigHeaders(config, data);
+              //   resolve(config);
+              // }
+              resolve(config);
             });
       },
       error => {
@@ -141,7 +147,6 @@ class PureHttp {
       ...param,
       ...axiosConfig
     } as PureHttpRequestConfig;
-
     return new Promise((resolve, reject) => {
       PureHttp.axiosInstance
         .request(config)

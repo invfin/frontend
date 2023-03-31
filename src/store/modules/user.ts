@@ -64,7 +64,6 @@ export const useUserStore = defineStore({
         return new Promise<RefreshTokenResult>((resolve, reject) => {
           refreshTokenApi({ username: this.username })
             .then(data => {
-              console.log(data);
               if (data.success) {
                 Authorization.setResponseTokens(data.data["tokens"]);
                 resolve(data);

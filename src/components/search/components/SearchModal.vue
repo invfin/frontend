@@ -44,13 +44,14 @@ watch(show, async val => {
   }
 });
 
-function requestSearch(data) {
-  return http.request<SearchResponse>("get", "/search", { data });
+async function requestSearch(data) {
+  return await http.get<SearchResponse, Promise<SearchResponse>>("/search", {
+    data
+  });
 }
 
 function search() {
-  const response = requestSearch(keyword.value);
-  response
+  requestSearch(keyword.value)
     .then(data => {
       resultOptions.value = data.data;
       if (resultOptions.value?.length > 0) {
