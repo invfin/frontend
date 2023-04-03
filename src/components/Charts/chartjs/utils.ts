@@ -1,4 +1,5 @@
 import { createColor } from "@/utils/general";
+import { StatementItem } from "@/api/company";
 
 import { ChartData, ChartInformation, ChartDataDataset } from "./types";
 import {
@@ -115,53 +116,46 @@ export default class BuildChartData {
     ];
   }
 
-  private static buildChartData(response): ChartData {
-    const labels = [];
-    const dataset = {
-      data: [],
-      backgroundColor: []
-    } as ChartDataDataset;
-    response.forEach(statementInfo => {
-      Object.keys(statementInfo).forEach(key => {
-        labels.push(key);
-        dataset.data.push(statementInfo[key]);
-        if (typeof dataset.backgroundColor !== "string") {
-          dataset.backgroundColor.push(createColor());
-        }
-      });
+  private static buildChartData(response: StatementItem): ChartData {
+    const datasets = [];
+    response.fields.forEach(statementInfo => {
+      const dataset = {
+        label: statementInfo.title,
+        data: statementInfo.values,
+        backgroundColor: createColor()
+      } as ChartDataDataset;
+      datasets.push(dataset);
     });
     return {
-      labels: labels,
-      datasets: [dataset]
+      labels: response.labels,
+      datasets: datasets
     } as ChartData;
   }
 
-  private static buildBarChartData(response): ChartData {
+  private static buildBarChartData(response: StatementItem): ChartData {
     // When using labels in a BarChart, the labels are the ones at the bottom
     // of the chart. And the label in datasets are the ones at the top.
     // The label in the datasets could be used to show each year.
     const labels = [];
-    const datasets = [];
-    response.forEach(statementInfo => {
-      const dataset = {
-        label: "",
-        data: [],
-        backgroundColor: ""
-      } as ChartDataDataset;
-      Object.keys(statementInfo).forEach(key => {
-        if (key != "year" && key != "is_ttm") {
-          if (key === "date") {
-            dataset.label = statementInfo[key];
-            dataset.backgroundColor = createColor();
-          } else {
-            if (!labels.includes(key)) {
-              labels.push(key);
-            }
-            dataset.data.push(statementInfo[key]);
-          }
+    const preDatasets = {};
+    response.fields.forEach(statementInfo => {
+      labels.push(statementInfo.title);
+      statementInfo.values.forEach((value, index) => {
+        const year = response.labels[index];
+        if (preDatasets[year] !== undefined) {
+          preDatasets[year].push(value);
+        } else {
+          preDatasets[year] = [value];
         }
       });
-      datasets.push(dataset);
+    });
+    const datasets = [];
+    Object.keys(preDatasets).forEach(key => {
+      datasets.push({
+        label: key,
+        data: preDatasets[key],
+        backgroundColor: createColor()
+      } as ChartDataDataset);
     });
     return {
       labels: labels,
@@ -171,7 +165,7 @@ export default class BuildChartData {
 
   private static createChart(
     chartTitle: string,
-    responseData: Array<any>,
+    responseData: StatementItem,
     buildChartMethod: Function
   ): ChartInformation {
     return {

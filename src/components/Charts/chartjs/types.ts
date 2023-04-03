@@ -21,8 +21,8 @@ export interface ChartInformation {
   chartData: ChartData;
 }
 
-export interface RawChartInformation {
+export interface RawChartInformation<T> {
   chartType: string;
   chartTitle: string;
-  responseData: Array<any>;
+  responseData: T.data;
 }

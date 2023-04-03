@@ -1,14 +1,22 @@
 import { http } from "@/utils/http";
 
-export interface StatementItem {
-  name: string;
+export interface StatementItemField {
+  title: string;
   url: string;
-  value: number;
+  percent: string;
+  short: string;
+  values: Array<number>;
+}
+
+export interface StatementItem {
+  currency?: string;
+  labels: Array<string>;
+  fields: Array<StatementItemField>;
 }
 
 export interface Statement {
   success: boolean;
-  data: Array<StatementItem>;
+  data: StatementItem;
 }
 
 export async function getIncomeStatement(ticker: string) {
