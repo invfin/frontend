@@ -24,7 +24,7 @@
   }
 
   .item-card {
-    @apply p-6 h-96 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700;
+    @apply mb-4 p-1 h-96 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700;
   }
 
   .chart-skeleton {

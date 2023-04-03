@@ -5,13 +5,14 @@ import BaseChart from "@/components/Charts/chartjs/BaseChart.vue";
 import { getIncomeStatement, Statement } from "@/api/company";
 import ChartSkeleton from "@/components/Skeletons/ChartSkeleton.vue";
 import { RawChartInformation } from "@/components/Charts/chartjs/types";
-// import statement from "@/components/Tables/Statement.vue";
+import FixedFirstRowColumnTable from "@/components/Tables/FixedFirstRowColumnTable.vue";
 
 const props = defineProps<{
   ticker: string;
 }>();
 
 const rawChartInformation = ref({} as RawChartInformation<Statement>);
+const tableInformation = ref({}); // TODO fix
 const loading = ref(true);
 const fetchIncomeStatement = () => {
   getIncomeStatement(props.ticker)
@@ -22,6 +23,7 @@ const fetchIncomeStatement = () => {
           chartTitle: "Income Statement",
           responseData: value.data
         } as RawChartInformation<Statement>;
+        tableInformation.value = value.data;
         loading.value = false;
       }
     })
@@ -36,4 +38,6 @@ fetchIncomeStatement();
 <template>
   <ChartSkeleton v-if="loading" />
   <BaseChart v-else :rawChartInformation="rawChartInformation" />
+  <ChartSkeleton v-if="loading" />
+  <FixedFirstRowColumnTable v-else :tableInformation="tableInformation" />
 </template>
