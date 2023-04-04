@@ -1,18 +1,14 @@
 <script lang="ts" setup>
+import { generateDataAndColumns } from "@/components/Tables/utils";
+
 const props = defineProps<{
   tableInformation: any;
 }>();
+const [data, columns] = generateDataAndColumns(props.tableInformation);
 </script>
 
 <template>
   <div class="item-card">
-    <el-table :data="props.tableInformation">
-      <el-table-column fixed prop="date" label="Date" width="150" />
-      <el-table-column prop="name" label="Name" width="120" />
-      <el-table-column prop="state" label="State" width="120" />
-      <el-table-column prop="city" label="City" width="320" />
-      <el-table-column prop="address" label="Address" width="600" />
-      <el-table-column prop="zip" label="Zip" width="120" />
-    </el-table>
+    <el-table-v2 :columns="columns" :data="data" :width="700" :height="400" />
   </div>
 </template>
