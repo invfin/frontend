@@ -19,9 +19,18 @@ devDependencies:
   '@types/node':
     specifier: ^18.17.3
     version: 18.17.3
+  autoprefixer:
+    specifier: ^10.4.14
+    version: 10.4.14(postcss@8.4.27)
   nuxt:
     specifier: ^3.6.5
     version: 3.6.5(@types/node@18.17.3)
+  postcss:
+    specifier: ^8.4.27
+    version: 8.4.27
+  tailwindcss:
+    specifier: ^3.3.3
+    version: 3.3.3
 
 packages:
 
