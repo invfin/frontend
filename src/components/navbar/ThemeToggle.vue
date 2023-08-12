@@ -26,7 +26,7 @@ onMounted(() => {
 
 <template>
     <button @click="toggle" id="theme-toggle" data-tooltip-target="tooltip-toggle" type="button"
-        class="text-gray-500 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+        class="text-white0 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
         <svg v-if="currentTheme === 'dark'" id="theme-toggle-dark-icon" class="w-5 h-5" fill="currentColor"
             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
@@ -39,7 +39,7 @@ onMounted(() => {
         </svg>
     </button>
     <div id="tooltip-toggle" role="tooltip"
-        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
+        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-black rounded-lg shadow-sm opacity-0 tooltip">
         Toggle dark mode
         <div class="tooltip-arrow" data-popper-arrow></div>
     </div>

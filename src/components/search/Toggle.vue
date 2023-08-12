@@ -1,7 +1,7 @@
 
 <template>
     <button data-modal-target="searchModal" data-modal-toggle="searchModal" type="button"
-        class="p-2 text-gray-500 rounded-lg hover:text-black hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
+        class="p-2 text-white0 rounded-lg hover:text-black hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
         <span class="sr-only">Search</span>
         <!-- Search icon -->
         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

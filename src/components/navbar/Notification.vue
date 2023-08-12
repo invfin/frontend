@@ -3,7 +3,7 @@
 
 <template>
     <button type="button" data-dropdown-toggle="notification-dropdown"
-        class="p-2 text-gray-500 rounded-lg hover:text-black hover:bg-gray-100 dark:text-white dark:hover:text-white dark:hover:bg-gray-700">
+        class="p-2 text-white0 rounded-lg hover:text-black hover:bg-gray-100 dark:text-white dark:hover:text-white dark:hover:bg-gray-700">
         <span class="sr-only">View notifications</span>
         <!-- Bell icon -->
         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -16,7 +16,7 @@
     <div class="z-20 z-50 hidden max-w-sm my-4 overflow-hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow-lg dark:divide-gray-600 dark:bg-gray-700"
         id="notification-dropdown">
         <div
-            class="block px-4 py-2 text-base font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-white">
+            class="block px-4 py-2 text-base font-medium text-center text-gray-700 bg-white dark:bg-gray-700 dark:text-white">
             Notifications
         </div>
         <div>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="w-full pl-3">
-                    <div class="text-gray-500 font-normal text-sm mb-1.5 dark:text-white">New message
+                    <div class="text-white0 font-normal text-sm mb-1.5 dark:text-white">New message
                         from <span class="font-semibold text-black dark:text-white">Bonnie Green</span>:
                         "Hey, what's up? All set for the presentation?"</div>
                     <div class="text-xs font-medium text-primary-700 dark:text-primary-400">a few moments
@@ -48,7 +48,7 @@
                 <div class="flex-shrink-0">
                     <img class="rounded-full w-11 h-11" src="/images/users/jese-leos.png" alt="Jese image">
                     <div
-                        class="absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-gray-900 border border-gray-700 rounded-full dark:border-gray-700">
+                        class="absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-black border border-gray-700 rounded-full dark:border-gray-700">
                         <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="w-full pl-3">
-                    <div class="text-gray-500 font-normal text-sm mb-1.5 dark:text-white"><span
+                    <div class="text-white0 font-normal text-sm mb-1.5 dark:text-white"><span
                             class="font-semibold text-black dark:text-white">Jese leos</span> and <span
                             class="font-medium text-black dark:text-white">5 others</span> started
                         following you.</div>
@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <div class="w-full pl-3">
-                    <div class="text-gray-500 font-normal text-sm mb-1.5 dark:text-white"><span
+                    <div class="text-white0 font-normal text-sm mb-1.5 dark:text-white"><span
                             class="font-semibold text-black dark:text-white">Joseph Mcfall</span> and
                         <span class="font-medium text-black dark:text-white">141 others</span> love your
                         story. See it and view more stories.
@@ -103,7 +103,7 @@
                     </div>
                 </div>
                 <div class="w-full pl-3">
-                    <div class="text-gray-500 font-normal text-sm mb-1.5 dark:text-white"><span
+                    <div class="text-white0 font-normal text-sm mb-1.5 dark:text-white"><span
                             class="font-semibold text-black dark:text-white">Leslie Livingston</span>
                         mentioned you in a comment: <span
                             class="font-medium text-primary-700 dark:text-primary-500">@bonnie.green</span>
@@ -125,7 +125,7 @@
                     </div>
                 </div>
                 <div class="w-full pl-3">
-                    <div class="text-gray-500 font-normal text-sm mb-1.5 dark:text-white"><span
+                    <div class="text-white0 font-normal text-sm mb-1.5 dark:text-white"><span
                             class="font-semibold text-black dark:text-white">Robert Brown</span> posted a
                         new video: Glassmorphism - learn how to implement the new design trend.</div>
                     <div class="text-xs font-medium text-primary-700 dark:text-primary-400">3 hours ago
@@ -134,7 +134,7 @@
             </a>
         </div>
         <a href="#"
-            class="block py-2 text-base font-normal text-center text-black bg-gray-50 hover:bg-gray-100 dark:bg-gray-700 dark:text-white dark:hover:underline">
+            class="block py-2 text-base font-normal text-center text-black bg-white hover:bg-gray-100 dark:bg-gray-700 dark:text-white dark:hover:underline">
             <div class="inline-flex items-center ">
                 <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>

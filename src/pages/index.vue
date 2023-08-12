@@ -7,7 +7,7 @@
                 <div class="flex items-center justify-between mb-4">
                     <div class="flex-shrink-0">
                         <span class="text-xl font-bold leading-none text-black sm:text-2xl dark:text-white">$45,385</span>
-                        <h3 class="text-base font-light text-gray-500 dark:text-white">Sales this week</h3>
+                        <h3 class="text-base font-light text-white0 dark:text-white">Sales this week</h3>
                     </div>
                     <div
                         class="flex items-center justify-end flex-1 text-base font-medium text-green-500 dark:text-green-400">
@@ -25,7 +25,7 @@
                     class="flex items-center justify-between pt-3 mt-4 border-t border-gray-200 sm:pt-6 dark:border-gray-700">
                     <div>
                         <button
-                            class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:text-black dark:text-white dark:hover:text-white"
+                            class="inline-flex items-center p-2 text-sm font-medium text-center text-white0 rounded-lg hover:text-black dark:text-white dark:hover:text-white"
                             type="button" data-dropdown-toggle="weekly-sales-dropdown">Last 7 days <svg class="w-4 h-4 ml-2"
                                 fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
@@ -90,7 +90,7 @@
             <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-black">
                 <h3 class="flex items-center mb-4 text-lg font-semibold text-black dark:text-white">Statistics this month
                     <button data-popover-target="popover-description" data-popover-placement="bottom-end" type="button"><svg
-                            class="w-4 h-4 ml-2 text-gray-400 hover:text-gray-500" aria-hidden="true" fill="currentColor"
+                            class="w-4 h-4 ml-2 text-gray-400 hover:text-white0" aria-hidden="true" fill="currentColor"
                             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
                                 d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
@@ -98,7 +98,7 @@
                         </svg><span class="sr-only">Show information</span></button>
                 </h3>
                 <div data-popover id="popover-description" role="tooltip"
-                    class="absolute z-10 invisible inline-block text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72 dark:bg-black dark:border-gray-600 dark:text-white">
+                    class="absolute z-10 invisible inline-block text-sm font-light text-white0 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72 dark:bg-black dark:border-gray-600 dark:text-white">
                     <div class="p-3 space-y-2">
                         <h3 class="font-semibold text-black dark:text-white">Statistics</h3>
                         <p>Statistics is a branch of applied mathematics that involves the collection, description,
@@ -117,24 +117,24 @@
                 <div class="sm:hidden">
                     <label for="tabs" class="sr-only">Select tab</label>
                     <select id="tabs"
-                        class="bg-gray-50 border-0 border-b border-gray-200 text-black text-sm rounded-t-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        class="bg-white border-0 border-b border-gray-200 text-black text-sm rounded-t-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         <option>Statistics</option>
                         <option>Services</option>
                         <option>FAQ</option>
                     </select>
                 </div>
-                <ul class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600 dark:text-white"
+                <ul class="hidden text-sm font-medium text-center text-white0 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600 dark:text-white"
                     id="fullWidthTab" data-tabs-toggle="#fullWidthTabContent" role="tablist">
                     <li class="w-full">
                         <button id="faq-tab" data-tabs-target="#faq" type="button" role="tab" aria-controls="faq"
                             aria-selected="true"
-                            class="inline-block w-full p-4 rounded-tl-lg bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600">Top
+                            class="inline-block w-full p-4 rounded-tl-lg bg-white hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600">Top
                             products</button>
                     </li>
                     <li class="w-full">
                         <button id="about-tab" data-tabs-target="#about" type="button" role="tab" aria-controls="about"
                             aria-selected="false"
-                            class="inline-block w-full p-4 rounded-tr-lg bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600">Top
+                            class="inline-block w-full p-4 rounded-tr-lg bg-white hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600">Top
                             Customers</button>
                     </li>
                 </ul>
@@ -159,7 +159,7 @@
                                                     </path>
                                                 </svg>
                                                 2.5%
-                                                <span class="ml-2 text-gray-500">vs last month</span>
+                                                <span class="ml-2 text-white0">vs last month</span>
                                             </div>
                                         </div>
                                     </div>
@@ -187,7 +187,7 @@
                                                     </path>
                                                 </svg>
                                                 12.5%
-                                                <span class="ml-2 text-gray-500">vs last month</span>
+                                                <span class="ml-2 text-white0">vs last month</span>
                                             </div>
                                         </div>
                                     </div>
@@ -215,7 +215,7 @@
                                                     </path>
                                                 </svg>
                                                 1.35%
-                                                <span class="ml-2 text-gray-500">vs last month</span>
+                                                <span class="ml-2 text-white0">vs last month</span>
                                             </div>
                                         </div>
                                     </div>
@@ -243,7 +243,7 @@
                                                     </path>
                                                 </svg>
                                                 12.5%
-                                                <span class="ml-2 text-gray-500">vs last month</span>
+                                                <span class="ml-2 text-white0">vs last month</span>
                                             </div>
                                         </div>
                                     </div>
@@ -271,7 +271,7 @@
                                                     </path>
                                                 </svg>
                                                 2%
-                                                <span class="ml-2 text-gray-500">vs last month</span>
+                                                <span class="ml-2 text-white0">vs last month</span>
                                             </div>
                                         </div>
                                     </div>
@@ -295,7 +295,7 @@
                                         <p class="font-medium text-black truncate dark:text-white">
                                             Neil Sims
                                         </p>
-                                        <p class="text-sm text-gray-500 truncate dark:text-white">
+                                        <p class="text-sm text-white0 truncate dark:text-white">
                                             email@flowbite.com
                                         </p>
                                     </div>
@@ -315,7 +315,7 @@
                                         <p class="font-medium text-black truncate dark:text-white">
                                             Bonnie Green
                                         </p>
-                                        <p class="text-sm text-gray-500 truncate dark:text-white">
+                                        <p class="text-sm text-white0 truncate dark:text-white">
                                             email@flowbite.com
                                         </p>
                                     </div>
@@ -335,7 +335,7 @@
                                         <p class="font-medium text-black truncate dark:text-white">
                                             Michael Gough
                                         </p>
-                                        <p class="text-sm text-gray-500 truncate dark:text-white">
+                                        <p class="text-sm text-white0 truncate dark:text-white">
                                             email@flowbite.com
                                         </p>
                                     </div>
@@ -355,7 +355,7 @@
                                         <p class="font-medium text-black truncate dark:text-white">
                                             Thomes Lean
                                         </p>
-                                        <p class="text-sm text-gray-500 truncate dark:text-white">
+                                        <p class="text-sm text-white0 truncate dark:text-white">
                                             email@flowbite.com
                                         </p>
                                     </div>
@@ -375,7 +375,7 @@
                                         <p class="font-medium text-black truncate dark:text-white">
                                             Lana Byrd
                                         </p>
-                                        <p class="text-sm text-gray-500 truncate dark:text-white">
+                                        <p class="text-sm text-white0 truncate dark:text-white">
                                             email@flowbite.com
                                         </p>
                                     </div>
@@ -393,7 +393,7 @@
                     class="flex items-center justify-between pt-3 mt-5 border-t border-gray-200 sm:pt-6 dark:border-gray-700">
                     <div>
                         <button
-                            class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:text-black dark:text-white dark:hover:text-white"
+                            class="inline-flex items-center p-2 text-sm font-medium text-center text-white0 rounded-lg hover:text-black dark:text-white dark:hover:text-white"
                             type="button" data-dropdown-toggle="stats-dropdown">Last 7 days <svg class="w-4 h-4 ml-2"
                                 fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
@@ -459,9 +459,9 @@
             <div
                 class="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700 sm:p-6 dark:bg-black">
                 <div class="w-full">
-                    <h3 class="text-base font-normal text-gray-500 dark:text-white">New products</h3>
+                    <h3 class="text-base font-normal text-white0 dark:text-white">New products</h3>
                     <span class="text-2xl font-bold leading-none text-black sm:text-3xl dark:text-white">2,340</span>
-                    <p class="flex items-center text-base font-normal text-gray-500 dark:text-white">
+                    <p class="flex items-center text-base font-normal text-white0 dark:text-white">
                         <span class="flex items-center mr-1.5 text-sm text-green-500 dark:text-green-400">
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
                                 aria-hidden="true">
@@ -479,9 +479,9 @@
             <div
                 class="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700 sm:p-6 dark:bg-black">
                 <div class="w-full">
-                    <h3 class="text-base font-normal text-gray-500 dark:text-white">Users</h3>
+                    <h3 class="text-base font-normal text-white0 dark:text-white">Users</h3>
                     <span class="text-2xl font-bold leading-none text-black sm:text-3xl dark:text-white">2,340</span>
-                    <p class="flex items-center text-base font-normal text-gray-500 dark:text-white">
+                    <p class="flex items-center text-base font-normal text-white0 dark:text-white">
                         <span class="flex items-center mr-1.5 text-sm text-green-500 dark:text-green-400">
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
                                 aria-hidden="true">
@@ -498,7 +498,7 @@
             </div>
             <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-black">
                 <div class="w-full">
-                    <h3 class="mb-2 text-base font-normal text-gray-500 dark:text-white">Audience by age</h3>
+                    <h3 class="mb-2 text-base font-normal text-white0 dark:text-white">Audience by age</h3>
                     <div class="flex items-center mb-2">
                         <div class="w-16 text-sm font-medium dark:text-white">50+</div>
                         <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
@@ -551,7 +551,7 @@
                                         title="February 8th, 2022"> 01/03/2023 4:15 PM</time></p>
                             </div>
                             <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1"
-                                class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-black dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
+                                class="inline-flex items-center p-2 text-sm font-medium text-center text-white0 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-white dark:bg-black dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
                                 type="button">
                                 <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -611,7 +611,7 @@
                                         title="February 8th, 2022"> 01/03/2023 4:15 PM</time></p>
                             </div>
                             <button id="dropdownComment2Button" data-dropdown-toggle="dropdownComment2"
-                                class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-black dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
+                                class="inline-flex items-center p-2 text-sm font-medium text-center text-white0 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-white dark:bg-black dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
                                 type="button">
                                 <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -660,7 +660,7 @@
                                         d="M19.3349 17.7211C19.4393 19.8981 17.5271 20.7515 16.4979 20.3393C15.0113 19.7442 15.4102 18.7221 15.0276 16.6044C14.645 14.4868 13.1746 13.0164 10.9984 12.3691C12.5866 16.8395 10.1182 18.487 8.82428 18.7814C7.50287 19.0821 6.17511 18.7807 6.02334 15.9529C4.4817 17.4875 3.52734 19.6108 3.52734 21.9571C3.52734 22.2169 3.54358 22.4724 3.56617 22.7266C5.73323 24.8682 8.70993 26.1924 11.9979 26.1924C15.2859 26.1924 18.2626 24.8682 20.4297 22.7266C20.4523 22.4724 20.4685 22.2169 20.4685 21.9571C20.4685 20.4134 20.0563 18.967 19.3349 17.7211Z"
                                         fill="#FFCC4D" />
                                 </svg>
-                                <span class="text-sm font-medium text-gray-500 dark:text-white">14</span>
+                                <span class="text-sm font-medium text-white0 dark:text-white">14</span>
                             </button>
                             <button type="button"
                                 class="py-1.5 px-3 inline-flex items-center rounded-lg bg-gray-100 hover:bg-gray-200 dark:hover:bg-gray-600 dark:bg-gray-700">
@@ -682,7 +682,7 @@
                                         d="M19.3559 0C18.9875 0 18.6885 0.270983 18.6885 0.639413C18.6885 1.00784 18.9875 1.33489 19.3559 1.33489C21.3583 1.33489 22.6651 2.81996 22.6651 4.64408C22.6651 5.01251 22.9915 5.31153 23.3606 5.31153C23.7297 5.31153 24 5.01251 24 4.64408C24 2.0831 22.0257 0 19.3559 0Z"
                                         fill="#5DADEC"></path>
                                 </svg>
-                                <span class="text-sm font-medium text-gray-500 dark:text-white">8</span>
+                                <span class="text-sm font-medium text-white0 dark:text-white">8</span>
                             </button>
                             <button type="button"
                                 class="py-1.5 px-3 inline-flex items-center rounded-lg bg-gray-100 hover:bg-gray-200 dark:hover:bg-gray-600 dark:bg-gray-700">
@@ -734,7 +734,7 @@
                                         d="M5.00198 16.9668C5.55427 16.9668 6.002 16.5191 6.002 15.9668C6.002 15.4145 5.55427 14.9668 5.00198 14.9668C4.44968 14.9668 4.00195 15.4145 4.00195 15.9668C4.00195 16.5191 4.44968 16.9668 5.00198 16.9668Z"
                                         fill="#FFCC4D"></path>
                                 </svg>
-                                <span class="text-sm font-medium text-gray-500 dark:text-white">3</span>
+                                <span class="text-sm font-medium text-white0 dark:text-white">3</span>
                             </button>
                         </div>
                     </article>
@@ -750,7 +750,7 @@
                                         title="February 8th, 2022"> 01/03/2023 4:15 PM</time></p>
                             </div>
                             <button id="dropdownComment3Button" data-dropdown-toggle="dropdownComment3"
-                                class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-black dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
+                                class="inline-flex items-center p-2 text-sm font-medium text-center text-white0 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-white dark:bg-black dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
                                 type="button">
                                 <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -806,11 +806,11 @@
                                 </div>
                                 <div class="mr-4">
                                     <p class="text-sm font-semibold text-black dark:text-white">flowbite_offer_345"</p>
-                                    <p class="text-sm text-gray-500 dark:text-white">PDF, 2.3 MB</p>
+                                    <p class="text-sm text-white0 dark:text-white">PDF, 2.3 MB</p>
                                 </div>
                                 <div class="flex items-center ml-auto">
                                     <button type="button" class="p-2 rounded hover:bg-gray-100">
-                                        <svg class="w-5 h-5 text-gray-500 dark:text-white" fill="currentColor"
+                                        <svg class="w-5 h-5 text-white0 dark:text-white" fill="currentColor"
                                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                             <path clip-rule="evenodd" fill-rule="evenodd"
                                                 d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z">
@@ -819,7 +819,7 @@
                                         <span class="sr-only">Download</span>
                                     </button>
                                     <button type="button" class="p-2 rounded hover:bg-gray-100">
-                                        <svg class="w-5 h-5 text-gray-500 dark:text-white" fill="currentColor"
+                                        <svg class="w-5 h-5 text-white0 dark:text-white" fill="currentColor"
                                             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                             <path
                                                 d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z">
@@ -843,11 +843,11 @@
                                 </div>
                                 <div class="mr-4">
                                     <p class="text-sm font-semibold text-black dark:text-white">bergside_pitch"</p>
-                                    <p class="text-sm text-gray-500 dark:text-white">PPTX, 10.1 MB</p>
+                                    <p class="text-sm text-white0 dark:text-white">PPTX, 10.1 MB</p>
                                 </div>
                                 <div class="flex items-center ml-auto">
                                     <button type="button" class="p-2 rounded hover:bg-gray-100">
-                                        <svg class="w-5 h-5 text-gray-500 dark:text-white" fill="currentColor"
+                                        <svg class="w-5 h-5 text-white0 dark:text-white" fill="currentColor"
                                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                             <path clip-rule="evenodd" fill-rule="evenodd"
                                                 d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z">
@@ -856,7 +856,7 @@
                                         <span class="sr-only">Download</span>
                                     </button>
                                     <button type="button" class="p-2 rounded hover:bg-gray-100">
-                                        <svg class="w-5 h-5 text-gray-500 dark:text-white" fill="currentColor"
+                                        <svg class="w-5 h-5 text-white0 dark:text-white" fill="currentColor"
                                             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                             <path
                                                 d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z">
@@ -880,7 +880,7 @@
                                         title="February 8th, 2022"> 01/03/2023 4:15 PM</time></p>
                             </div>
                             <button id="dropdownComment4Button" data-dropdown-toggle="dropdownComment4"
-                                class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-black dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
+                                class="inline-flex items-center p-2 text-sm font-medium text-center text-white0 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-white dark:bg-black dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
                                 type="button">
                                 <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -928,7 +928,7 @@
                                         title="February 8th, 2022"> 01/03/2023 4:15 PM</time></p>
                             </div>
                             <button id="dropdownComment5Button" data-dropdown-toggle="dropdownComment5"
-                                class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-black dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
+                                class="inline-flex items-center p-2 text-sm font-medium text-center text-white0 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-white dark:bg-black dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
                                 type="button">
                                 <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -992,7 +992,7 @@
                             </svg>
                         </span>
                     </article>
-                    <div class="w-full border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
+                    <div class="w-full border border-gray-200 rounded-lg bg-white dark:bg-gray-700 dark:border-gray-600">
                         <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-black">
                             <label for="comment" class="sr-only">Write your message</label>
                             <textarea id="comment" rows="8"
@@ -1006,7 +1006,7 @@
                             </button>
                             <div class="flex pl-0 space-x-1 sm:pl-2">
                                 <button type="button"
-                                    class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-black hover:bg-gray-100 dark:text-white dark:hover:text-white dark:hover:bg-gray-600">
+                                    class="inline-flex justify-center p-2 text-white0 rounded cursor-pointer hover:text-black hover:bg-gray-100 dark:text-white dark:hover:text-white dark:hover:bg-gray-600">
                                     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"
@@ -1016,7 +1016,7 @@
                                     <span class="sr-only">Attach file</span>
                                 </button>
                                 <button type="button"
-                                    class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-black hover:bg-gray-100 dark:text-white dark:hover:text-white dark:hover:bg-gray-600">
+                                    class="inline-flex justify-center p-2 text-white0 rounded cursor-pointer hover:text-black hover:bg-gray-100 dark:text-white dark:hover:text-white dark:hover:bg-gray-600">
                                     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"
@@ -1026,7 +1026,7 @@
                                     <span class="sr-only">Set location</span>
                                 </button>
                                 <button type="button"
-                                    class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-black hover:bg-gray-100 dark:text-white dark:hover:text-white dark:hover:bg-gray-600">
+                                    class="inline-flex justify-center p-2 text-white0 rounded cursor-pointer hover:text-black hover:bg-gray-100 dark:text-white dark:hover:text-white dark:hover:bg-gray-600">
                                     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"
@@ -1046,10 +1046,10 @@
                     class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-black">
                     <div class="items-center justify-between pb-4 border-b border-gray-200 sm:flex dark:border-gray-700">
                         <div class="w-full mb-4 sm:mb-0">
-                            <h3 class="text-base font-normal text-gray-500 dark:text-white">Sales by category</h3>
+                            <h3 class="text-base font-normal text-white0 dark:text-white">Sales by category</h3>
                             <span class="text-2xl font-bold leading-none text-black sm:text-3xl dark:text-white">Desktop
                                 PC</span>
-                            <p class="flex items-center text-base font-normal text-gray-500 dark:text-white">
+                            <p class="flex items-center text-base font-normal text-white0 dark:text-white">
                                 <span class="flex items-center mr-1.5 text-sm text-green-500 dark:text-green-400">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1066,7 +1066,7 @@
                             <div date-rangepicker class="grid items-center grid-cols-2 gap-4">
                                 <div class="relative">
                                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                        <svg class="w-5 h-5 text-gray-500 dark:text-white" fill="currentColor"
+                                        <svg class="w-5 h-5 text-white0 dark:text-white" fill="currentColor"
                                             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                             <path
                                                 d="M5.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H6a.75.75 0 01-.75-.75V12zM6 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H6zM7.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H8a.75.75 0 01-.75-.75V12zM8 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H8zM9.25 10a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H10a.75.75 0 01-.75-.75V10zM10 11.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V12a.75.75 0 00-.75-.75H10zM9.25 14a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H10a.75.75 0 01-.75-.75V14zM12 9.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V10a.75.75 0 00-.75-.75H12zM11.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H12a.75.75 0 01-.75-.75V12zM12 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H12zM13.25 10a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H14a.75.75 0 01-.75-.75V10zM14 11.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V12a.75.75 0 00-.75-.75H14z">
@@ -1077,12 +1077,12 @@
                                         </svg>
                                     </div>
                                     <input name="start" type="text"
-                                        class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="From">
                                 </div>
                                 <div class="relative">
                                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                        <svg class="w-5 h-5 text-gray-500 dark:text-white" fill="currentColor"
+                                        <svg class="w-5 h-5 text-white0 dark:text-white" fill="currentColor"
                                             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                             <path
                                                 d="M5.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H6a.75.75 0 01-.75-.75V12zM6 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H6zM7.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H8a.75.75 0 01-.75-.75V12zM8 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H8zM9.25 10a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H10a.75.75 0 01-.75-.75V10zM10 11.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V12a.75.75 0 00-.75-.75H10zM9.25 14a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H10a.75.75 0 01-.75-.75V14zM12 9.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V10a.75.75 0 00-.75-.75H12zM11.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H12a.75.75 0 01-.75-.75V12zM12 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H12zM13.25 10a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H14a.75.75 0 01-.75-.75V10zM14 11.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V12a.75.75 0 00-.75-.75H14z">
@@ -1093,7 +1093,7 @@
                                         </svg>
                                     </div>
                                     <input name="end" type="text"
-                                        class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="To">
                                 </div>
                             </div>
@@ -1105,7 +1105,7 @@
                         class="flex items-center justify-between pt-3 mt-4 border-t border-gray-200 sm:pt-6 dark:border-gray-700">
                         <div>
                             <button
-                                class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:text-black dark:text-white dark:hover:text-white"
+                                class="inline-flex items-center p-2 text-sm font-medium text-center text-white0 rounded-lg hover:text-black dark:text-white dark:hover:text-white"
                                 type="button" data-dropdown-toggle="sales-by-category-dropdown">Last 7 days <svg
                                     class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -1171,7 +1171,7 @@
                     class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-black">
                     <div class="flex items-center justify-between pb-4 mb-4 border-b border-gray-200 dark:border-gray-700">
                         <div>
-                            <h3 class="text-base font-normal text-gray-500 dark:text-white">Traffic by device</h3>
+                            <h3 class="text-base font-normal text-white0 dark:text-white">Traffic by device</h3>
                             <span
                                 class="text-2xl font-bold leading-none text-black sm:text-3xl dark:text-white">Desktop</span>
                         </div>
@@ -1189,17 +1189,17 @@
                     <!-- Card Footer -->
                     <div class="flex items-center justify-between pt-4 lg:justify-evenly sm:pt-6">
                         <div>
-                            <svg class="w-8 h-8 mb-1 text-gray-500 dark:text-white" fill="currentColor" viewBox="0 0 20 20"
+                            <svg class="w-8 h-8 mb-1 text-white0 dark:text-white" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <path clip-rule="evenodd" fill-rule="evenodd"
                                     d="M2 4.25A2.25 2.25 0 014.25 2h11.5A2.25 2.25 0 0118 4.25v8.5A2.25 2.25 0 0115.75 15h-3.105a3.501 3.501 0 001.1 1.677A.75.75 0 0113.26 18H6.74a.75.75 0 01-.484-1.323A3.501 3.501 0 007.355 15H4.25A2.25 2.25 0 012 12.75v-8.5zm1.5 0a.75.75 0 01.75-.75h11.5a.75.75 0 01.75.75v7.5a.75.75 0 01-.75.75H4.25a.75.75 0 01-.75-.75v-7.5z">
                                 </path>
                             </svg>
-                            <h3 class="text-gray-500 dark:text-white">Desktop</h3>
+                            <h3 class="text-white0 dark:text-white">Desktop</h3>
                             <h4 class="text-xl font-bold dark:text-white">
                                 234k
                             </h4>
-                            <p class="flex items-center text-sm text-gray-500 dark:text-white">
+                            <p class="flex items-center text-sm text-white0 dark:text-white">
                                 <span class="flex items-center mr-1.5 text-sm text-green-500 dark:text-green-400">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1213,18 +1213,18 @@
                             </p>
                         </div>
                         <div>
-                            <svg class="w-8 h-8 mb-1 text-gray-500 dark:text-white" fill="currentColor" viewBox="0 0 20 20"
+                            <svg class="w-8 h-8 mb-1 text-white0 dark:text-white" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <path d="M8 16.25a.75.75 0 01.75-.75h2.5a.75.75 0 010 1.5h-2.5a.75.75 0 01-.75-.75z"></path>
                                 <path clip-rule="evenodd" fill-rule="evenodd"
                                     d="M4 4a3 3 0 013-3h6a3 3 0 013 3v12a3 3 0 01-3 3H7a3 3 0 01-3-3V4zm4-1.5v.75c0 .414.336.75.75.75h2.5a.75.75 0 00.75-.75V2.5h1A1.5 1.5 0 0114.5 4v12a1.5 1.5 0 01-1.5 1.5H7A1.5 1.5 0 015.5 16V4A1.5 1.5 0 017 2.5h1z">
                                 </path>
                             </svg>
-                            <h3 class="text-gray-500 dark:text-white">Phone</h3>
+                            <h3 class="text-white0 dark:text-white">Phone</h3>
                             <h4 class="text-xl font-bold dark:text-white">
                                 94k
                             </h4>
-                            <p class="flex items-center text-sm text-gray-500 dark:text-white">
+                            <p class="flex items-center text-sm text-white0 dark:text-white">
                                 <span class="flex items-center mr-1.5 text-sm text-red-600 dark:text-red-500">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1238,17 +1238,17 @@
                             </p>
                         </div>
                         <div>
-                            <svg class="w-8 h-8 mb-1 text-gray-500 dark:text-white" fill="currentColor" viewBox="0 0 20 20"
+                            <svg class="w-8 h-8 mb-1 text-white0 dark:text-white" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <path clip-rule="evenodd" fill-rule="evenodd"
                                     d="M5 1a3 3 0 00-3 3v12a3 3 0 003 3h10a3 3 0 003-3V4a3 3 0 00-3-3H5zM3.5 4A1.5 1.5 0 015 2.5h10A1.5 1.5 0 0116.5 4v12a1.5 1.5 0 01-1.5 1.5H5A1.5 1.5 0 013.5 16V4zm5.25 11.5a.75.75 0 000 1.5h2.5a.75.75 0 000-1.5h-2.5z">
                                 </path>
                             </svg>
-                            <h3 class="text-gray-500 dark:text-white">Tablet</h3>
+                            <h3 class="text-white0 dark:text-white">Tablet</h3>
                             <h4 class="text-xl font-bold dark:text-white">
                                 16k
                             </h4>
-                            <p class="flex items-center text-sm text-gray-500 dark:text-white">
+                            <p class="flex items-center text-sm text-white0 dark:text-white">
                                 <span class="flex items-center mr-1.5 text-sm text-red-600 dark:text-red-500">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1282,10 +1282,10 @@
                         <div
                             class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-gray-700 dark:border-gray-800 dark:bg-gray-700">
                         </div>
-                        <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">April
+                        <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-white0">April
                             2023</time>
                         <h3 class="text-lg font-semibold text-black dark:text-white">Application UI design in Figma</h3>
-                        <p class="mb-4 text-base font-normal text-gray-500 dark:text-white">Get access to over 20+ pages
+                        <p class="mb-4 text-base font-normal text-white0 dark:text-white">Get access to over 20+ pages
                             including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce &
                             Marketing pages.</p>
                         <a href="#"
@@ -1301,10 +1301,10 @@
                         <div
                             class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-gray-700 dark:border-gray-800 dark:bg-gray-700">
                         </div>
-                        <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">March
+                        <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-white0">March
                             2023</time>
                         <h3 class="text-lg font-semibold text-black dark:text-white">Marketing UI code in Flowbite</h3>
-                        <p class="mb-4 text-base font-normal text-gray-500 dark:text-white">Get started with dozens of
+                        <p class="mb-4 text-base font-normal text-white0 dark:text-white">Get started with dozens of
                             web components and interactive elements built on top of Tailwind CSS.</p>
                         <a href="https://flowbite.com/blocks/"
                             class="inline-flex items-center text-xs font-medium hover:underline text-primary-700 sm:text-sm dark:text-primary-500">
@@ -1319,10 +1319,10 @@
                         <div
                             class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-gray-700 dark:border-gray-800 dark:bg-gray-700">
                         </div>
-                        <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">February
+                        <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-white0">February
                             2023</time>
                         <h3 class="text-lg font-semibold text-black dark:text-white">Marketing UI design in Figma</h3>
-                        <p class="text-base font-normal text-gray-500 dark:text-white">Get started with dozens of web
+                        <p class="text-base font-normal text-white0 dark:text-white">Get started with dozens of web
                             components and interactive elements built on top of Tailwind CSS.</p>
                     </li>
                 </ol>
@@ -1343,11 +1343,11 @@
                             </div>
                             <h3 class="mb-4 text-2xl font-medium text-black dark:text-white">You are going to grow by 44%
                                 next year</h3>
-                            <p class="mb-4 text-gray-500 dark:text-white">Get started with a free and open-source admin
+                            <p class="mb-4 text-white0 dark:text-white">Get started with a free and open-source admin
                                 dashboard layout built with Tailwind CSS and Flowbite featuring charts, widgets, CRUD
                                 layouts, authentication pages, and more</p>
                             <p class="mb-2 text-lg font-medium text-black dark:text-white">Key Takeaways:</p>
-                            <ul class="pl-4 mb-4 space-y-3 text-gray-500 list-disc dark:text-white">
+                            <ul class="pl-4 mb-4 space-y-3 text-white0 list-disc dark:text-white">
                                 <li>What are the new challenges in the delivery industry due to new consumer expectations.
                                 </li>
                                 <li>How the online delivery business model is diversifying to meet new demands.</li>
@@ -1378,13 +1378,13 @@
                                 </svg>
                                 Tips to grow
                             </div>
-                            <p class="mb-4 text-gray-500 dark:text-white">Marketing, sales & business growth for small
+                            <p class="mb-4 text-white0 dark:text-white">Marketing, sales & business growth for small
                                 business. Improve your marketing & promotion results - and grow your sales!</p>
                             <p class="mb-4 text-lg font-medium text-black dark:text-white">What you'll learn:</p>
-                            <ul role="list" class="pl-2 mb-4 space-y-3 text-gray-500 list-disc dark:text-white">
+                            <ul role="list" class="pl-2 mb-4 space-y-3 text-white0 list-disc dark:text-white">
                                 <li class="flex space-x-2">
                                     <!-- Icon -->
-                                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 dark:text-white" fill="currentColor"
+                                    <svg class="flex-shrink-0 w-5 h-5 text-white0 dark:text-white" fill="currentColor"
                                         viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                         <path clip-rule="evenodd" fill-rule="evenodd"
                                             d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z">
@@ -1394,7 +1394,7 @@
                                 </li>
                                 <li class="flex space-x-2">
                                     <!-- Icon -->
-                                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 dark:text-white" fill="currentColor"
+                                    <svg class="flex-shrink-0 w-5 h-5 text-white0 dark:text-white" fill="currentColor"
                                         viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                         <path clip-rule="evenodd" fill-rule="evenodd"
                                             d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z">
@@ -1405,7 +1405,7 @@
                                 </li>
                                 <li class="flex space-x-2">
                                     <!-- Icon -->
-                                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 dark:text-white" fill="currentColor"
+                                    <svg class="flex-shrink-0 w-5 h-5 text-white0 dark:text-white" fill="currentColor"
                                         viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                         <path clip-rule="evenodd" fill-rule="evenodd"
                                             d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z">
@@ -1415,7 +1415,7 @@
                                 </li>
                                 <li class="flex space-x-2">
                                     <!-- Icon -->
-                                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 dark:text-white" fill="currentColor"
+                                    <svg class="flex-shrink-0 w-5 h-5 text-white0 dark:text-white" fill="currentColor"
                                         viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                         <path clip-rule="evenodd" fill-rule="evenodd"
                                             d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z">
@@ -1425,7 +1425,7 @@
                                 </li>
                                 <li class="flex space-x-2">
                                     <!-- Icon -->
-                                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 dark:text-white" fill="currentColor"
+                                    <svg class="flex-shrink-0 w-5 h-5 text-white0 dark:text-white" fill="currentColor"
                                         viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                         <path clip-rule="evenodd" fill-rule="evenodd"
                                             d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z">
@@ -1436,7 +1436,7 @@
                                 </li>
                                 <li class="flex space-x-2">
                                     <!-- Icon -->
-                                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 dark:text-white" fill="currentColor"
+                                    <svg class="flex-shrink-0 w-5 h-5 text-white0 dark:text-white" fill="currentColor"
                                         viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                         <path clip-rule="evenodd" fill-rule="evenodd"
                                             d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z">
@@ -1468,11 +1468,11 @@
                             </div>
                             <h3 class="mb-4 text-2xl font-medium text-black dark:text-white">Go next level with Flowbite
                             </h3>
-                            <p class="text-gray-500 dark:text-white">Deliver great service experiences fast - without the
+                            <p class="text-white0 dark:text-white">Deliver great service experiences fast - without the
                                 complexity of traditional ITSM solutions.Accelerate critical development work, eliminate
                                 toil, and deploy changes with ease.</p>
                             <!-- List -->
-                            <ul role="list" class="pl-2 my-5 mb-4 space-y-3 text-gray-500 list-disc dark:text-white">
+                            <ul role="list" class="pl-2 my-5 mb-4 space-y-3 text-white0 list-disc dark:text-white">
                                 <li class="flex space-x-3">
                                     <!-- Icon -->
                                     <svg class="flex-shrink-0 w-5 h-5 text-purple-600 dark:text-purple-500"
@@ -1530,7 +1530,7 @@
                         <button type="button"
                             class="flex items-center justify-center h-full mr-4 cursor-pointer group focus:outline-none"
                             data-carousel-prev>
-                            <span class="text-gray-500 dark:text-white hover:text-gray-700 dark:hover:text-gray-200">
+                            <span class="text-white0 dark:text-white hover:text-gray-700 dark:hover:text-gray-200">
                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
@@ -1543,7 +1543,7 @@
                         <button type="button"
                             class="flex items-center justify-center h-full cursor-pointer group focus:outline-none"
                             data-carousel-next>
-                            <span class="text-gray-500 dark:text-white hover:text-gray-700 dark:hover:text-gray-200">
+                            <span class="text-white0 dark:text-white hover:text-gray-700 dark:hover:text-gray-200">
                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
@@ -1562,7 +1562,7 @@
             <div class="items-center justify-between lg:flex">
                 <div class="mb-4 lg:mb-0">
                     <h3 class="mb-2 text-xl font-bold text-black dark:text-white">Transactions</h3>
-                    <span class="text-base font-normal text-gray-500 dark:text-white">This is a list of latest
+                    <span class="text-base font-normal text-white0 dark:text-white">This is a list of latest
                         transactions</span>
                 </div>
                 <div class="items-center sm:flex">
@@ -1585,7 +1585,7 @@
                             <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
                                 <li class="flex items-center">
                                     <input id="apple" type="checkbox" value=""
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-white0" />
 
                                     <label for="apple" class="ml-2 text-sm font-medium text-black dark:text-gray-100">
                                         Completed (56)
@@ -1594,7 +1594,7 @@
 
                                 <li class="flex items-center">
                                     <input id="fitbit" type="checkbox" value="" checked
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-white0" />
 
                                     <label for="fitbit" class="ml-2 text-sm font-medium text-black dark:text-gray-100">
                                         Cancelled (56)
@@ -1603,7 +1603,7 @@
 
                                 <li class="flex items-center">
                                     <input id="dell" type="checkbox" value=""
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-white0" />
 
                                     <label for="dell" class="ml-2 text-sm font-medium text-black dark:text-gray-100">
                                         In progress (56)
@@ -1612,7 +1612,7 @@
 
                                 <li class="flex items-center">
                                     <input id="asus" type="checkbox" value="" checked
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-white0" />
 
                                     <label for="asus" class="ml-2 text-sm font-medium text-black dark:text-gray-100">
                                         In review (97)
@@ -1624,7 +1624,7 @@
                     <div date-rangepicker class="flex items-center space-x-4">
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <svg class="w-5 h-5 text-gray-500 dark:text-white" fill="currentColor" viewBox="0 0 20 20"
+                                <svg class="w-5 h-5 text-white0 dark:text-white" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path
                                         d="M5.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H6a.75.75 0 01-.75-.75V12zM6 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H6zM7.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H8a.75.75 0 01-.75-.75V12zM8 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H8zM9.25 10a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H10a.75.75 0 01-.75-.75V10zM10 11.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V12a.75.75 0 00-.75-.75H10zM9.25 14a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H10a.75.75 0 01-.75-.75V14zM12 9.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V10a.75.75 0 00-.75-.75H12zM11.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H12a.75.75 0 01-.75-.75V12zM12 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H12zM13.25 10a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H14a.75.75 0 01-.75-.75V10zM14 11.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V12a.75.75 0 00-.75-.75H14z">
@@ -1635,12 +1635,12 @@
                                 </svg>
                             </div>
                             <input name="start" type="text"
-                                class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 placeholder="From">
                         </div>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <svg class="w-5 h-5 text-gray-500 dark:text-white" fill="currentColor" viewBox="0 0 20 20"
+                                <svg class="w-5 h-5 text-white0 dark:text-white" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path
                                         d="M5.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H6a.75.75 0 01-.75-.75V12zM6 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H6zM7.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H8a.75.75 0 01-.75-.75V12zM8 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H8zM9.25 10a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H10a.75.75 0 01-.75-.75V10zM10 11.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V12a.75.75 0 00-.75-.75H10zM9.25 14a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H10a.75.75 0 01-.75-.75V14zM12 9.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V10a.75.75 0 00-.75-.75H12zM11.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H12a.75.75 0 01-.75-.75V12zM12 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H12zM13.25 10a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H14a.75.75 0 01-.75-.75V10zM14 11.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V12a.75.75 0 00-.75-.75H14z">
@@ -1651,7 +1651,7 @@
                                 </svg>
                             </div>
                             <input name="end" type="text"
-                                class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 placeholder="To">
                         </div>
                     </div>
@@ -1663,30 +1663,30 @@
                     <div class="inline-block min-w-full align-middle">
                         <div class="overflow-hidden shadow sm:rounded-lg">
                             <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
-                                <thead class="bg-gray-50 dark:bg-gray-700">
+                                <thead class="bg-white dark:bg-gray-700">
                                     <tr>
                                         <th scope="col"
-                                            class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                                            class="p-4 text-xs font-medium tracking-wider text-left text-white0 uppercase dark:text-white">
                                             Transaction
                                         </th>
                                         <th scope="col"
-                                            class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                                            class="p-4 text-xs font-medium tracking-wider text-left text-white0 uppercase dark:text-white">
                                             Date & Time
                                         </th>
                                         <th scope="col"
-                                            class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                                            class="p-4 text-xs font-medium tracking-wider text-left text-white0 uppercase dark:text-white">
                                             Amount
                                         </th>
                                         <th scope="col"
-                                            class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                                            class="p-4 text-xs font-medium tracking-wider text-left text-white0 uppercase dark:text-white">
                                             Reference number
                                         </th>
                                         <th scope="col"
-                                            class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                                            class="p-4 text-xs font-medium tracking-wider text-left text-white0 uppercase dark:text-white">
                                             Payment method
                                         </th>
                                         <th scope="col"
-                                            class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                                            class="p-4 text-xs font-medium tracking-wider text-left text-white0 uppercase dark:text-white">
                                             Status
                                         </th>
                                     </tr>
@@ -1696,17 +1696,17 @@
                                         <td class="p-4 text-sm font-normal text-black whitespace-nowrap dark:text-white">
                                             Payment from <span class="font-semibold">Bonnie Green</span>
                                         </td>
-                                        <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <td class="p-4 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             Apr 23 ,2021
                                         </td>
                                         <td class="p-4 text-sm font-semibold text-black whitespace-nowrap dark:text-white">
                                             $2300
                                         </td>
-                                        <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <td class="p-4 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             0047568936
                                         </td>
                                         <td
-                                            class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                            class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             <svg class="w-7 h-7" aria-hidden="true" enable-background="new 0 0 780 500"
                                                 viewBox="0 0 780 500" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -1733,21 +1733,21 @@
                                                 class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 border border-green-100 dark:border-green-500">Completed</span>
                                         </td>
                                     </tr>
-                                    <tr class="bg-gray-50 dark:bg-gray-700">
+                                    <tr class="bg-white dark:bg-gray-700">
                                         <td class="p-4 text-sm font-normal text-black whitespace-nowrap dark:text-white">
                                             Payment refund to <span class="font-semibold">#00910</span>
                                         </td>
-                                        <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <td class="p-4 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             Apr 23 ,2021
                                         </td>
                                         <td class="p-4 text-sm font-semibold text-black whitespace-nowrap dark:text-white">
                                             -$670
                                         </td>
-                                        <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <td class="p-4 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             0078568936
                                         </td>
                                         <td
-                                            class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                            class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 256 83">
                                                 <defs>
@@ -1772,17 +1772,17 @@
                                         <td class="p-4 text-sm font-normal text-black whitespace-nowrap dark:text-white">
                                             Payment failed from <span class="font-semibold">#087651</span>
                                         </td>
-                                        <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <td class="p-4 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             Apr 18 ,2021
                                         </td>
                                         <td class="p-4 text-sm font-semibold text-black whitespace-nowrap dark:text-white">
                                             $234
                                         </td>
-                                        <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <td class="p-4 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             0088568934
                                         </td>
                                         <td
-                                            class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                            class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 256 83">
                                                 <defs>
@@ -1803,21 +1803,21 @@
                                                 class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-red-100 dark:border-red-400 dark:bg-gray-700 dark:text-red-400">Cancelled</span>
                                         </td>
                                     </tr>
-                                    <tr class="bg-gray-50 dark:bg-gray-700">
+                                    <tr class="bg-white dark:bg-gray-700">
                                         <td class="p-4 text-sm font-normal text-black whitespace-nowrap dark:text-white">
                                             Payment from <span class="font-semibold">Lana Byrd</span>
                                         </td>
-                                        <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <td class="p-4 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             Apr 15 ,2021
                                         </td>
                                         <td class="p-4 text-sm font-semibold text-black whitespace-nowrap dark:text-white">
                                             $5000
                                         </td>
-                                        <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <td class="p-4 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             0018568911
                                         </td>
                                         <td
-                                            class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                            class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 256 83">
                                                 <defs>
@@ -1843,17 +1843,17 @@
                                         <td class="p-4 text-sm font-normal text-black whitespace-nowrap dark:text-white">
                                             Payment from <span class="font-semibold">Jese Leos</span>
                                         </td>
-                                        <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <td class="p-4 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             Apr 15 ,2021
                                         </td>
                                         <td class="p-4 text-sm font-semibold text-black whitespace-nowrap dark:text-white">
                                             $2300
                                         </td>
-                                        <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <td class="p-4 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             0045568939
                                         </td>
                                         <td
-                                            class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                            class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             <svg class="w-7 h-7" aria-hidden="true" enable-background="new 0 0 780 500"
                                                 viewBox="0 0 780 500" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -1880,21 +1880,21 @@
                                                 class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 border border-green-100 dark:border-green-500">Completed</span>
                                         </td>
                                     </tr>
-                                    <tr class="bg-gray-50 dark:bg-gray-700">
+                                    <tr class="bg-white dark:bg-gray-700">
                                         <td class="p-4 text-sm font-normal text-black whitespace-nowrap dark:text-white">
                                             Refund to <span class="font-semibold">THEMESBERG LLC</span>
                                         </td>
-                                        <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <td class="p-4 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             Apr 11 ,2021
                                         </td>
                                         <td class="p-4 text-sm font-semibold text-black whitespace-nowrap dark:text-white">
                                             -$560
                                         </td>
-                                        <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <td class="p-4 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             0031568935
                                         </td>
                                         <td
-                                            class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                            class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             <svg class="w-7 h-7" aria-hidden="true" enable-background="new 0 0 780 500"
                                                 viewBox="0 0 780 500" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -1927,17 +1927,17 @@
                                         <td class="p-4 text-sm font-normal text-black whitespace-nowrap dark:text-white">
                                             Payment from <span class="font-semibold">Lana Lysle</span>
                                         </td>
-                                        <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <td class="p-4 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             Apr 6 ,2021
                                         </td>
                                         <td class="p-4 text-sm font-semibold text-black whitespace-nowrap dark:text-white">
                                             $1437
                                         </td>
-                                        <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <td class="p-4 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             0023568934
                                         </td>
                                         <td
-                                            class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                            class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             <svg class="w-7 h-7" aria-hidden="true" enable-background="new 0 0 780 500"
                                                 viewBox="0 0 780 500" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -1965,21 +1965,21 @@
                                                 review</span>
                                         </td>
                                     </tr>
-                                    <tr class="bg-gray-50 dark:bg-gray-700">
+                                    <tr class="bg-white dark:bg-gray-700">
                                         <td class="p-4 text-sm font-normal text-black whitespace-nowrap dark:text-white">
                                             Payment to <span class="font-semibold">Joseph Mcfall</span>
                                         </td>
-                                        <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <td class="p-4 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             Apr 1 ,2021
                                         </td>
                                         <td class="p-4 text-sm font-semibold text-black whitespace-nowrap dark:text-white">
                                             $980
                                         </td>
-                                        <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <td class="p-4 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             0057568935
                                         </td>
                                         <td
-                                            class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                            class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 256 83">
                                                 <defs>
@@ -2004,17 +2004,17 @@
                                         <td class="p-4 text-sm font-normal text-black whitespace-nowrap dark:text-white">
                                             Payment from <span class="font-semibold">Alphabet LLC</span>
                                         </td>
-                                        <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <td class="p-4 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             Mar 23 ,2021
                                         </td>
                                         <td class="p-4 text-sm font-semibold text-black whitespace-nowrap dark:text-white">
                                             $11,436
                                         </td>
-                                        <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <td class="p-4 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             00836143841
                                         </td>
                                         <td
-                                            class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                            class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             <svg class="w-7 h-7" aria-hidden="true" enable-background="new 0 0 780 500"
                                                 viewBox="0 0 780 500" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -2042,21 +2042,21 @@
                                                 progress</span>
                                         </td>
                                     </tr>
-                                    <tr class="bg-gray-50 dark:bg-gray-700">
+                                    <tr class="bg-white dark:bg-gray-700">
                                         <td class="p-4 text-sm font-normal text-black whitespace-nowrap dark:text-white">
                                             Payment from <span class="font-semibold">Bonnie Green</span>
                                         </td>
-                                        <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <td class="p-4 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             Mar 23 ,2021
                                         </td>
                                         <td class="p-4 text-sm font-semibold text-black whitespace-nowrap dark:text-white">
                                             $560
                                         </td>
-                                        <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <td class="p-4 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             0031568935
                                         </td>
                                         <td
-                                            class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                            class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-white0 whitespace-nowrap dark:text-white">
                                             <svg class="w-7 h-7" aria-hidden="true" enable-background="new 0 0 780 500"
                                                 viewBox="0 0 780 500" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -2093,7 +2093,7 @@
             <div class="flex items-center justify-between pt-3 sm:pt-6">
                 <div>
                     <button
-                        class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:text-black dark:text-white dark:hover:text-white"
+                        class="inline-flex items-center p-2 text-sm font-medium text-center text-white0 rounded-lg hover:text-black dark:text-white dark:hover:text-white"
                         type="button" data-dropdown-toggle="transactions-dropdown">Last 7 days <svg class="w-4 h-4 ml-2"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
