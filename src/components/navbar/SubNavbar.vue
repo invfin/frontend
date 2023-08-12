@@ -1,5 +1,6 @@
 <template>
-    <nav class="bg-white border border-gray-200 dark:border-gray-700 dark:bg-black fixed z-30 overflow-x-scroll w-[104rem]">
+    <nav
+        class="bg-white border-t border-b border-gray-200 dark:border-gray-700 dark:bg-black fixed z-30 overflow-x-scroll w-[104rem]">
         <div class="max-w-screen-xl px-4 py-3">
             <div class="flex items-center ">
                 <ul class="flex flex-row font-medium mt-0 mr-6 space-x-8 text-sm">

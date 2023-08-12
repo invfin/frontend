@@ -21,6 +21,5 @@ defineProps<{
                 clip-rule="evenodd"></path>
         </svg>
         <span class="ml-3" sidebar-toggle-item>{{ title }}</span>
-
     </NuxtLink>
 </template>

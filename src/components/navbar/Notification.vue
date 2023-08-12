@@ -13,7 +13,7 @@
         </svg>
     </button>
     <!-- Dropdown menu -->
-    <div class="z-20 z-50 hidden max-w-sm my-4 overflow-hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow-lg dark:divide-gray-600 dark:bg-gray-700"
+    <div class="z-50 hidden max-w-sm my-4 overflow-hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow-lg dark:divide-gray-600 dark:bg-gray-700"
         id="notification-dropdown">
         <div
             class="block px-4 py-2 text-base font-medium text-center text-gray-700 bg-white dark:bg-gray-700 dark:text-white">
