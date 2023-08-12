@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { EntryOption } from "../types/index";
+
 defineProps<{
     title: string
     entries: Array<EntryOption>

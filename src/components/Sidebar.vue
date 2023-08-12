@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import { EntryOption } from "./types/index";
 
 const entriesFirst = [
     { title: "SubOne", path: "/" },
     { title: "SubTwo", path: "/" }
-];
+] as EntryOption[];
 
 </script>
 
@@ -28,7 +29,7 @@ const entriesFirst = [
                             </a>
                         </li>
                         <li>
-                            <SidebarDropdownEntry title="My super first title" entries={{entriesFirst}} />
+                            <SidebarDropdownEntry title="My super first title" :entries=entriesFirst />
                         </li>
                     </ul>
                     <div class="pt-2 space-y-2">
