@@ -4,9 +4,15 @@ import { SimpleCompnay } from "../types/index";
 defineProps<{
     company: SimpleCompnay
 }>()
+
+function path(company: SimpleCompnay) {
+    return `/companies/${company.ticker}`
+}
+
 </script>
 <template>
-    <NuxtLink to="#" class="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 mb-4">
+    <NuxtLink :to=path(company)
+        class="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 mb-4">
 
         <div class="sm:flex sm:justify-between sm:gap-4">
             <div>

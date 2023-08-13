@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .common-colors {
+        @apply border-black bg-white dark:border-white dark:bg-black;
+    }
+
+    .common-border {
+        @apply border common-colors;
+    }
+
+    .widget-common-style {
+        @apply common-border rounded-lg;
+    }
+}

@@ -7,3 +7,5 @@
 - [ ] Add budget management
 - [ ] Add roboadvisor
 - [ ] Add terms correction
+- [ ] Add stores to store the companies/terms/questiosn visited
+- [ ] Make that the pages are also loaded when going stright to the link
