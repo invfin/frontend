@@ -20,10 +20,9 @@ const menus = [
 
 <template>
     <aside id="sidebar"
-        class="fixed top-0 left-0 z-20 flex flex-col flex-shrink-0 hidden w-64 h-full pt-16 font-normal duration-75 lg:flex transition-width"
+        class="fixed top-0 left-0 z-20 flex flex-col flex-shrink-0 hidden w-64 lg:w-64 h-full pt-16 font-normal duration-75 lg:flex transition-width"
         aria-label="Sidebar">
-        <div
-            class="relative flex flex-col flex-1 min-h-0 pt-0 border-r common-colors">
+        <div class="relative flex flex-col flex-1 min-h-0 pt-0 border-r common-colors">
             <div class="flex flex-col flex-1 pt-5 pb-4 overflow-y-auto">
                 <div class="flex-1 px-3 space-y-1 divide-y divide-black dark:divide-white">
                     <ul class="pb-2 space-y-2">
@@ -33,7 +32,7 @@ const menus = [
                     </ul>
                     <div class="pt-2 space-y-2">
                         <div
-                            class="flex items-center p-2 text-base text-black rounded-lg hover:bg-gray-100 group dark:text-white dark:hover:bg-gray-700">
+                            class="hiddeWithSidebar flex items-center p-2 text-base text-black rounded-lg hover:bg-gray-100 group dark:text-white dark:hover:bg-gray-700">
                             <span class="ml-3" sidebar-toggle-item>Subscripciones</span>
                         </div>
                         <SidebarEntry title="Escritores" path="/escritores" />

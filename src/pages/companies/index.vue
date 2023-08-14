@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { CompaniesListResult, SimpleCompnay } from '@/components/types/index';
+import { CompaniesListResult, SimpleCompnay } from '@/types/index';
 
 useSeoMeta({
     title: 'Companies',
@@ -11,11 +11,14 @@ useSeoMeta({
     twitterCard: 'summary_large_image',
 })
 
-const offset = ref(50)
-const companies = ref([] as SimpleCompnay[])
+const offset = ref(50);
+const companies = ref([] as SimpleCompnay[]);
+const filters = ({ hey: "hey" });
 
 const { data, error, execute, refresh } = await useFetch("https://example.com:8000/api/v1/companies/", {
     query: { limit: 50, offset: offset },
+    server: false,
+    lazy: true,
     onResponse({ request, response, options }) {
         // TODO: handle end of list
         let result = response._data as CompaniesListResult;
@@ -42,9 +45,10 @@ function handleScroll() {
 
 <template>
     <div>
-        <!-- TODO: add filter -->
-        <h2>Add here more elaborated filter</h2>
-        <CompaniesListEntry v-for="company in companies" :company="company" />
+        <CompaniesFilters :modelValue="filters" class="mb-4 mt-4" />
+        <div class="grid grid-cols-3 gap-4 mt-4">
+            <CompaniesListEntry v-for="company in companies" :company="company" />
+        </div>
     </div>
 </template>
   

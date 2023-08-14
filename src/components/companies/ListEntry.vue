@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SimpleCompnay } from "../types/index";
+import { SimpleCompnay } from "@/types/index";
 
 defineProps<{
     company: SimpleCompnay
@@ -12,7 +12,7 @@ function path(company: SimpleCompnay) {
 </script>
 <template>
     <NuxtLink :to=path(company)
-        class="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 mb-4">
+        class="relative block overflow-hidden rounded-lg border common-colors p-4 sm:p-6 lg:p-8 mb-4">
 
         <div class="sm:flex sm:justify-between sm:gap-4">
             <div>

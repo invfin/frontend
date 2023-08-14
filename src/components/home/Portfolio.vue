@@ -1,6 +1,6 @@
 <script setup lang="ts">
-let isLogged = false;
-let isFull = false;
+const user = useUser()
+
 </script>
 
 <template>
@@ -22,7 +22,8 @@ let isFull = false;
                 </div>
             </div>
         </div>
-        <!-- Table -->
+        <HomePortfolioFull v-if="user.loged && user.isFull" />
+        <HomePortfolioEmpty v-else />
 
 
     </div>
