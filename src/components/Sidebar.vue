@@ -30,7 +30,7 @@ const menus = [
                             <SidebarEntry :title=menu.title :path=menu.path />
                         </li>
                     </ul>
-                    <div class="pt-2 space-y-2">
+                    <!-- <div class="pt-2 space-y-2">
                         <div
                             class="hiddeWithSidebar flex items-center p-2 text-base text-black rounded-lg hover:bg-gray-100 group dark:text-white dark:hover:bg-gray-700">
                             <span class="ml-3" sidebar-toggle-item>Subscripciones</span>
@@ -38,7 +38,7 @@ const menus = [
                         <SidebarEntry title="Escritores" path="/escritores" />
                         <SidebarEntry title="Empresas" path="/empresas" />
 
-                    </div>
+                    </div> -->
 
                 </div>
                 <!-- <SidebarAnnouncement /> -->

@@ -5,3 +5,5 @@ export const useUser = () => useState('user', () => ({
   loged: true,
   isFull: false
 }));
+
+export const useVisits = () => useState('visits', () => []);

@@ -41,19 +41,6 @@ function handleScroll() {
     }
 }
 
-const s = ref(50);
-const financialRatios = ref([
-    { label: 'Current Ratio', value: "ref('')" },
-    { label: 'Debt-to-Equity Ratio', value: "dfgdf')" },
-    { label: 'Return on Assets (ROA)', value: "refghg('fgh')" },
-    { label: 'Return on Equity (ROE)', value: 456 },
-    { label: 'Earnings Per Share (EPS)', value: 456 },
-    { label: 'Price-to-Earnings Ratio (P/E)', value: "111" },
-    { label: 'Gross Margin', value: 389 },
-    { label: 'Operating Margin', value: "ghgf" },
-    { label: 'Net Profit Margin', value: "ref('')" },
-    // Add more ratios as needed
-]);
 </script>
 
 <template>
