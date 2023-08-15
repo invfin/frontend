@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue';
 import { CompaniesListResult, SimpleCompnay } from '@/types/index';
 
 useSeoMeta({
@@ -13,7 +13,7 @@ useSeoMeta({
 
 const offset = ref(50);
 const companies = ref([] as SimpleCompnay[]);
-const filters = ({ hey: "hey" });
+const filters = ref({});
 
 const { data, error, execute, refresh } = await useFetch("https://example.com:8000/api/v1/companies/", {
     query: { limit: 50, offset: offset },
@@ -41,6 +41,19 @@ function handleScroll() {
     }
 }
 
+const s = ref(50);
+const financialRatios = ref([
+    { label: 'Current Ratio', value: "ref('')" },
+    { label: 'Debt-to-Equity Ratio', value: "dfgdf')" },
+    { label: 'Return on Assets (ROA)', value: "refghg('fgh')" },
+    { label: 'Return on Equity (ROE)', value: 456 },
+    { label: 'Earnings Per Share (EPS)', value: 456 },
+    { label: 'Price-to-Earnings Ratio (P/E)', value: "111" },
+    { label: 'Gross Margin', value: 389 },
+    { label: 'Operating Margin', value: "ghgf" },
+    { label: 'Net Profit Margin', value: "ref('')" },
+    // Add more ratios as needed
+]);
 </script>
 
 <template>
@@ -49,6 +62,7 @@ function handleScroll() {
         <div class="grid grid-cols-3 gap-4 mt-4">
             <CompaniesListEntry v-for="company in companies" :company="company" />
         </div>
+        <CompaniesFiltersModal :modelValue="filters" />
     </div>
 </template>
   

@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer components {
+    .common-text {
+        @apply text-black dark:text-white
+    }
     .common-colors {
         @apply border-black bg-white dark:border-white dark:bg-black;
     }
@@ -12,6 +15,17 @@
     }
 
     .widget-common-style {
-        @apply common-border rounded-lg;
+        @apply common-border common-text rounded-lg;
     }
+
+    
 }
+@layer base {
+        input[type='number']::-webkit-outer-spin-button,
+        input[type='number']::-webkit-inner-spin-button,
+        input[type='number'] {
+          -webkit-appearance: none;
+          margin: 0;
+          -moz-appearance: textfield !important;
+        }
+     }

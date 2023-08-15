@@ -3,7 +3,7 @@ import { defineNuxtConfig } from 'nuxt/config';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/i18n'],
   srcDir: 'src/',
   css: [
     '~/assets/css/main.css',
@@ -17,9 +17,14 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  i18n: {
+    /* module options */
+  },
   app: {
     head: {
-      bodyAttrs: { class: "dark" }
+      bodyAttrs: { class: "dark" },
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
     }
   },
   runtimeConfig: {
