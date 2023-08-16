@@ -1,6 +1,25 @@
+<script setup>
+import { Modal } from 'flowbite';
+
+let modal = ref(null);
+
+onMounted(() => {
+    const $targetEl = document.getElementById('searchModal');
+
+    // options with default values
+    const options = {
+        backdropClasses: '',
+        backdrop: 'dynamic',
+        closable: true
+    };
+    modal.value = new Modal($targetEl, options);
+});
+
+
+</script>
 
 <template>
-    <button data-modal-target="searchModal" data-modal-toggle="searchModal" type="button"
+    <button @click="modal.show();" type="button"
         class="p-2 text-white0 rounded-lg hover:text-black hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
         <span class="sr-only">Search</span>
         <!-- Search icon -->

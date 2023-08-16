@@ -7,7 +7,7 @@
         @apply text-black dark:text-white
     }
     .common-colors {
-        @apply border-black bg-white dark:border-white dark:bg-black;
+        @apply border-black bg-white dark:border-white dark:bg-black common-text;
     }
 
     .common-border {
@@ -15,7 +15,7 @@
     }
 
     .widget-common-style {
-        @apply common-border common-text rounded-lg;
+        @apply common-border rounded-lg;
     }
 
     

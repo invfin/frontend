@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { EntryOption } from "./types/index";
+import { EntryOption } from "@/types/index";
 
 const menus = [
     { title: "Inicio", path: "/" },
@@ -12,7 +12,7 @@ const menus = [
 
     { title: "Roboadvisor", path: "/roboadvisors" },
 
-    { title: "Super Inversores", path: "/super-inversores" },
+    { title: "Super Inversores", path: "/superinvestors" },
 
 ] as EntryOption[];
 

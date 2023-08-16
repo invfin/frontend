@@ -15,7 +15,7 @@ const offset = ref(50);
 const companies = ref([] as SimpleCompnay[]);
 const filters = ref({});
 
-const { data, error, execute, refresh } = await useFetch("https://example.com:8000/api/v1/companies/", {
+const { pending, data, error, execute, refresh } = await useFetch("https://example.com:8000/api/v1/companies/", {
     query: { limit: 50, offset: offset },
     server: false,
     lazy: true,
@@ -47,7 +47,16 @@ function handleScroll() {
     <div>
         <CompaniesFilters :modelValue="filters" class="mb-4 mt-4" />
         <div class="grid grid-cols-3 gap-4 mt-4">
-            <CompaniesListEntry v-for="company in companies" :company="company" />
+            <!-- TODO: improve skeleton -->
+            <div v-if="pending" v-for="_ in [0, 1, 2, 3, 4, 5]" class="
+            relative block 
+            overflow-hidden 
+            rounded-lg border 
+            common-colors p-4 sm:p-6 lg:p-8 mb-4">
+                <GeneralSkeleton />
+            </div>
+
+            <CompaniesListEntry v-else v-for="company in companies" :company="company" />
         </div>
         <CompaniesFiltersModal :modelValue="filters" />
     </div>

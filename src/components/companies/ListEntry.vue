@@ -16,11 +16,11 @@ function path(company: SimpleCompnay) {
 
         <div class="sm:flex sm:justify-between sm:gap-4">
             <div>
-                <h3 class="text-lg font-bold text-gray-900 sm:text-xl">
+                <h3 class="text-lg font-bold common-colors sm:text-xl">
                     {{ company.name }}
                 </h3>
 
-                <p class="mt-1 text-xs font-medium text-gray-600">{{ company.ticker }}</p>
+                <p class="mt-1 text-xs font-medium common-colors">{{ company.ticker }}</p>
             </div>
 
             <div class="hidden sm:block sm:shrink-0">
@@ -29,7 +29,7 @@ function path(company: SimpleCompnay) {
         </div>
 
         <div class="mt-4">
-            <p class="max-w-[40ch] text-sm text-gray-500">
+            <p class="max-w-[40ch] text-sm common-colors">
                 {{ company.description }}
             </p>
         </div>
@@ -37,12 +37,12 @@ function path(company: SimpleCompnay) {
         <dl class="mt-6 flex gap-4 sm:gap-6">
             <div class="flex flex-col-reverse">
                 <dt class="text-sm font-medium text-gray-600">Published</dt>
-                <dd class="text-xs text-gray-500">31st June, 2021</dd>
+                <dd class="text-xs common-colors">31st June, 2021</dd>
             </div>
 
             <div class="flex flex-col-reverse">
                 <dt class="text-sm font-medium text-gray-600">Reading time</dt>
-                <dd class="text-xs text-gray-500">3 minute</dd>
+                <dd class="text-xs common-colors">3 minute</dd>
             </div>
         </dl>
     </NuxtLink>
