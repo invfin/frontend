@@ -3,6 +3,7 @@ export const useUser = () => useState('user', () => ({
   name: 'Michael',
   profile: '...',
   loged: true,
+  hasFavs: false,
   isFull: false
 }));
 

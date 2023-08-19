@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
 import { CompaniesListResult, SimpleCompnay } from '@/types/index';
 
 useSeoMeta({
@@ -11,18 +10,21 @@ useSeoMeta({
     twitterCard: 'summary_large_image',
 })
 
-const offset = ref(50);
-const companies = ref([] as SimpleCompnay[]);
+const offset = ref(0);
+const entries = ref([] as SimpleCompnay[]);
 const filters = ref({});
+const firstRequest = ref(true);
+const query = ref({ limit: 50, offset: offset });
 
 const { pending, data, error, execute, refresh } = await useFetch("https://example.com:8000/api/v1/companies/", {
-    query: { limit: 50, offset: offset },
+    query: query,
     server: false,
     lazy: true,
     onResponse({ request, response, options }) {
         // TODO: handle end of list
         let result = response._data as CompaniesListResult;
-        companies.value.push(...result.results)
+        entries.value.push(...result.results)
+        firstRequest.value = false;
     },
 })
 
@@ -41,14 +43,29 @@ function handleScroll() {
     }
 }
 
+function handleFilters() {
+    const mergedObject = {
+        ...{ limit: 50, offset: offset.value },
+        ...Object.keys(filters.value).reduce((acc, key) => {
+            if (filters.value[key] !== '') {
+                acc[key] = filters.value[key];
+            }
+            return acc;
+        }, {})
+    };
+    query.value = mergedObject;
+    execute();
+    //TODO: handle the results on the backend
+}
+
 </script>
 
 <template>
     <div>
-        <CompaniesFilters :modelValue="filters" class="mb-4 mt-4" />
+        <CompaniesFilters v-model:modelValue="filters" class="mb-4 mt-4" @update:modelValue="handleFilters" />
         <div class="grid grid-cols-3 gap-4 mt-4">
             <!-- TODO: improve skeleton -->
-            <div v-if="pending" v-for="_ in [0, 1, 2, 3, 4, 5]" class="
+            <div v-if="pending && firstRequest" v-for="_ in [0, 1, 2, 3, 4, 5]" class="
             relative block 
             overflow-hidden 
             rounded-lg border 
@@ -56,9 +73,9 @@ function handleScroll() {
                 <GeneralSkeleton />
             </div>
 
-            <CompaniesListEntry v-else v-for="company in companies" :company="company" />
+            <CompaniesEntry v-else v-for="entry in entries" :entry="entry" />
         </div>
-        <CompaniesFiltersModal :modelValue="filters" />
+        <CompaniesFiltersModal v-model:modelValue="filters" @update:modelValue="handleFilters" />
     </div>
 </template>
   

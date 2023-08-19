@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 
 
 defineProps(['value']);
@@ -85,4 +84,5 @@ function emitFilterValue() {
         @input="emitFilterValue" />
     </div>
     <input v-else class="widget-common-style" type="number" v-model="selectedValue" @input="emitFilterValue" />
-</div></template>
+  </div>
+</template>

@@ -2,35 +2,34 @@
 import { SimpleCompnay } from "@/types/index";
 
 defineProps<{
-    company: SimpleCompnay
+    entry: SimpleCompnay
 }>()
 
-function path(company: SimpleCompnay) {
-    return `/companies/${company.ticker}`
+function path(entry: SimpleCompnay) {
+    return `/companies/${entry.ticker}`
 }
 
 </script>
 <template>
-    <NuxtLink :to=path(company)
-        class="relative block overflow-hidden rounded-lg border common-colors p-4 sm:p-6 lg:p-8 mb-4">
+    <NuxtLink :to=path(entry) class="relative block overflow-hidden rounded-lg border common-colors p-4 sm:p-6 lg:p-8 mb-4">
 
         <div class="sm:flex sm:justify-between sm:gap-4">
             <div>
                 <h3 class="text-lg font-bold common-colors sm:text-xl">
-                    {{ company.name }}
+                    {{ entry.name }}
                 </h3>
 
-                <p class="mt-1 text-xs font-medium common-colors">{{ company.ticker }}</p>
+                <p class="mt-1 text-xs font-medium common-colors">{{ entry.ticker }}</p>
             </div>
 
             <div class="hidden sm:block sm:shrink-0">
-                <img :alt="company.ticker" :src="company.image" class="h-16 w-16 rounded-lg object-cover shadow-sm" />
+                <img :alt="entry.ticker" :src="entry.image" class="h-16 w-16 rounded-lg object-cover shadow-sm" />
             </div>
         </div>
 
         <div class="mt-4">
             <p class="max-w-[40ch] text-sm common-colors">
-                {{ company.description }}
+                {{ entry.description }}
             </p>
         </div>
 

@@ -1,9 +1,6 @@
-export type CompaniesListResult = {
-  count: number,
-  next: string | null,
-  previous: string | null,
-  results: SimpleCompnay[]
-}
+import { ResponseListResult } from "./generics"
+
+export type CompaniesListResult = ResponseListResult<SimpleCompnay>
 
 export type SimpleCompnay = {
   ticker: string,

@@ -14,6 +14,8 @@ useSeoMeta({
         <HomePortfolio />
         <div class="grid grid-cols-2 gap-4 mt-4">
             <div>
+                <!-- TODO: too slooooow fix please -->
+                <!-- TODO: create server paths to fetch data -->
                 <HomeCurrentValuations />
             </div>
             <!-- Right Content -->
