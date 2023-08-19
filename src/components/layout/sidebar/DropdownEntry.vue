@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { EntryOption } from "../types/index";
+import { EntryOption } from "@/types/index";
 
 defineProps<{
     title: string

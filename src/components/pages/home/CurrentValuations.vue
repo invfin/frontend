@@ -12,7 +12,7 @@ const favTabs = [
 </script>
 <template>
     <div>
-        <HomeCurrentValuationsTabs title="Acvtividad del momento" :tabs="tabs" :isFavorite="false" class="mb-4" />
-        <HomeCurrentValuationsTabs title="Tus favoritos" :tabs="favTabs" :isFavorite="true" />
+        <PagesHomeCurrentValuationsTabs title="Acvtividad del momento" :tabs="tabs" :isFavorite="false" class="mb-4" />
+        <PagesHomeCurrentValuationsTabs title="Tus favoritos" :tabs="favTabs" :isFavorite="true" />
     </div>
 </template>

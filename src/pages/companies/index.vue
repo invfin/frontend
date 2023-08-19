@@ -62,7 +62,7 @@ function handleFilters() {
 
 <template>
     <div>
-        <CompaniesFilters v-model:modelValue="filters" class="mb-4 mt-4" @update:modelValue="handleFilters" />
+        <PagesCompaniesFilters v-model:modelValue="filters" class="mb-4 mt-4" @update:modelValue="handleFilters" />
         <div class="grid grid-cols-3 gap-4 mt-4">
             <!-- TODO: improve skeleton -->
             <div v-if="pending && firstRequest" v-for="_ in [0, 1, 2, 3, 4, 5]" class="
@@ -73,9 +73,9 @@ function handleFilters() {
                 <GeneralSkeleton />
             </div>
 
-            <CompaniesEntry v-else v-for="entry in entries" :entry="entry" />
+            <PagesCompaniesEntry v-else v-for="entry in entries" :entry="entry" />
         </div>
-        <CompaniesFiltersModal v-model:modelValue="filters" @update:modelValue="handleFilters" />
+        <PagesCompaniesFiltersModal v-model:modelValue="filters" @update:modelValue="handleFilters" />
     </div>
 </template>
   

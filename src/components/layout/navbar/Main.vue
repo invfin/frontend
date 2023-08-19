@@ -5,18 +5,18 @@
         <div class="px-3 py-3 lg:px-5 lg:pl-3">
             <div class="flex items-center justify-between">
                 <div class="flex items-center justify-start">
-                    <SidebarToggle />
-                    <NavbarLogo />
+                    <LayoutSidebarToggle />
+                    <LayoutNavbarLogo />
                 </div>
                 <div class="flex items-center">
                     <!-- Search -->
-                    <SearchToggle />
+                    <LayoutSearchToggle />
                     <!-- Notifications -->
-                    <NavbarNotification />
+                    <LayoutNavbarNotification />
                     <!-- Theme -->
-                    <NavbarThemeToggle />
+                    <LayoutNavbarThemeToggle />
                     <!-- Profile -->
-                    <NavbarUserMenu />
+                    <LayoutNavbarUserMenu />
                 </div>
             </div>
         </div>

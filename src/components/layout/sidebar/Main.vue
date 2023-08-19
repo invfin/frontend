@@ -27,7 +27,7 @@ const menus = [
                 <div class="flex-1 px-3 space-y-1 divide-y divide-black dark:divide-white">
                     <ul class="pb-2 space-y-2">
                         <li v-for="menu in menus">
-                            <SidebarEntry :title=menu.title :path=menu.path />
+                            <LayoutSidebarEntry :title=menu.title :path=menu.path />
                         </li>
                     </ul>
                     <!-- <div class="pt-2 space-y-2">
@@ -43,7 +43,7 @@ const menus = [
                 </div>
                 <!-- <SidebarAnnouncement /> -->
             </div>
-            <!-- <SidebarBottomSection /> -->
+
         </div>
     </aside>
 

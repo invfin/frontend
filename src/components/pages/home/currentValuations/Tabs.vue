@@ -33,7 +33,7 @@ defineProps<{
             Registrate para tener favoritos
           </div>
 
-          <HomeCurrentValuationsVerticalList v-else :asset="tab.slug" />
+          <PagesHomeCurrentValuationsVerticalList v-else :asset="tab.slug" />
         </template>
       </div>
     </GeneralTabs>

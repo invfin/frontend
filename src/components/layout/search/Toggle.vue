@@ -5,8 +5,6 @@ let modal = ref(null);
 
 onMounted(() => {
     const $targetEl = document.getElementById('searchModal');
-
-    // options with default values
     const options = {
         backdropClasses: '',
         backdrop: 'dynamic',

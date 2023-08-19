@@ -22,8 +22,8 @@ const user = useUser()
                 </div>
             </div>
         </div>
-        <HomePortfolioFull v-if="user.loged && user.isFull" />
-        <HomePortfolioEmpty v-else />
+        <PagesHomePortfolioFull v-if="user.loged && user.isFull" />
+        <PagesHomePortfolioEmpty v-else />
 
 
     </div>

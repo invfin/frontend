@@ -11,20 +11,20 @@ useSeoMeta({
 
 <template>
     <div>
-        <HomePortfolio />
+        <PagesHomePortfolio />
         <div class="grid grid-cols-2 gap-4 mt-4">
             <div>
                 <!-- TODO: too slooooow fix please -->
                 <!-- TODO: create server paths to fetch data -->
-                <HomeCurrentValuations />
+                <PagesHomeCurrentValuations />
             </div>
             <!-- Right Content -->
             <div class="grid grid-cols-1 gap-4">
                 <div>
-                    <HomeQuestions />
+                    <PagesHomeQuestions />
                 </div>
                 <div>
-                    <HomeNews />
+                    <HPagesomeNews />
                 </div>
             </div>
         </div>
