@@ -6,8 +6,7 @@ export default defineNuxtRouteMiddleware((to: RouteLocationNormalized, from: Rou
 
 
 function addToVisits(to: RouteLocationNormalized) {
-  console.log(to.params);
-  if ("ticker" in to.params) { }
-  else if ("slug" in to.params) { }
-  // useState('visits').value.push({})
+  if ("ticker" in to.params || "slug" in to.params) {
+    // useVisits().value[to.meta.visit.path] = to.meta.visit;
+  }
 }

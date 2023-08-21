@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const user = useUser()
+let user = useUser();
 
 </script>
 
@@ -22,9 +22,7 @@ const user = useUser()
                 </div>
             </div>
         </div>
-        <PagesHomePortfolioFull v-if="user.loged && user.isFull" />
+        <PagesHomePortfolioFull v-if="user && user.hasPortfolio" />
         <PagesHomePortfolioEmpty v-else />
-
-
     </div>
 </template>

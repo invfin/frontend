@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { SimpleCompnay } from "@/types/index";
+import { SimpleCompany } from "@/types/index";
 
 defineProps<{
-    entry: SimpleCompnay
+    entry: SimpleCompany
 }>()
 
-function path(entry: SimpleCompnay) {
+function path(entry: SimpleCompany) {
     return `/companies/${entry.ticker}`
 }
 

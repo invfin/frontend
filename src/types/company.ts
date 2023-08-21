@@ -1,8 +1,8 @@
 import { ResponseListResult } from "./generics"
 
-export type CompaniesListResult = ResponseListResult<SimpleCompnay>
+export type CompaniesListResult = ResponseListResult<SimpleCompany>
 
-export type SimpleCompnay = {
+export type SimpleCompany = {
   ticker: string,
   name: string,
   currency: string,

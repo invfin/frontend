@@ -1,37 +1,44 @@
-import type { CompaniesListResult, SimpleCompnay } from "./company";
-import {
-    Author,
-    WritenContent, WritenContentListResult
-} from "./writenContent"
+export type { CompaniesListResult, SimpleCompany } from "./company";
+export type { SimpleSuperinvestor, SuperinvestorListResult } from "./superinvestors";
+export type { Author, WritenContent, WritenContentListResult } from "./writenContent"
 import type { Portfolio } from "./portfolio";
 
-type EntryOption = {
+export type EntryOption = {
     title: string,
     path: string,
 }
 
-type Tab = {
+export type Tab = {
     name: string,
     slug: string,
 }
 
-type User = {
-    id: string,
-    username: string,
-    image: string,
-    loged: boolean,
-    hasFavs: boolean,
-    portfolio: Portfolio
+export type Notification = {
+    message: string,
+    contentPath: string,
+    date: string,
+    senderName: string,
+    senderImage: string,
 }
 
-export {
-    EntryOption,
-    User,
-    CompaniesListResult,
-    SimpleCompnay,
-    Portfolio,
-    Tab,
-    Author,
-    WritenContent,
-    WritenContentListResult,
-};
+export type User = {
+    username: string,
+    email: string,
+    credits: number,
+    reputation: number,
+    foto: string,
+    isWriter: boolean,
+    isStaff: boolean,
+    hasFavsCompanies: boolean,
+    hasPortfolio: boolean,
+    hasInvestorProfile: boolean,
+    //We'll need to add the favs in the sidebar
+}
+
+export type Visit = {
+    path: String,
+    title: string,
+    category: string,
+}
+
+export { Portfolio };

@@ -4,6 +4,8 @@ import { initFlowbite } from 'flowbite';
 
 onMounted(() => {
   initFlowbite();
+  useUser().value = useCookie("u").value;
+  useVisits().value = useCookie("v").value;
 })
 </script>
 
@@ -12,6 +14,6 @@ onMounted(() => {
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-    <SearchResult />
+    <LayoutSearchResult />
   </div>
 </template>

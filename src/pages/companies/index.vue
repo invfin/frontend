@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CompaniesListResult, SimpleCompnay } from '@/types/index';
+import { CompaniesListResult, SimpleCompany } from '@/types/index';
 
 useSeoMeta({
     title: 'Companies',
@@ -11,20 +11,18 @@ useSeoMeta({
 })
 
 const offset = ref(0);
-const entries = ref([] as SimpleCompnay[]);
+const entries = ref([] as SimpleCompany[]);
 const filters = ref({});
 const firstRequest = ref(true);
 const query = ref({ limit: 50, offset: offset });
 
-const { pending, data, error, execute, refresh } = await useFetch("https://example.com:8000/api/v1/companies/", {
+const { pending, data, error, execute, refresh } = await useFetch(`${useRuntimeConfig().public.apiPath}companies/`, {
     query: query,
     server: false,
     lazy: true,
+    watch: [query],
     onResponse({ request, response, options }) {
-        // TODO: handle end of list
-        let result = response._data as CompaniesListResult;
-        entries.value.push(...result.results)
-        firstRequest.value = false;
+        handleEndOfList<CompaniesListResult, SimpleCompany>(response._data, entries, firstRequest);
     },
 })
 
@@ -39,7 +37,6 @@ function handleScroll() {
         document.body.scrollHeight - 100
     ) {
         offset.value = offset.value + 50;
-        execute();
     }
 }
 
@@ -54,26 +51,25 @@ function handleFilters() {
         }, {})
     };
     query.value = mergedObject;
-    execute();
-    //TODO: handle the results on the backend
 }
 
 </script>
 
 <template>
     <div>
-        <PagesCompaniesFilters v-model:modelValue="filters" class="mb-4 mt-4" @update:modelValue="handleFilters" />
-        <div class="grid grid-cols-3 gap-4 mt-4">
+        <PagesCompaniesFiltersMain v-model:modelValue="filters" class="mb-4 mt-4" @update:modelValue="handleFilters" />
+        <div class="list-grid gap-4 mt-4">
             <!-- TODO: improve skeleton -->
             <div v-if="pending && firstRequest" v-for="_ in [0, 1, 2, 3, 4, 5]" class="
             relative block 
             overflow-hidden 
             rounded-lg border 
             common-colors p-4 sm:p-6 lg:p-8 mb-4">
-                <GeneralSkeleton />
+                <PagesCompaniesSkeleton />
             </div>
 
             <PagesCompaniesEntry v-else v-for="entry in entries" :entry="entry" />
+            <PagesCompaniesSkeleton />
         </div>
         <PagesCompaniesFiltersModal v-model:modelValue="filters" @update:modelValue="handleFilters" />
     </div>

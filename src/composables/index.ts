@@ -1,10 +1,6 @@
-export const useUser = () => useState('user', () => ({
-  id: 3,
-  name: 'Michael',
-  profile: '...',
-  loged: true,
-  hasFavs: false,
-  isFull: false
-}));
+import { User, Visit } from "@/types";
 
-export const useVisits = () => useState('visits', () => []);
+export const useUser = (): globalThis.Ref<User | void> => useState('user', () => { });
+
+export const useVisits = (): globalThis.Ref<{ [key: string]: Visit }> => useState('visits', () => ({}));
+

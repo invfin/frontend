@@ -26,10 +26,10 @@ defineProps<{
       <div v-for="tab in tabs" class="hidden pt-4" :id="tab.slug" role="tabpanel" :aria-labelledby="tab.slug + '-tab'">
         <template>
 
-          <div v-if="isFavorite && user.loged && !user.hasFavs">
+          <div v-if="isFavorite && user && !user.hasFavsCompanies">
             Favoritos vacíos
           </div>
-          <div v-else-if="isFavorite && !user.loged">
+          <div v-else-if="isFavorite && !user">
             Registrate para tener favoritos
           </div>
 

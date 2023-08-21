@@ -24,7 +24,7 @@ useSeoMeta({
                     <PagesHomeQuestions />
                 </div>
                 <div>
-                    <HPagesomeNews />
+                    <PagesHomeNews />
                 </div>
             </div>
         </div>

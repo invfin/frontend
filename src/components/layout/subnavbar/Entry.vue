@@ -1,8 +1,18 @@
+<script setup lang="ts">
+import { Visit } from "@/types";
+
+defineProps<{
+  visit: Visit
+}>()
+
+async function removeFromHistory() { } 
+</script>
+
 <template>
   <li id="badge-dismiss-dark">
     <span
       class="inline-flex items-center px-2 py-1 mr-2 text-sm font-medium text-gray-800 bg-gray-100 rounded dark:bg-gray-700 dark:text-gray-300">
-      Dark
+      {{ visit.title }}
       <button type="button"
         class="inline-flex items-center p-1 ml-2 text-sm text-gray-400 bg-transparent rounded-sm hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-gray-300"
         data-dismiss-target="#badge-dismiss-dark" aria-label="Remove">
