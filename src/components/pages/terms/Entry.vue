@@ -1,18 +1,17 @@
 <script setup lang="ts">
-import { WritenContent } from "@/types/index";
+import { WritenContent } from "@/types";
 
-defineProps<{
+const props = defineProps<{
   entry: WritenContent
 }>()
 
-function path(entry: WritenContent) {
-  return `/diccionario/${entry.slug}`
-}
+
+const path = `/diccionario/${props.entry.slug}`;
 
 </script>
 <template>
-  <article class="group widget-common-style ">
-    <NuxtLink :to="path(entry)">
+  <article class="group widget-common-style">
+    <NuxtLink :to="path" @click="saveTerm(entry.slug, entry.title)">
       <img alt="text" :src="entry.image"
         class="h-56 w-full rounded-xl object-cover shadow-xl transition group-hover:grayscale-[50%] dark:shadow-gray-700/25" />
 

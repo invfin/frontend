@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import { initFlowbite } from 'flowbite';
+
+onMounted(() => {
+  initFlowbite();
+})
+
 defineProps(['modelValue']);
 const emit = defineEmits(['update:modelValue'])
 

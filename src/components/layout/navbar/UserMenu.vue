@@ -10,7 +10,7 @@ let user = useUser();
                 id="user-menu-button-2" aria-expanded="false" data-dropdown-toggle="dropdown-2">
                 <span class="sr-only">Open user menu</span>
                 <img class="w-8 h-8 rounded-full" alt="user photo"
-                    :src="getDomainPath(user ? user.foto : 'media/inversorinteligente.WebP')">
+                    :src="getPath(user ? user.foto : 'media/inversorinteligente.WebP')">
             </button>
         </div>
         <!-- Dropdown menu -->
@@ -25,7 +25,7 @@ let user = useUser();
                         {{ user.email }}
                     </p>
                 </div>
-                <ul class="py-1" role="none">
+                <ul class="py-1 list-none" role="none">
                     <li>
                         <a href="#"
                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
@@ -57,7 +57,7 @@ let user = useUser();
                         Al sitio de los verdaderos inversores
                     </p>
                 </div>
-                <ul class="py-1" role="none">
+                <ul class="py-1 list-none" role="none">
                     <li>
                         <NuxtLink to="auth/login"
                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"

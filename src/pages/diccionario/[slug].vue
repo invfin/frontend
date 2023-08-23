@@ -1,54 +1,57 @@
 <script setup lang="ts">
-import type { Visit } from "@/types";
+import type { Term } from "@/types";
 
-let title = ref('My title');
-let data = ref(null);
-let path = ref(null);
-
-console.log(path);
+let term = ref({} as Term);
 
 onBeforeMount(async () => {
-  console.log("onBeforeMount");
-  // component is rendered as part of the initial request
-  // pre-fetch data on server as it is faster than on the client
   const route = useRoute()
-  const url = useRequestURL()
-  path.value = url.href;
-  const { pending, data, error, execute, refresh } = await useFetch(`${useRuntimeConfig().public.apiPath}terms/${route.params.slug}`, {
+  await useFetch(`${useRuntimeConfig().public.apiPath}terms/${route.params.slug}`, {
     server: true,
     lazy: false,
-    onResponse({ request, response, options }) {
-      data.value = response._data;
+    async onResponse({ request, response, options }) {
+      term.value = response._data;
     },
   })
-
-
-})
-
-onMounted(async () => {
-  console.log("onMounted");
-  if (path.value) {
-    // if data is null on mount, it means the component
-    // is dynamically rendered on the client. Perform a
-    // client-side fetch instead.
-    console.log(path);
-    definePageMeta({
-      visit: {
-        path: path.value,
-        title: "title",
-        category: "blog",
-      } as Visit
-    })
-  }
 })
 
 useSeoMeta({
-  title,
-  description: () => `description: ${title.value}`
+  title: () => term.value.title,
+  description: () => term.value.resume
 })
-
-
+//TODO: finish adding seo things
+//TODO: finish adding things on the right side
+//TODO: maybe add comments
+//TODO: add different title colors so it's nicer
+//TODO: add a different footer
 </script>
 <template>
-  {{ data }}
+  <div class="grid grid-cols-1 sm:grid-cols-4 gap-8 ml-4 mt-4">
+
+    <article class="col-span-3 whitespace-break-spaces">
+      <header>
+        <h1 class="text-5xl font-bold subpixel-antialiased inline-block
+							bg-clip-text text-transparent
+							bg-gradient-to-br from-purple-600 to-blue-500">{{ term.title }}
+        </h1>
+      </header>
+      <PagesTermsTermPart v-for="termPart in term.term_parts" :termPart="termPart" />
+      <footer>
+
+      </footer>
+    </article>
+
+
+    <!-- Right side -->
+    <div>
+
+      <a href="#" class="fixed max-w-sm widget-common-style p-6">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology
+          acquisitions 2021</h5>
+        <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions
+          of
+          2021 so far, in reverse chronological order.</p>
+      </a>
+
+    </div>
+  </div>
 </template>

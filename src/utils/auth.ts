@@ -1,7 +1,8 @@
 import { User } from "types";
+import { LONG_MAX_AGE, SHORT_MAX_AGE } from "@/constants";
 
 export async function handleLogin(username: string, password: string): Promise<[boolean, string]> {
-  const { data, error } = await useFetch(getFullPath("jwt-token"), {
+  const { data, error } = await useFetch(getAPIPath("jwt-token"), {
     method: 'POST',
     body: { username: username, password: password },
     headers: { Authorization: 'Bearer ' + "" }
@@ -17,14 +18,14 @@ export async function handleLogin(username: string, password: string): Promise<[
 }
 
 async function saveUserTokens(tokens: { refresh: string, access: string }) {
-  useCookie("refresh", { sameSite: true, maxAge: 2505600 }).value = tokens.refresh;
-  useCookie("access", { sameSite: true, maxAge: 86400 }).value = tokens.access;
+  useManageCookie("refresh", LONG_MAX_AGE).value = tokens.refresh;
+  useManageCookie("access", SHORT_MAX_AGE).value = tokens.access;
 }
 
 async function getUserInformation(access: string) {
-  const { data, error } = await useFetch(getFullPath("users"), {
+  const { data, error } = await useFetch(getAPIPath("users"), {
     method: 'GET',
     headers: { Authorization: 'Bearer ' + access }
   });
-  useCookie("u", { sameSite: true, maxAge: 2505600 }).value = JSON.stringify(data.value);
+  useManageCookie("u", LONG_MAX_AGE).value = JSON.stringify(data.value);
 }

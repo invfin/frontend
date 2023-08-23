@@ -1,9 +1,10 @@
 export type { CompaniesListResult, SimpleCompany } from "./company";
 export type { SimpleSuperinvestor, SuperinvestorListResult } from "./superinvestors";
 export type { Author, WritenContent, WritenContentListResult } from "./writenContent"
+export type { Term, TermPart } from "./terms"
 import type { Portfolio } from "./portfolio";
 
-export type EntryOption = {
+export type SidebarMenu = {
     title: string,
     path: string,
 }
@@ -33,12 +34,6 @@ export type User = {
     hasPortfolio: boolean,
     hasInvestorProfile: boolean,
     //We'll need to add the favs in the sidebar
-}
-
-export type Visit = {
-    path: String,
-    title: string,
-    category: string,
 }
 
 export { Portfolio };

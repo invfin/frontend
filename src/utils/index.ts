@@ -1,3 +1,5 @@
+
+
 export function handleEndOfList<T, S>(
   response_data: T,
   entries: globalThis.Ref<S[]>,
@@ -8,10 +10,11 @@ export function handleEndOfList<T, S>(
 }
 
 
-export function getFullPath(path: string): string {
+export function getAPIPath(path: string): string {
   return `${useRuntimeConfig().public.apiPath}${path}/`
 }
 
-export function getDomainPath(path: string): string {
-  return `https://${useRuntimeConfig().public.domain}/${path}`
+export function getPath(path: string): string {
+  return `${useRuntimeConfig().public.regularPath}${path}`
 }
+
