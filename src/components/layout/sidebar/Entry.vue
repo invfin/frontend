@@ -22,10 +22,10 @@ let currentTheme = useTheme();
             class="flex-shrink-0 w-6 h-6 text-white0 transition duration-75 group-hover:text-black dark:text-white dark:group-hover:text-white"
             alt="icon" />
 
-        <span class="ml-3 hiddeWithSidebar" sidebar-toggle-item>{{ entry.title }}</span>
+        <span class="ml-3 hiddeWithSidebar hidden" sidebar-toggle-item>{{ entry.title }}</span>
     </NuxtLink>
     <div :id="entry.title.replace(/\s+/g, '-')" role="tooltip"
-        class="absolute z-40 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-black rounded-lg shadow-sm opacity-0 tooltip hidden hiddeWithSidebar">
+        class="absolute z-40 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-black rounded-lg shadow-sm opacity-0 tooltip hiddeWithSidebar">
         {{ entry.title }}
         <div class="tooltip-arrow" data-popper-arrow></div>
     </div>

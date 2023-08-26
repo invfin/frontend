@@ -5,7 +5,7 @@ import { SIDEBAR_MENUS } from "@/constants";
 
 <template>
     <aside id="sidebar"
-        class="fixed top-0 left-0 z-20 flex flex-col flex-shrink-0 hidden w-64 lg:w-64 h-full pt-16 font-normal duration-75 lg:flex transition-width"
+        class="fixed top-0 left-0 z-20 flex flex-col flex-shrink-0 hidden w-64 lg:w-16 h-full pt-16 font-normal duration-75 lg:flex transition-width"
         aria-label="Sidebar">
         <div class="relative flex flex-col flex-1 min-h-0 pt-0 border-r common-colors">
             <div class="flex flex-col flex-1 pt-5 pb-4 overflow-y-auto">

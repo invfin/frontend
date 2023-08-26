@@ -34,7 +34,7 @@ export const SIDEBAR_MENUS = [
 
   { title: "Super Inversores", path: "/superinvestors", logos: { white: superinvestorBlack, black: superinvestorWhite }, available: true, },
   { title: "Diccionario", path: "/diccionario", logos: { white: bookBlack, black: bookWhite }, available: true, },
-  { title: "Preguntas", path: "/preguntas", logos: { white: questionBlack, black: questionWhite }, available: true, },
+  { title: "Preguntas", path: "/preguntas", logos: { white: questionBlack, black: questionWhite }, available: false, },
 
   { title: "Blogs", path: "/blogs", logos: { white: blogBlack, black: blogWhite }, available: true, },
 

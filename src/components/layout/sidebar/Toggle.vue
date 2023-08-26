@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-let sidebarExtended = ref(true);
+let sidebarExtended = ref(false);
 
 
 function toggleSidebar() {
@@ -26,15 +26,15 @@ function isMobile(): boolean {
 }
 
 function changeStyle(sidebar: HTMLElement, mainContent: HTMLElement, subnavbar: HTMLElement) {
-    sidebar.classList.toggle('lg:w-16');
+    sidebar.classList.toggle('lg:w-16'); // sidebar collapsed
     sidebar.classList.toggle('lg:w-64');
-    mainContent.classList.toggle('lg:ml-16');
+    mainContent.classList.toggle('lg:ml-16'); // sidebar collapsed
     mainContent.classList.toggle('lg:ml-64');
     const toHide = sidebar.getElementsByClassName('hiddeWithSidebar');
     Array.from(toHide).forEach(e => e.classList.toggle('hidden'));
     //TODO: when the subnavbar has to be put it back
     subnavbar.classList.toggle('w-[104rem]');
-    subnavbar.classList.toggle('w-[116rem]');
+    subnavbar.classList.toggle('w-[116rem]'); // sidebar collapsed
 
 }
 </script>

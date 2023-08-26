@@ -5,7 +5,7 @@
 
             <LayoutSidebarMain />
 
-            <div id="main-content" class="relative w-full h-full overflow-y-auto lg:ml-64 common-colors">
+            <div id="main-content" class="relative w-full h-full overflow-y-auto lg:ml-16 common-colors">
 
                 <!-- <LayoutSubnavbarMain class="mt-10" /> -->
                 <!-- Put the subnavbar back when it work -->
