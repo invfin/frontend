@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-
-let currentTheme = ref("dark");
+let currentTheme = useTheme();
 
 function switchTheme(add: string, remove: string) {
     document.body.classList.remove(remove);
@@ -16,7 +14,7 @@ const toggle = () => {
         switchTheme("dark", "light");
     }
 }
-onMounted(() => {
+onBeforeMount(() => {
     if (!document.body.classList.contains('dark')) {
         currentTheme.value = 'light';
     }

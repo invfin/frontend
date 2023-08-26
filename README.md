@@ -14,6 +14,9 @@ If we feel kinda lazy do one of those.
 Make it usable so I can tweak some text when I go into one and it's a mess. Allow quick and easy fixes.
 - [ ] Add terms correction
 
+LEt's hope that it will make people want to contribute more
+- [ ] Add share buttons and contributors section 
+
 Can be delayed until a real need occurs.
 - [ ] Auth, hide and show routes and paths depending if the users is admin and/or logged in
 
@@ -21,6 +24,7 @@ Let's see which one to do first, probably the questions, then roboadvisor and fi
 - [ ] Add roboadvisor
 - [ ] Add writer section
 - [ ] Add questions/answers
+- [ ] Add docs section for APIs
 
 When we need a quick win we'll do that
 - [ ] Add icons to the sidebar

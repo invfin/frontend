@@ -30,10 +30,12 @@ function changeStyle(sidebar: HTMLElement, mainContent: HTMLElement, subnavbar: 
     sidebar.classList.toggle('lg:w-64');
     mainContent.classList.toggle('lg:ml-16');
     mainContent.classList.toggle('lg:ml-64');
-    subnavbar.classList.toggle('w-[104rem]');
-    subnavbar.classList.toggle('w-[116rem]');
     const toHide = sidebar.getElementsByClassName('hiddeWithSidebar');
     Array.from(toHide).forEach(e => e.classList.toggle('hidden'));
+    //TODO: when the subnavbar has to be put it back
+    subnavbar.classList.toggle('w-[104rem]');
+    subnavbar.classList.toggle('w-[116rem]');
+
 }
 </script>
 

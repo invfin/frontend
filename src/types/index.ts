@@ -1,12 +1,33 @@
-export type { CompaniesListResult, SimpleCompany } from "./company";
+export type {
+    CompaniesListResult,
+    SimpleCompany,
+    IncStatement,
+    BalanceSheet,
+    CfStatement,
+    RentabilityRatio,
+    LiquidityRatio,
+    Margin,
+    FcfRatio,
+    PerShareValue,
+    NonGaapFigure,
+    OperationRiskRatio,
+    EvRatio,
+    GrowthRate,
+    EfficiencyRatio,
+    PriceToRatio,
+    Company,
+} from "./company";
 export type { SimpleSuperinvestor, SuperinvestorListResult } from "./superinvestors";
 export type { Author, WritenContent, WritenContentListResult } from "./writenContent"
 export type { Term, TermPart } from "./terms"
 import type { Portfolio } from "./portfolio";
 
-export type SidebarMenu = {
+export interface SidebarMenu {
     title: string,
     path: string,
+    hasTarget?: boolean,
+    logos: { white: string, black: string },
+    available: boolean
 }
 
 export type Tab = {

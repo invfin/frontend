@@ -12,7 +12,7 @@ import { SIDEBAR_MENUS } from "@/constants";
                 <div class="flex-1 px-3 space-y-1 divide-y divide-black dark:divide-white">
                     <ul class="pb-2 space-y-2 list-none">
                         <li v-for="menu in SIDEBAR_MENUS">
-                            <LayoutSidebarEntry :title=menu.title :path=menu.path />
+                            <LayoutSidebarEntry :entry=menu v-if="menu.available" />
                         </li>
                     </ul>
                     <!-- <div class="pt-2 space-y-2">
