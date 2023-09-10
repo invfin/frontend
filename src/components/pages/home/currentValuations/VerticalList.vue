@@ -28,7 +28,7 @@ const { pending, data, error, execute, refresh } = await useFetch("https://examp
 
 </script>
 <template>
-  <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
+  <ul role="list" class="divide-y divide-gray-200 list-none dark:divide-gray-700">
     <li v-for="entry in entries" class="py-3 sm:py-4">
       <div class="flex items-center justify-between">
         <div class="flex items-center min-w-0">

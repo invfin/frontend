@@ -13,9 +13,9 @@ const industryFilterOptions = ["Steel", "Finances", "Transport"];
 const sectorFilterOptions = ["Technology", "Manufacturing", "Construction"];
 
 const basicFilters = ref([
-  { name: "País", options: countryFilterOptions, model: countryFilterValue },
-  { name: "Indústria", options: industryFilterOptions, model: industryFilterValue },
-  { name: "Sector", options: sectorFilterOptions, model: sectorFilterValue }
+  { name: "Categoría", options: countryFilterOptions, model: countryFilterValue },
+  { name: "Subcategoría", options: industryFilterOptions, model: industryFilterValue },
+  { name: "Autor", options: sectorFilterOptions, model: sectorFilterValue }
 ]);
 
 function emitValue(_e: any) {
@@ -51,22 +51,6 @@ function restartFilters() {
             </option>
           </select>
         </div>
-        <div class="flex flex-col mt-7">
-          <button data-modal-target="companiesFiltersModal" data-modal-toggle="companiesFiltersModal" type="button" class="
-              widget-common-style
-              focus:ring-4 
-              focus:outline-none focus:ring-blue-300 text-sm font-medium common-text 
-              px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-800">
-            Más filtros
-            <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-              viewBox="0 0 14 10">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M1 5h12m0 0L9 1m4 4L9 9" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
       <div class="grid md:flex grid-cols-2 justify-end space-x-4 w-full mt-6">
         <button type="button" @click="restartFilters"
           class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
@@ -77,6 +61,8 @@ function restartFilters() {
           Buscar
         </button>
       </div>
+      </div>
+
     </div>
   </div>
 </template>

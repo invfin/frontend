@@ -8,7 +8,7 @@ onBeforeMount(async () => {
     await useFetch(`${useRuntimeConfig().public.apiPath}companies/${route.params.ticker}/`, {
         server: true,
         lazy: false,
-        async onResponse({ request, response, options }) {
+        async onResponse({ response }) {
             company.value = response._data;
         },
     })
@@ -25,8 +25,26 @@ useSeoMeta({
 </script>
 
 <template>
-    <div>
-        {{ company }}
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-8">
+        <div class="col-span-full">
+            <PagesCompaniesCompanyHeader :company="company" />
+        </div>
+
+        <div class="col-span-1 space-y-4">
+            <PagesCompaniesCompanyComparatifTable title="RentabilityRatio" />
+            <PagesCompaniesCompanyComparatifTable title="LiquidityRatio" />
+            <PagesCompaniesCompanyComparatifTable title="Margins" />
+        </div>
+        <div class="col-span-1 space-y-4">
+            <PagesCompaniesCompanyComparatifTable title="FcfRatio" />
+            <PagesCompaniesCompanyComparatifTable title="PerShareValue" />
+            <PagesCompaniesCompanyComparatifTable title="OperationRiskRatio" />
+        </div>
+        <div class="col-span-1 space-y-4">
+            <PagesCompaniesCompanyComparatifTable title="GrowthRate" />
+            <PagesCompaniesCompanyComparatifTable title="EvRatio" />
+            <PagesCompaniesCompanyComparatifTable title="EfficiencyRatio" />
+            <PagesCompaniesCompanyComparatifTable title="PriceToRatio" />
+        </div>
     </div>
 </template>
-  

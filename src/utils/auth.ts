@@ -27,5 +27,7 @@ async function getUserInformation(access: string) {
     method: 'GET',
     headers: { Authorization: 'Bearer ' + access }
   });
-  useManageCookie("u", LONG_MAX_AGE).value = JSON.stringify(data.value);
+  const user = data.value as User;
+  useUser().value = user;
+  useManageCookie("u", LONG_MAX_AGE).value = JSON.stringify(user);
 }

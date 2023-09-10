@@ -31,7 +31,7 @@ function correctClassStyle(index: number, tabs: Tab[]): string {
             <option v-for="tab in tabs">{{ tab.name }}</option>
         </select>
     </div>
-    <ul class="hidden text-sm font-medium text-center text-white0 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600 dark:text-white"
+    <ul class="hidden list-none text-sm font-medium text-center text-white0 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600 dark:text-white"
         id="fullWidthTab" :data-tabs-toggle="'#' + name" role="tablist">
         <li v-for="(tab, index) in tabs" class="w-full">
             <button :id="'#' + tab.slug" :data-tabs-target="'#' + tab.slug" type="button" role="tab"

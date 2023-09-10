@@ -49,7 +49,6 @@ export interface IncStatement {
   net_income: number;
   weighted_average_shares_outstanding: number;
   weighted_average_diluated_shares_outstanding: number;
-  // ... other properties
 }
 
 export interface BalanceSheet {
@@ -96,7 +95,6 @@ export interface BalanceSheet {
   total_investments: number;
   total_debt: number;
   net_debt: number;
-  // ... other properties
 }
 
 export interface CfStatement {
@@ -133,12 +131,9 @@ export interface CfStatement {
   operating_cf: number;
   capex: number;
   fcf: number;
-  // ... other properties
 }
 
 export interface RentabilityRatio {
-  reported_currency: string | null;
-  company: string;
   date: number;
   roa: number;
   roe: number;
@@ -148,24 +143,18 @@ export interface RentabilityRatio {
   roic: number;
   nopat_roic: number;
   rogi: number;
-  // ... other properties
 }
 
 export interface LiquidityRatio {
-  reported_currency: string | null;
-  company: string;
   date: number;
   cash_ratio: number;
   current_ratio: number;
   quick_ratio: number;
   operating_cashflow_ratio: number;
   debt_to_equity: number;
-  // ... other properties
 }
 
 export interface Margin {
-  reported_currency: string | null;
-  company: string;
   date: number;
   gross_margin: number;
   ebitda_margin: number;
@@ -175,23 +164,17 @@ export interface Margin {
   unlevered_fcf_to_net_income: number;
   unlevered_fcf_ebit_to_net_income: number;
   owners_earnings_to_net_income: number;
-  // ... other properties
 }
 
 export interface FcfRatio {
-  reported_currency: string | null;
-  company: string;
   date: number;
   fcf_equity: number;
   unlevered_fcf: number;
   unlevered_fcf_ebit: number;
   owners_earnings: number;
-  // ... other properties
 }
 
 export interface PerShareValue {
-  reported_currency: string | null;
-  company: string;
   date: number;
   sales_ps: number;
   book_ps: number;
@@ -202,12 +185,9 @@ export interface PerShareValue {
   operating_cf_ps: number;
   capex_ps: number;
   total_assets_ps: number;
-  // ... other properties
 }
 
 export interface NonGaapFigure {
-  reported_currency: string | null;
-  company: string;
   date: number;
   normalized_income: number;
   effective_tax_rate: number;
@@ -225,12 +205,9 @@ export interface NonGaapFigure {
   payout_ratio: number;
   tangible_assets: number;
   retention_ratio: number;
-  // ... other properties
 }
 
 export interface OperationRiskRatio {
-  reported_currency: string | null;
-  company: string;
   date: number;
   asset_coverage_ratio: number;
   cash_flow_coverage_ratios: number;
@@ -241,12 +218,9 @@ export interface OperationRiskRatio {
   debt_ratio: number;
   long_term_debt_to_capitalization: number;
   total_debt_to_capitalization: number;
-  // ... other properties
 }
 
 export interface EvRatio {
-  reported_currency: string | null;
-  company: string;
   date: number;
   market_cap: number;
   enterprise_value: number;
@@ -255,12 +229,9 @@ export interface EvRatio {
   ev_sales: number;
   company_equity_multiplier: number;
   ev_multiple: number;
-  // ... other properties
 }
 
 export interface GrowthRate {
-  reported_currency: string | null;
-  company: string;
   date: number;
   revenue_growth: number;
   cost_revenue_growth: number;
@@ -272,12 +243,9 @@ export interface GrowthRate {
   owners_earnings_growth: number;
   capex_growth: number;
   rd_expenses_growth: number;
-  // ... other properties
 }
 
 export interface EfficiencyRatio {
-  reported_currency: string | null;
-  company: string;
   date: number;
   asset_turnover: number;
   inventory_turnover: number;
@@ -290,12 +258,9 @@ export interface EfficiencyRatio {
   free_cashflow_to_operating_cashflow: number;
   operating_cycle: number;
   cash_conversion_ratio: number;
-  // ... other properties
 }
 
 export interface PriceToRatio {
-  reported_currency: string | null;
-  company: string;
   date: number;
   price_book: number;
   price_cf: number;
@@ -306,30 +271,22 @@ export interface PriceToRatio {
   price_fcf: number;
   price_operating_cf: number;
   price_tangible_assets: number;
-  // ... other properties
 }
 
-export interface Company {
-  ticker: string;
-  name: string;
-  currency: string;
-  industry: string;
-  sector: string;
-  website: string;
-  state: string;
-  country: string;
-  ceo: string;
-  image: string;
-  city: string;
-  employees: string;
-  address: string;
-  zip_code: string;
-  cik: string;
-  exchange: string;
-  cusip: string;
-  isin: string;
-  description: string;
-  ipoDate: string;
+export interface Averages {
+  rentability_ratios: RentabilityRatio;
+  liquidity_ratios: LiquidityRatio;
+  margins: Margin;
+  per_share_values: PerShareValue;
+  operation_risks_ratios: OperationRiskRatio;
+  ev_ratios: EvRatio;
+  growth_rates: GrowthRate;
+  efficiency_ratios: EfficiencyRatio;
+  price_to_ratios: PriceToRatio;
+}
+
+
+export interface Company extends SimpleCompany {
   inc_statements: IncStatement[];
   balance_sheets: BalanceSheet[];
   cf_statements: CfStatement[];
@@ -344,4 +301,5 @@ export interface Company {
   growth_rates: GrowthRate[];
   efficiency_ratios: EfficiencyRatio[];
   price_to_ratios: PriceToRatio[];
+  averages: Averages;
 }

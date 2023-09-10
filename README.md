@@ -1,7 +1,7 @@
 # TODO
 
 ## Priorities
-Add the basic features, later on we'll more
+Add the basic features, later on we'll add more
 - [ ] Add companies comparator
 - [ ] Add superinvestors comparator
 - [ ] Add portofolio management

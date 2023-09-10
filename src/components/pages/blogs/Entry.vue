@@ -7,53 +7,55 @@ defineProps<{
 </script>
 
 <template>
-  <article class="mb-4 break-inside p-6 rounded-xl bg-white dark:bg-slate-800 flex flex-col bg-clip-border">
-    <div class="flex pb-6 items-center justify-between">
-      <div class="flex">
-        <NuxtLink class="inline-block mr-4" :to="entry.author.slug">
-          <img class="rounded-full max-w-none w-14 h-14" :src="entry.author.image" alt="user" />
-        </NuxtLink>
-        <div class="flex flex-col">
-          <div class="flex items-center">
-            <NuxtLink class="inline-block text-lg font-bold mr-2" :to="entry.author.slug">
-              {{ entry.author.name }}
-            </NuxtLink>
-            <span>
-              <svg class="fill-blue-500 dark:fill-slate-50 w-5 h-5" viewBox="0 0 24 24">
-                <path
-                  d="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z">
-                </path>
-              </svg>
-            </span>
-          </div>
-          <!-- <div class="text-slate-500 dark:text-slate-300">
-            January 22, 2021
-          </div> -->
-        </div>
+  <article class="max-w-xl widget-common-style rounded-lg shadow-md flex flex-col">
+    <!-- Blog Image -->
+    <img :src="entry.image" alt="Blog Image" class="w-full h-48 object-cover object-center rounded-md mb-4">
+
+    <!-- Author Information -->
+    <div class="flex items-center p-4">
+      <img :src="entry.author.image" alt="Author Image" class="w-10 h-10 object-cover object-center rounded-full">
+      <div class="ml-4">
+        <p class="font-semibold">{{ entry.author.name }}</p>
+        <!-- <p class="">Author Bio or Description</p> -->
       </div>
     </div>
-    <h2 class="text-3xl font-extrabold">
-      {{ entry.title }}
-    </h2>
-    <div class="py-4">
-      <a class="flex" href="#">
-        <img class="max-w-full rounded-lg" :src="entry.image" />
-      </a>
+
+    <div class="p-4 flex-grow">
+      <!-- Blog Title -->
+      <h2 class="text-2xl font-semibold mb-2">{{ entry.title }}</h2>
+
+      <!-- Blog Resume -->
+      <p class="mb-4">{{ entry.resume }}</p>
+
+
     </div>
-    <p>
-      {{ entry.resume }}
-    </p>
-    <div class="py-4">
-      <a class="inline-flex items-center" href="#">
-        <span class="mr-2">
-          <svg class="fill-rose-600 dark:fill-rose-400" style="width: 24px; height: 24px;" viewBox="0 0 24 24">
-            <path
-              d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
-            </path>
-          </svg>
-        </span>
-        <span class="text-lg font-bold">{{ entry.views }}</span>
-      </a>
+    <!-- Blog Statistics (Views, Likes, Comments) -->
+    <div class="flex items-center p-4">
+      <div class="flex items-center mr-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M19 11a7 7 0 0 1-7 7m7-7H5a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2z" />
+        </svg>
+        <span>{{ entry.views }} Views</span>
+      </div>
+      <div class="flex items-center mr-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd"
+            d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v11a2 2 0 0 1-1.293 1.854l-5.5 2.75a2 2 0 0 1-1.414 0l-5.5-2.75A2 2 0 0 1 2 13V2zm2-1a1 1 0 0 0-1 1v10a1 1 0 0 0 .293.768l5.5 2.75a1 1 0 0 0 .824 0l5.5-2.75A1 1 0 0 0 18 12V1a1 1 0 0 0-1-1H6z"
+            clip-rule="evenodd" />
+          <path d="M15 16h-2v-2h2v2zm0-4h-2V6h2v6z" />
+        </svg>
+        <span>500 Likes</span>
+      </div>
+      <div class="flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 2a8 8 0 0 1 8 8c0 4.418-3.582 8-8 8s-8-3.582-8-8a8 8 0 0 1 8-8zm1 12h2v-2h-2v2zm0-4h2V6h-2v4z" />
+        </svg>
+        <span>30 Comments</span>
+      </div>
     </div>
+
+
   </article>
 </template>
