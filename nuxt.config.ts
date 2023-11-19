@@ -9,6 +9,9 @@ export default defineNuxtConfig({
       enabled: false
     }
   },
+  build: {
+    transpile: ['@vuepic/vue-datepicker']
+  },
   modules: ['@nuxtjs/tailwindcss', '@nuxtjs/i18n'],
   srcDir: 'src/',
   css: [

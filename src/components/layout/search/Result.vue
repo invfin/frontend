@@ -3,14 +3,7 @@ import { ref } from 'vue';
 import lupa from '@/assets/images/lupa.svg';
 import { Modal } from 'flowbite';
 
-type SearchResult = {
-    title: string,
-    logo: string,
-    path: string,
-    inside: string,
-    rank: string,
-    isImageError: boolean,
-}
+
 
 let searchResults = ref([] as SearchResult[]);
 let searchQuery = ref('');

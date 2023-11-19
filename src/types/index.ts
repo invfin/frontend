@@ -17,10 +17,23 @@ export type {
     PriceToRatio,
     Company,
 } from "./company";
+export type {
+    ChartOption,
+    ChartOptionChart,
+    LegendLabelsOptions,
+    LegendOptions,
+    ExportOptions,
+    ToolbarOptions,
+    ResponsiveBreakpoint,
+    ResponsiveOptions,
+    XAxisOptions,
+    FillOptions,
+    SerieData,
+} from "./charts";
 export type { SimpleSuperinvestor, SuperinvestorListResult } from "./superinvestors";
 export type { Author, WritenContent, WritenContentListResult } from "./writenContent"
 export type { Term, TermPart } from "./terms"
-import type { Portfolio } from "./portfolio";
+export type { Portfolio, PortfolioMovement } from "./portfolio";
 
 export interface SidebarMenu {
     title: string,
@@ -57,4 +70,12 @@ export type User = {
     //We'll need to add the favs in the sidebar
 }
 
-export { Portfolio };
+export type SearchResult = {
+    pk: number,
+    title: string,
+    logo: string,
+    path: string,
+    inside: string,
+    rank: string,
+    isImageError: boolean,
+}

@@ -14,17 +14,22 @@ const props = defineProps<{
 
 let entries = ref([] as Entry[]);
 
-const { pending, data, error, execute, refresh } = await useFetch("https://example.com:8000/api/v1/valuations-lists/", {
-  query: { assets: props.asset },
-  server: false,
-  lazy: true,
-  onResponse({ request, response, options }) {
-    // TODO: handle end of list
-    let result = response._data as Entry[];
-    entries.value = result;
-  },
-})
+const API_URL = "https://example.com:8000/api/v1/valuations-lists/"
 
+useFetch(async () => {
+  try {
+    const response = await fetch(API_URL)
+    if (response.ok) {
+      const data = await response.json()
+      entries.value = data // Update the fetchedData variable with the received data
+    } else {
+      throw new Error('Failed to fetch data')
+    }
+  } catch (error) {
+    console.error('Error fetching data:', error)
+    // Handle errors if needed
+  }
+})
 
 </script>
 <template>
