@@ -35,6 +35,7 @@ async function saveForm() {
   }
   filesUploading.value = false;
   filesUploaded.value = true;
+  //TODO: clean the values when modal close
 }
 
 async function emitValue() {

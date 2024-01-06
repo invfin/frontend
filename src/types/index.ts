@@ -17,19 +17,6 @@ export type {
     PriceToRatio,
     Company,
 } from "./company";
-export type {
-    ChartOption,
-    ChartOptionChart,
-    LegendLabelsOptions,
-    LegendOptions,
-    ExportOptions,
-    ToolbarOptions,
-    ResponsiveBreakpoint,
-    ResponsiveOptions,
-    XAxisOptions,
-    FillOptions,
-    SerieData,
-} from "./charts";
 export type { SimpleSuperinvestor, SuperinvestorListResult } from "./superinvestors";
 export type { Author, WritenContent, WritenContentListResult } from "./writenContent"
 export type { Term, TermPart } from "./terms"

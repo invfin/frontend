@@ -14,7 +14,7 @@ const props = defineProps<{
 
 let entries = ref([] as Entry[]);
 
-const API_URL = "https://example.com:8000/api/v1/valuations-lists/"
+const API_URL = "https://example.com:8000/api/v1/valuations-list/"
 
 useFetch(async () => {
   try {

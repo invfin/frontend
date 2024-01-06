@@ -57,6 +57,7 @@ export default defineNuxtConfig({
     '/blogs/**': { isr: true },
     // Blog post generated on-demand once until next deploy
     '/diccionario/**': { isr: true },
+    '/portfolio/**': { cors: true },
     // Admin dashboard renders only on client-side
     '/admin/**': { ssr: false },
     // Redirects legacy urls

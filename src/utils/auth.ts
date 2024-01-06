@@ -11,14 +11,15 @@ export async function handleLogin(username: string, password: string): Promise<[
   if (errorResponse && errorResponse.status !== 200) {
     return [false, errorResponse.message]
   }
-  const tokens = data.value as { refresh: string, access: string };
+  const tokens = data.value as { refresh: string, access: string, sessionid: string };
   await saveUserTokens(tokens);
   await getUserInformation(tokens.access);
   return [true, ""]
 }
 
-async function saveUserTokens(tokens: { refresh: string, access: string }) {
+async function saveUserTokens(tokens: { refresh: string, access: string, sessionid: string }) {
   useManageCookie("refresh", LONG_MAX_AGE).value = tokens.refresh;
+  useManageCookie("sessionid", LONG_MAX_AGE).value = tokens.sessionid;
   useManageCookie("access", SHORT_MAX_AGE).value = tokens.access;
 }
 

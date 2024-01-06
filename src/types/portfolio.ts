@@ -24,3 +24,16 @@ export type Investment = {
   price: number;
   movement: "BUY" | "SELL";
 };
+
+export type NetWorthQuarter = {
+    equity: number;
+    incomes: number;
+    investments: number;
+    percent_investments: number;
+    percent_savings: number;
+    percent_spendings: number;
+    period__period: string;
+    period__year: number;
+    savings: number;
+    spendings: number;
+}

@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --host dashboard.example.com",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -12,18 +12,20 @@
     "@nuxt/devtools": "latest",
     "@nuxtjs/i18n": "8.0.0-rc.2",
     "@nuxtjs/tailwindcss": "6.7.2",
-    "@types/node": "^18.17.3",
-    "autoprefixer": "^10.4.14",
-    "nuxt": "^3.6.5",
-    "postcss": "^8.4.27",
-    "tailwindcss": "^3.3.3"
+    "@types/node": "^18.19.4",
+    "autoprefixer": "^10.4.16",
+    "nuxt": "^3.9.0",
+    "postcss": "^8.4.33",
+    "tailwindcss": "^3.4.1"
   },
   "dependencies": {
-    "@vuepic/vue-datepicker": "^7.2.0",
+    "@vuepic/vue-datepicker": "^7.4.0",
     "@vueup/vue-quill": "^1.2.0",
-    "apexcharts": "^3.41.1",
+    "chart.js": "^4.4.1",
     "flowbite": "^1.8.1",
-    "flowbite-datepicker": "^1.2.2",
-    "vue3-apexcharts": "^1.4.4"
+    "flowbite-datepicker": "^1.2.6",
+    "typescript": "^5.3.3",
+    "typescript-language-server": "^4.2.0",
+    "vue-chartjs": "^5.3.0"
   }
 }

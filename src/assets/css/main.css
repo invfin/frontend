@@ -51,13 +51,13 @@
         }
 
         ol {
-        list-style: decimal;
-        /* margin-left: 2em; */
+        /*list-style: decimal;
+         margin-left: 2em; */
         }
 
         ul {
-            list-style: disc;
-            /* margin-left: 2em; */
+            /*list-style: disc;
+             margin-left: 2em; */
         }
 
         .overflow-x-auto::-webkit-scrollbar, .overflow-y-auto::-webkit-scrollbar {

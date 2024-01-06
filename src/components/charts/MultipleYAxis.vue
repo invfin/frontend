@@ -1,6 +1,5 @@
 <script setup lang="ts">
 let props = defineProps<{
-  apiUrl: string,
   chartId: string,
   chartType: string,
   height: string
@@ -8,7 +7,7 @@ let props = defineProps<{
 
 let currentTheme = useTheme();
 
-const chart = new ChartOptionsBuilder(props.apiUrl, props.chartID, props.chartType, currentTheme.value, props.height);
+const chart = new ChartOptionsBuilder(props.chartId, props.chartType, currentTheme.value, props.height);
 
 watch(currentTheme, async (newcurrentTheme, oldcurrentTheme) => {
   chart.updateTheme(newcurrentTheme);
@@ -45,7 +44,7 @@ const series = [{
         </svg>
       </div>
     </div>
-    <apexchart :type="chart.chartType" :height="chart.height" :options="chart.getOptions()" :series="series"></apexchart>
+    <!-- <apexchart :type="chart.chartType" :height="chart.height" :options="chart.getOptions()" :series="series"></apexchart> -->
     <!-- Card Footer -->
     <div class="flex items-center justify-between pt-3 mt-4 border-t border-gray-200 sm:pt-6 dark:border-gray-700">
       <div>

@@ -1,9 +1,17 @@
 <script setup lang="ts">
 import { initFlowbite } from 'flowbite';
+import { nextTick } from 'vue';
 
-onMounted(() => {
+onMounted(async () => {
     initFlowbite();
+    await nextTick();
+    fetchData();
+
 })
+
+const netWorthQuarters: Ref<NetWorthQuarter[]> = ref([]);
+const newMovement = ref(false);
+
 useSeoMeta({
     title: 'Portfolio',
     ogTitle: 'Portfolio',
@@ -14,20 +22,25 @@ useSeoMeta({
 })
 
 function uploadFile() {
-    document.getElementById("multipleFiles").click()
-
+    document.getElementById("multipleFiles").click();
 }
+
+const fetchData = async () => {
+    const transactions = new TransactionsHandler();
+    const { data, pending, error, refresh, status } = await transactions.net_worth().get();
+    if (!pending.value) {
+        netWorthQuarters.value = data.value.results;
+    }
+};
 
 const transactionFileModal = "transactionFileModal"
 const cashModal = "cashModal"
 const assetModal = "assetModal"
-
-const newMovement = ref(false);
 </script>
 
 <template>
     <div class="mb-6">
-        <ChartsStackedColumns class="widget-common-style" />
+        <PagesPortfolioQuarterNetWorthChart :entries="netWorthQuarters"/>
     </div>
     <div class="grid gap-4 xl:grid-cols-2 2xl:grid-cols-3 mb-6">
 
@@ -69,7 +82,7 @@ const newMovement = ref(false);
 
     </div>
     <div class="mb-6">
-        <ChartsStackedColumns class="widget-common-style" />
+        <PagesPortfolioQuarterNetWorthChart :entries="netWorthQuarters"/>
     </div>
     <div>
         <div class="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">

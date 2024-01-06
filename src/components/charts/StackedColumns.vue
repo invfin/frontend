@@ -1,23 +1,7 @@
-<script setup>
-
-let currentTheme = useTheme();
-
-const chart = new ChartOptionsBuilder("chart", "vuechart-example", "bar", currentTheme.value, "350");
-
-watch(currentTheme, async (newcurrentTheme, oldcurrentTheme) => {
-  chart.updateTheme(newcurrentTheme);
-})
-
-const series = [{
-  name: 'Gastos',
-  data: [44, 55, 41, 67, 22, 43, 21, 49]
-}, {
-  name: 'Ahorros',
-  data: [13, 23, 20, 8, 13, 27, 33, 12]
-}, {
-  name: 'Inversiones',
-  data: [11, 17, 15, 15, 21, 14, 15, 13]
-}]
+<script setup lang="ts">
+defineProps<{
+    chart:  ChartOptionsBuilder
+}>()
 </script>
 
 <template>
@@ -36,7 +20,7 @@ const series = [{
         </svg>
       </div>
     </div>
-    <ChartsBaseChart apiUrl="" chartId="vuechart-example" chartType="bar" height="350" />
+    <ChartsBaseChart :chart="chart" />
     <!-- Card Footer -->
     <div class="flex items-center justify-between pt-3 mt-4 border-t border-gray-200 sm:pt-6 dark:border-gray-700">
       <div>

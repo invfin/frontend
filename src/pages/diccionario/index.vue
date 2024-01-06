@@ -22,7 +22,7 @@ const { pending, data, error, execute, refresh } = await useFetch(`${useRuntimeC
   lazy: true,
   watch: [query],
   onResponse({ request, response, options }) {
-    handleEndOfList<WritenContentListResult, WritenContent>(response._data, entries, firstRequest);
+    handleEndOfList<WritenContentListResult, WritenContent>(response, entries, firstRequest);
   },
 })
 
