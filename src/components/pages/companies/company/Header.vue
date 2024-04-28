@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { SimpleCompany } from 'types';
 
 defineProps<{
   company: SimpleCompany,

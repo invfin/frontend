@@ -1,4 +1,3 @@
-import type { SidebarMenu } from "@/types";
 import marketResearchBlack from '@/assets/images/icons/market-research-b.svg';
 import marketResearchWhite from '@/assets/images/icons/market-research-w.svg';
 import walletBlack from "@/assets/images/icons/wallet-b.svg"

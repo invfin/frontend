@@ -1,5 +1,4 @@
 import { CookieRef } from "#app";
-import { User, Visit } from "@/types";
 
 
 export const useTheme = (): globalThis.Ref<string> => useState('theme', () => "dark");

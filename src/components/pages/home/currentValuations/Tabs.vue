@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Tab } from "@/types/index";
 
 const user = useUser()
 
@@ -14,7 +13,13 @@ defineProps<{
     <h3 class="flex items-center mb-4 text-lg font-semibold text-black dark:text-white">{{ title }}
       <GeneralPopoverButton popoverId="popover-description" />
     </h3>
-    <GeneralPopover id="popover-description" />
+    <GeneralPopover 
+            id="popover-description"
+            title=""
+            content=""
+            linkValue=""
+            linkPath=""
+        />
 
     <GeneralTabs :name="'homeValuations' + tabs.length" :tabs="tabs">
       <div v-for="tab in tabs" class="hidden pt-4" :id="tab.slug" role="tabpanel" :aria-labelledby="tab.slug + '-tab'">

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { initFlowbite } from 'flowbite';
-import { Investment } from '@/types/index';
 
 onMounted(() => {
     initFlowbite();
@@ -8,7 +7,7 @@ onMounted(() => {
 
 defineProps<{
     modalId: string,
-    title: string,
+    modalTitle: string,
     modelValue: boolean
 }>();
 
@@ -26,7 +25,7 @@ const movement: "BUY" | "SELL" = ref("");
 const emit = defineEmits(['update:modelValue'])
 
 async function saveForm() {
-    const body: Investemnt = {
+    const body: InvestmentMove = {
         name: name.toValue,
         amount: amount.toValue,
         description: description.toValue,
@@ -62,7 +61,7 @@ const options = [
 
 </script>
 <template>
-    <GeneralModal :modalId="modalId" :title="title">
+    <GeneralModal :modalId="modalId" :modalTitle="modalTitle">
 
         <template #body>
 

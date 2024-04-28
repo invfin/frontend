@@ -1,4 +1,3 @@
-import { User } from "types";
 import { LONG_MAX_AGE, SHORT_MAX_AGE } from "@/constants";
 
 export async function handleLogin(username: string, password: string): Promise<[boolean, string]> {

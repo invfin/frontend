@@ -6,7 +6,6 @@ onMounted(async () => {
     initFlowbite();
     await nextTick();
     fetchData();
-
 })
 
 const netWorthQuarters: Ref<NetWorthQuarter[]> = ref([]);
@@ -26,8 +25,7 @@ function uploadFile() {
 }
 
 const fetchData = async () => {
-    const transactions = new TransactionsHandler();
-    const { data, pending, error, refresh, status } = await transactions.net_worth().get();
+    const { data, pending, error, refresh, status } = await CustomClient.get("net-worth", {});
     if (!pending.value) {
         netWorthQuarters.value = data.value.results;
     }

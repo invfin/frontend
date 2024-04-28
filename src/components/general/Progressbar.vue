@@ -1,7 +1,7 @@
 <script setup lang="ts">
 defineProps<{
   colour: string,
-  percent: number,
+  percent: string,
 }>()
 
 function getColour(colour: string) {

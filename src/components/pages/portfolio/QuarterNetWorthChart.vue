@@ -5,23 +5,14 @@ let props = defineProps<{
     entries: NetWorthQuarter[]
 }>();
 
-
-const categories = []; // quarters
-const series = [
-    {
-        name: "",
-        data: [] //values sorted
-    }
-];
 const currentTheme = useTheme();
 
 
 const chart = new ChartOptionsBuilder(
     "netWorthQuarterChart",
     "bar",
-    currentTheme.value,
-    "350"
-);
+    "Awensome title"
+).stacked();
 
 function cleanEntries(entries: NetWorthQuarter[]) {
     let spendings = [];
@@ -36,25 +27,23 @@ function cleanEntries(entries: NetWorthQuarter[]) {
     });
     const series = [
         {
-            "name": "Gastos", "data": spendings,
+            label: "Gastos", data: spendings, backgroundColor: '#FF5722',
         },
         {
-            "name": "Ahorros", "data": savings,
+            label: "Ahorros", data: savings, backgroundColor: '#2196F3',
         },
         {
-            "name": "Inversiones", "data": investments,
+            label: "Inversiones", data: investments, backgroundColor: '#4CAF50',
         }
-    ]
-    return { categories, series }
+    ];
+    return { labels: categories, datasets: series }
 };
 
 watch(
     () => props.entries,
     (newEntries) => {
-        const { categories, series } = cleanEntries(newEntries);
-        console.log(categories);
-        console.log(series);
-        chart.updateData(categories, series);
+        const data = cleanEntries(newEntries);
+        chart.updateData(data);
     }
 );
 
@@ -62,5 +51,5 @@ watch(
 
 
 <template>
-    <ChartsStackedColumns :chart="chart" class="widget-common-style" />
+    <ChartsStackedColumns :chartData="chart.data" :chartOptions="chart.options" class="widget-common-style" />
 </template>

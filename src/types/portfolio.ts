@@ -13,7 +13,7 @@ export type PortfolioMovement = {
   category: string,
 }
 
-export type Investment = {
+export type InvestmentMove = {
   name: string,
   description: string,
   date: string,

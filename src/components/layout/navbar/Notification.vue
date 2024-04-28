@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Notification } from "@/types";
 
 let notifications = ref([] as Notification[]);
 

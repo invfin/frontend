@@ -1,22 +1,22 @@
 <script setup lang="ts">
-defineProps<{
-    chart: ChartOptionsBuilder
-}>()
+import {
+    Chart as ChartJS,
+    Title,
+    Tooltip,
+    Legend,
+    BarElement,
+    CategoryScale,
+    LinearScale
+} from 'chart.js';
+import { Bar } from 'vue-chartjs';
 
-let currentTheme = useTheme();
+defineProps<{ chartData, chartOptions }>();
 
-
-// const fullChart = new SimpleChartBuilder()
-
-
-// watch(currentTheme, async (newcurrentTheme, oldcurrentTheme) => {
-//    fullChart.updateTheme(newcurrentTheme);
-// })
-
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 </script>
 
 <template>
-    <ClientOnly>
-
-    </ClientOnly>
+    <div>
+        <Bar :data="chartData" :options="chartOptions" />
+    </div>
 </template>

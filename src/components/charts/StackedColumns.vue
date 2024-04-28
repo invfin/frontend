@@ -1,7 +1,5 @@
 <script setup lang="ts">
-defineProps<{
-    chart:  ChartOptionsBuilder
-}>()
+defineProps<{ chartData, chartOptions }>();
 </script>
 
 <template>
@@ -20,7 +18,7 @@ defineProps<{
         </svg>
       </div>
     </div>
-    <ChartsBaseChart :chart="chart" />
+    <ChartsBaseChart :chartData="chartData" :chartOptions="chartOptions"/>
     <!-- Card Footer -->
     <div class="flex items-center justify-between pt-3 mt-4 border-t border-gray-200 sm:pt-6 dark:border-gray-700">
       <div>

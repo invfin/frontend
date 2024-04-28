@@ -12,10 +12,9 @@ export class CustomClient {
         });
     }
 
-    static async get(path: string, body: any): Promise<any> {
+    static async get(path: string): Promise<any> {
         return await useFetch(getAPIPath(path), {
             method: 'GET',
-            body: body,
             credentials: "include",
             headers: this.getHeaders()
         });

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Company } from 'types';
 
 let company = ref({} as Company);
 
