@@ -1,0 +1,18 @@
+
+Hope you enjoy your new logo, here are the people that
+made your beautiful logo happen :)
+font name: publicasans-regular
+font link: http://www.myfonts.com/fonts/facetype/publica-sans/regular/#index
+font author: FaceType
+font author site: http://www.facetype.org/
+
+
+icon designer: estuhartono
+icon designer link: /restuanton
+        
+
+fontColor: {"hex":"#000000"}
+bgColor: {"hex":"#FFFFFF"}
+iconColor: {"hex":"#000000"}
+
+      

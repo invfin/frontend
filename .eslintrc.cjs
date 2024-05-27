@@ -1,9 +1,16 @@
 /* eslint-env node */
+require('@rushstack/eslint-patch/modern-module-resolution');
+
 module.exports = {
-  extends: ["plugin:vue/vue3-essential", "eslint:recommended"],
-  rules: {
-    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
-    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
-    'vue/multi-word-component-names': 'off',
+  root: true,
+  extends: ['plugin:vue/vue3-essential', 'eslint:recommended', '@vue/eslint-config-typescript/recommended', '@vue/eslint-config-prettier'],
+  env: {
+    'vue/setup-compiler-macros': true
   },
+  rules: {
+    'comma-dangle': 'off',
+    '@typescript-eslint/comma-dangle': 'off',
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
+    'javascript.validate.enable': 0
+  }
 };
