@@ -1,10 +1,8 @@
 import {
-  CircleIcon,
-  WindmillIcon,
   TypographyIcon,
   ShadowIcon,
   PaletteIcon,
-  KeyIcon,
+  HomeIcon,
   BugIcon,
   DashboardIcon,
   BrandChromeIcon,
@@ -28,71 +26,80 @@ export interface menu {
 }
 
 const sidebarItem: menu[] = [
-  { header: 'Dashboard' },
+  { header: 'Inicio' },
   {
-    title: 'Default',
+    title: 'Home',
+    icon: HomeIcon,
+    to: '/dashboard/default'
+  },
+  {
+    title: 'Subscripciones',
     icon: DashboardIcon,
     to: '/dashboard/default'
   },
   { divider: true },
-  { header: 'Pages' },
+  { header: 'You' },
   {
-    title: 'Authentication',
-    icon: KeyIcon,
-    to: '/auth',
-    children: [
-      {
-        title: 'Login',
-        icon: CircleIcon,
-        to: '/auth/login'
-      },
-      {
-        title: 'Register',
-        icon: CircleIcon,
-        to: '/auth/register'
-      }
-    ]
+    title: 'Análisis',
+    icon: DashboardIcon,
+    to: '/dashboard/default'
   },
+  // {
+  //   title: 'Authentication',
+  //   icon: KeyIcon,
+  //   to: '/auth',
+  //   children: [
+  //     {
+  //       title: 'Login',
+  //       icon: CircleIcon,
+  //       to: '/auth/login'
+  //     },
+  //     {
+  //       title: 'Register',
+  //       icon: CircleIcon,
+  //       to: '/auth/register'
+  //     }
+  //   ]
+  // },
   {
-    title: 'Error 404',
+    title: 'Aportes',
     icon: BugIcon,
     to: '/pages/error'
   },
   { divider: true },
-  { header: 'Utilities' },
+  { header: 'Explorar' },
   {
-    title: 'Typography',
+    title: 'Empresas',
     icon: TypographyIcon,
     to: '/utils/typography'
   },
   {
-    title: 'Shadows',
+    title: 'Noticias',
     icon: ShadowIcon,
     to: '/utils/shadows'
   },
   {
-    title: 'Colors',
+    title: 'Aprende',
     icon: PaletteIcon,
     to: '/utils/colors'
   },
-
-  {
-    title: 'Icons',
-    icon: WindmillIcon,
-    to: '/forms/radio',
-    children: [
-      {
-        title: 'Tabler Icons',
-        icon: CircleIcon,
-        to: '/icons/tabler'
-      },
-      {
-        title: 'Material Icons',
-        icon: CircleIcon,
-        to: '/icons/material'
-      }
-    ]
-  },
+  // {
+  //   title: 'Icons',
+  //   icon: WindmillIcon,
+  //   to: '/forms/radio',
+  //   children: [
+  //     {
+  //       title: 'Tabler Icons',
+  //       icon: CircleIcon,
+  //       to: '/icons/tabler'
+  //     },
+  //     {
+  //       title: 'Material Icons',
+  //       icon: CircleIcon,
+  //       to: '/icons/material'
+  //     }
+  //   ]
+  // },
   { divider: true },
   {
     title: 'Sample Page',
