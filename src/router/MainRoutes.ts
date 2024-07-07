@@ -17,34 +17,39 @@ const MainRoutes = {
       component: () => import('@/views/dashboards/default/DefaultDashboard.vue')
     },
     {
-      name: 'Starter',
-      path: '/starter',
-      component: () => import('@/views/StarterPage.vue')
+      name: 'Investments',
+      path: '/investments',
+      component: () => import('@/views/investments/ListView.vue')
     },
     {
-      name: 'Tabler Icons',
-      path: '/icons/tabler',
-      component: () => import('@/views/utilities/icons/TablerIcons.vue')
+      name: 'Budget',
+      path: '/budget',
+      component: () => import('@/views/budget/DetailView.vue')
     },
     {
-      name: 'Material Icons',
-      path: '/icons/material',
-      component: () => import('@/views/utilities/icons/MaterialIcons.vue')
+      name: 'Empresas',
+      path: '/companies',
+      component: () => import('@/views/companies/ListView.vue')
     },
     {
-      name: 'Typography',
-      path: '/utils/typography',
-      component: () => import('@/views/utilities/typography/TypographyPage.vue')
+      name: 'Empresa',
+      path: '/companies/:ticker',
+      component: () => import('@/views/companies/DetailView.vue')
     },
     {
-      name: 'Shadows',
-      path: '/utils/shadows',
-      component: () => import('@/views/utilities/shadows/ShadowPage.vue')
+      name: 'Noticias',
+      path: '/news',
+      component: () => import('@/views/news/ListView.vue')
     },
     {
-      name: 'Colors',
-      path: '/utils/colors',
-      component: () => import('@/views/utilities/colors/ColorPage.vue')
+      name: 'Noticia',
+      path: '/news/:slug',
+      component: () => import('@/views/news/DetailView.vue')
+    },
+    {
+      name: 'Ayuda',
+      path: '/help',
+      component: () => import('@/views/dashboards/default/DefaultDashboard.vue')
     }
   ]
 };

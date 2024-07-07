@@ -1,21 +1,41 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, type Ref } from 'vue';
 import Google from '@/assets/images/auth/social-google.svg';
+import { useAuthStore } from '@/stores/auth';
+
 const checkbox = ref(false);
+const isSubmitting = ref(false);
+const valid = ref(false);
 const show1 = ref(false);
+const errors: Ref<string | null> = ref(null);
+
+const username = ref('');
 const password = ref('');
 const email = ref('');
-const Regform = ref();
-const firstname = ref('');
-const lastname = ref('');
+
 const passwordRules = ref([
   (v: string) => !!v || 'Password is required',
   (v: string) => (v && v.length <= 10) || 'Password must be less than 10 characters'
 ]);
 const emailRules = ref([(v: string) => !!v || 'E-mail is required', (v: string) => /.+@.+\..+/.test(v) || 'E-mail must be valid']);
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+async function validate(_event: any) {
+  isSubmitting.value = true;
 
-function validate() {
-  Regform.value.validate();
+  const authStore = useAuthStore();
+  authStore
+    .register(username.value, email.value, password.value)
+    .then((error) => {
+      if (error) {
+        errors.value = error;
+      }
+    })
+    .catch((error) => {
+      errors.value = error;
+    });
+
+  isSubmitting.value = false;
 }
 </script>
 
@@ -32,33 +52,21 @@ function validate() {
     </v-col>
   </v-row>
   <h5 class="text-h5 text-center my-4 mb-8">Sign up with Email address</h5>
-  <v-form ref="Regform" lazy-validation action="/dashboards/analytical" class="mt-7 loginForm">
-    <v-row>
-      <v-col cols="12" sm="6">
-        <v-text-field
-          v-model="firstname"
-          density="comfortable"
-          hide-details="auto"
-          variant="outlined"
-          color="primary"
-          label="Firstname"
-        ></v-text-field>
-      </v-col>
-      <v-col cols="12" sm="6">
-        <v-text-field
-          v-model="lastname"
-          density="comfortable"
-          hide-details="auto"
-          variant="outlined"
-          color="primary"
-          label="Lastname"
-        ></v-text-field>
-      </v-col>
-    </v-row>
+  <v-form validate-on="submit lazy" @submit.prevent="validate" class="mt-7">
+    <v-text-field
+      v-model="username"
+      label="Username"
+      class="mt-4 mb-4"
+      required
+      density="comfortable"
+      hide-details="auto"
+      variant="outlined"
+      color="primary"
+    ></v-text-field>
     <v-text-field
       v-model="email"
       :rules="emailRules"
-      label="Email Address / Username"
+      label="Email"
       class="mt-4 mb-4"
       required
       density="comfortable"
@@ -93,7 +101,12 @@ function validate() {
       ></v-checkbox>
       <a href="#" class="ml-1 text-lightText">Terms and Condition</a>
     </div>
-    <v-btn color="secondary" block class="mt-2" variant="flat" size="large" @click="validate()">Sign Up</v-btn>
+    <v-btn color="secondary" :loading="isSubmitting" block class="mt-2" variant="flat" size="large" :disabled="valid" type="submit">
+      Sign Up
+    </v-btn>
+    <div v-if="errors" class="mt-2">
+      <v-alert color="error">{{ errors }}</v-alert>
+    </div>
   </v-form>
   <div class="mt-5 text-right">
     <v-divider />
@@ -104,21 +117,26 @@ function validate() {
 .custom-devider {
   border-color: rgba(0, 0, 0, 0.08) !important;
 }
+
 .googleBtn {
   border-color: rgba(0, 0, 0, 0.08);
   margin: 30px 0 20px 0;
 }
+
 .outlinedInput .v-field {
   border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: none;
 }
+
 .orbtn {
   padding: 2px 40px;
   border-color: rgba(0, 0, 0, 0.08);
   margin: 20px 15px;
 }
+
 .pwdInput {
   position: relative;
+
   .v-input__append {
     position: absolute;
     right: 10px;

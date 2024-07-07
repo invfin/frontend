@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, type Ref } from 'vue';
 import Google from '@/assets/images/auth/social-google.svg';
 import { useAuthStore } from '@/stores/auth';
-import { Form } from 'vee-validate';
 
 const checkbox = ref(false);
+const isSubmitting = ref(false);
 const valid = ref(false);
 const show1 = ref(false);
-//const logform = ref();
+const errors: Ref<string | null> = ref(null);
+
 const password = ref('admin123');
-const username = ref('info@codedthemes.com');
+const email = ref('admin@admin.com');
 const passwordRules = ref([
   (v: string) => !!v || 'Password is required',
   (v: string) => (v && v.length <= 10) || 'Password must be less than 10 characters'
@@ -17,9 +18,23 @@ const passwordRules = ref([
 const emailRules = ref([(v: string) => !!v || 'E-mail is required', (v: string) => /.+@.+\..+/.test(v) || 'E-mail must be valid']);
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-function validate(values: any, { setErrors }: any) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+async function validate(_event: any) {
+  isSubmitting.value = true;
+
   const authStore = useAuthStore();
-  return authStore.login(username.value, password.value).catch((error) => setErrors({ apiError: error }));
+  authStore
+    .login(email.value, password.value)
+    .then((error) => {
+      if (error) {
+        errors.value = error;
+      }
+    })
+    .catch((error) => {
+      errors.value = error;
+    });
+
+  isSubmitting.value = false;
 }
 </script>
 
@@ -36,11 +51,11 @@ function validate(values: any, { setErrors }: any) {
     </v-col>
   </v-row>
   <h5 class="text-h5 text-center my-4 mb-8">Sign in with Email address</h5>
-  <Form @submit="validate" class="mt-7 loginForm" v-slot="{ errors, isSubmitting }">
+  <v-form validate-on="submit lazy" @submit.prevent="validate" class="mt-7 loginForm">
     <v-text-field
-      v-model="username"
+      v-model="email"
       :rules="emailRules"
-      label="Email Address / Username"
+      label="Email"
       class="mt-4 mb-8"
       required
       density="comfortable"
@@ -80,10 +95,10 @@ function validate(values: any, { setErrors }: any) {
     <v-btn color="secondary" :loading="isSubmitting" block class="mt-2" variant="flat" size="large" :disabled="valid" type="submit">
       Sign In</v-btn
     >
-    <div v-if="errors.apiError" class="mt-2">
-      <v-alert color="error">{{ errors.apiError }}</v-alert>
+    <div v-if="errors" class="mt-2">
+      <v-alert color="error">{{ errors }}</v-alert>
     </div>
-  </Form>
+  </v-form>
   <div class="mt-5 text-right">
     <v-divider />
     <v-btn variant="plain" to="/auth/register" class="mt-2 text-capitalize mr-n2">Don't Have an account?</v-btn>
@@ -93,21 +108,26 @@ function validate(values: any, { setErrors }: any) {
 .custom-devider {
   border-color: rgba(0, 0, 0, 0.08) !important;
 }
+
 .googleBtn {
   border-color: rgba(0, 0, 0, 0.08);
   margin: 30px 0 20px 0;
 }
+
 .outlinedInput .v-field {
   border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: none;
 }
+
 .orbtn {
   padding: 2px 40px;
   border-color: rgba(0, 0, 0, 0.08);
   margin: 20px 15px;
 }
+
 .pwdInput {
   position: relative;
+
   .v-input__append {
     position: absolute;
     right: 10px;
@@ -115,6 +135,7 @@ function validate(values: any, { setErrors }: any) {
     transform: translateY(-50%);
   }
 }
+
 .loginForm {
   .v-text-field .v-field--active input {
     font-weight: 500;

@@ -7,13 +7,22 @@ const props = defineProps({
     required: false
   }
 });
+
+//TODO: finish this
+const items = [];
 </script>
 
 <template>
-  <!-- ---------------------------------------------- -->
-  <!-- searchbar -->
-  <!-- ---------------------------------------------- -->
-  <v-text-field persistent-placeholder placeholder="Search" color="primary" variant="outlined" hide-details>
+  <v-autocomplete
+    :items="items"
+    color="primary"
+    menu-icon=""
+    placeholder="Search Google or type a URL"
+    auto-select-first
+    variant="outlined"
+    class="mt-4"
+    item-props
+  >
     <template v-slot:prepend-inner>
       <SearchIcon stroke-width="1.5" size="17" class="text-lightText SearchIcon" />
     </template>
@@ -33,5 +42,5 @@ const props = defineProps({
         <XIcon stroke-width="1.5" size="20" />
       </v-btn>
     </template>
-  </v-text-field>
+  </v-autocomplete>
 </template>

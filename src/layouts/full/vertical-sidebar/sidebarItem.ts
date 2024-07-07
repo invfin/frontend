@@ -1,12 +1,14 @@
 import {
-  TypographyIcon,
-  ShadowIcon,
-  PaletteIcon,
-  HomeIcon,
-  BugIcon,
-  DashboardIcon,
-  BrandChromeIcon,
-  HelpIcon
+  HelpIcon,
+  // StarsIcon,
+  WalletIcon,
+  ReportAnalyticsIcon,
+  // HistoryIcon,
+  BuildingBankIcon,
+  NewsIcon,
+  // ChalkboardIcon,
+  ApiIcon,
+  HomeIcon
 } from 'vue-tabler-icons';
 
 export interface menu {
@@ -32,17 +34,22 @@ const sidebarItem: menu[] = [
     icon: HomeIcon,
     to: '/dashboard/default'
   },
-  {
-    title: 'Subscripciones',
-    icon: DashboardIcon,
-    to: '/dashboard/default'
-  },
+  // {
+  //   title: 'Subscripciones',
+  //   icon: StarsIcon,
+  //   to: '/subscriptions'
+  // },
   { divider: true },
   { header: 'You' },
   {
-    title: 'Análisis',
-    icon: DashboardIcon,
-    to: '/dashboard/default'
+    title: 'Inversiones',
+    icon: ReportAnalyticsIcon,
+    to: '/investments'
+  },
+  {
+    title: 'Budget',
+    icon: WalletIcon,
+    to: '/budget'
   },
   // {
   //   title: 'Authentication',
@@ -61,28 +68,28 @@ const sidebarItem: menu[] = [
   //     }
   //   ]
   // },
-  {
-    title: 'Aportes',
-    icon: BugIcon,
-    to: '/pages/error'
-  },
+  // {
+  //   title: 'Aportes',
+  //   icon: HistoryIcon,
+  //   to: '/contributions'
+  // },
   { divider: true },
   { header: 'Explorar' },
   {
     title: 'Empresas',
-    icon: TypographyIcon,
-    to: '/utils/typography'
+    icon: BuildingBankIcon,
+    to: '/companies'
   },
   {
     title: 'Noticias',
-    icon: ShadowIcon,
-    to: '/utils/shadows'
+    icon: NewsIcon,
+    to: '/news'
   },
-  {
-    title: 'Aprende',
-    icon: PaletteIcon,
-    to: '/utils/colors'
-  },
+  // {
+  //   title: 'Aprende',
+  //   icon: ChalkboardIcon,
+  //   to: '/learn'
+  // },
   // {
   //   title: 'Icons',
   //   icon: WindmillIcon,
@@ -102,15 +109,15 @@ const sidebarItem: menu[] = [
   // },
   { divider: true },
   {
-    title: 'Sample Page',
-    icon: BrandChromeIcon,
-    to: '/starter'
+    title: 'API',
+    icon: ApiIcon,
+    to: 'http://127.0.0.1:8000/scalar',
+    type: 'external'
   },
   {
-    title: 'Documentation',
+    title: 'Ayuda',
     icon: HelpIcon,
-    to: 'https://codedthemes.gitbook.io/berry-vuetify/',
-    type: 'external'
+    to: '/help'
   }
 ];
 

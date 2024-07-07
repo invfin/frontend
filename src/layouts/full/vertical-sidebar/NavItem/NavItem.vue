@@ -1,7 +1,9 @@
 <script setup>
 import Icon from '../IconSet.vue';
-
+import { useCustomizerStore } from '@/stores/customizer';
 const props = defineProps({ item: Object, level: Number });
+
+const customizer = useCustomizerStore();
 </script>
 
 <template>
@@ -36,5 +38,6 @@ const props = defineProps({ item: Object, level: Number });
         {{ item.chip }}
       </v-chip>
     </template>
+    <v-tooltip v-if="customizer.mini_sidebar" activator="parent" location="end">{{ item.title }}</v-tooltip>
   </v-list-item>
 </template>

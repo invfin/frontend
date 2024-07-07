@@ -1,23 +1,18 @@
 export { fakeBackend };
+import type { User } from '@/interfaces';
 
-interface User {
-  id: number;
+interface UserDb {
   username: string;
   password: string;
-  firstName: string;
-  lastName: string;
 }
 
 interface ResponseBody {
-  id: number;
   username: string;
-  firstName: string;
-  lastName: string;
   token: string;
 }
 
 function fakeBackend() {
-  const users: User[] = [{ id: 1, username: 'info@codedthemes.com', password: 'admin123', firstName: 'Codedthemes', lastName: '.com' }];
+  const users: UserDb[] = [{ username: 'info@codedthemes.com', password: 'admin123' }];
   const realFetch = window.fetch;
 
   window.fetch = function (url: string, opts: { method: string; headers: { [key: string]: string }; body?: string }) {
@@ -45,17 +40,14 @@ function fakeBackend() {
         const user = users.find((x) => x.username === username && x.password === password);
         if (!user) return error('Username or password is incorrect');
         return ok({
-          id: user.id,
           username: user.username,
-          firstName: user.firstName,
-          lastName: user.lastName,
           token: 'fake-jwt-token'
         });
       }
 
       function getUsers() {
         if (!isAuthenticated()) return unauthorized();
-        return ok(users);
+        return ok([{ username: 'info@codedthemes.com', token: 'admin123', anonymous: false }]);
       }
 
       // helper functions
@@ -72,6 +64,7 @@ function fakeBackend() {
       }
 
       function isAuthenticated() {
+        // TODO: implement login logic
         return opts.headers['Authorization'] === 'Bearer fake-jwt-token';
       }
 
