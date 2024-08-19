@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import AddTransactionDDModal from './AddTransactionDDModal.vue';
+import TransactionsFilesFormModal from '@/components/modals/TransactionsFilesFormModal.vue';
+import InvestmentFormModal from '@/components/modals/InvestmentFormModal.vue';
+import TransactionFormModal from '@/components/modals/TransactionFormModal.vue';
 </script>
 
 <template>
@@ -10,11 +13,10 @@ import AddTransactionDDModal from './AddTransactionDDModal.vue';
   </div>
   <v-divider></v-divider>
   <v-list class="py-0" lines="three">
-    <AddTransactionDDModal title="Inversion" path="investments" />
-    <v-divider></v-divider>
-    <AddTransactionDDModal title="Ingreso" path="incomes" />
-    <v-divider></v-divider>
-    <AddTransactionDDModal title="Egreso" path="spendings" />
+    <TransactionFormModal title="Inversion" path="investments" />
+    <InvestmentFormModal title="Transacción" path="transactions" />
+    <TransactionsFilesFormModal title="Ficheros" path="Ficheros" />
+    <AddTransactionDDModal title="Objetivo" path="Objetivo" />
     <v-list-item value="" color="secondary" class="no-spacer">
       <template v-slot:prepend>
         <v-avatar size="40" class="mr-3 py-2">

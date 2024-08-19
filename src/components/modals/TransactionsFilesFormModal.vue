@@ -1,12 +1,19 @@
 <script setup>
 import { ref, watch } from 'vue';
-import { BuildingStoreIcon, SendIcon, MailboxIcon } from 'vue-tabler-icons';
+import { MailboxIcon } from 'vue-tabler-icons';
 import { post } from '@/utils/helpers/fetch-wrapper';
+import TransactionsFilesForm from '../forms/TransactionsFilesForm.vue';
 
 const dialog = ref(false);
 const files = ref([]);
-
-const fileSource = ref('');
+const account_name = ref('');
+const account_category = ref('');
+const account_subcategory = ref('');
+const account_date = ref('');
+const account_description = ref('');
+const account_recurrence = ref('');
+const account_amount = ref('');
+const account_fees = ref('');
 
 watch(dialog, (val) => {
   if (!val) close();
@@ -23,11 +30,26 @@ function save() {
     formData.append(`file${index}`, file);
   });
 
-  formData.append('source', fileSource.value);
+  formData.append('account_name', account_name.value);
+  formData.append('account_category', account_category.value);
+  formData.append('account_subcategory', account_subcategory.value);
+  formData.append('account_date', account_date.value);
+  formData.append('account_description', account_description.value);
+  formData.append('account_recurrence', account_recurrence.value);
+  formData.append('account_amount', account_amount.value);
+  formData.append('account_fees', account_fees.value);
 
   post('upload/transactions', formData);
+
   files.value = [];
-  fileSource.value = '';
+  account_name.value = '';
+  account_category.value = '';
+  account_subcategory.value = '';
+  account_date.value = '';
+  account_description.value = '';
+  account_recurrence.value = '';
+  account_amount.value = '';
+  account_fees.value = '';
   close();
 }
 
@@ -43,9 +65,7 @@ const propsExt = defineProps({
       <v-list-item value="" color="secondary" class="no-spacer" v-bind="props">
         <template v-slot:prepend>
           <v-avatar size="40" class="mr-3 py-2">
-            <div v-if="propsExt.title === 'Inversion'"><BuildingStoreIcon /></div>
-            <div v-else-if="propsExt.title === 'Transacción'"><SendIcon /></div>
-            <div v-else><MailboxIcon /></div>
+            <MailboxIcon />
           </v-avatar>
         </template>
         <div class="d-inline-flex align-center justify-space-between w-100">
@@ -61,29 +81,17 @@ const propsExt = defineProps({
 
       <v-card-text>
         <v-container>
-          <v-text-field label="Origen" v-model="fileSource" placeholder="firstrade" variant="outlined"></v-text-field>
-
-          <v-file-input
-            v-model="files"
-            :show-size="1000"
-            color="deep-purple-accent-4"
-            label="File input"
-            placeholder="Select your files"
-            prepend-icon="mdi-paperclip"
-            variant="outlined"
-            counter
-            multiple
-          >
-            <template v-slot:selection="{ fileNames }">
-              <template v-for="(fileName, index) in fileNames" :key="fileName">
-                <v-chip v-if="index < 2" class="me-2" color="deep-purple-accent-4" size="small" label>
-                  {{ fileName }}
-                </v-chip>
-
-                <span v-else-if="index === 2" class="text-overline text-grey-darken-3 mx-2"> +{{ files.length - 2 }} File(s) </span>
-              </template>
-            </template>
-          </v-file-input>
+          <TransactionsFilesForm
+            v-model:files="files"
+            v-model:account_name="account_name"
+            v-model:account_category="account_category"
+            v-model:account_subcategory="account_subcategory"
+            v-model:account_date="account_date"
+            v-model:account_description="account_description"
+            v-model:account_recurrence="account_recurrence"
+            v-model:account_amount="account_amount"
+            v-model:account_fees="account_fees"
+          />
         </v-container>
       </v-card-text>
 
