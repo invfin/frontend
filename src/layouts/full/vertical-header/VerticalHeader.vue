@@ -1,15 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useCustomizerStore } from '../../../stores/customizer';
-// Icon Imports
-import { BellIcon, PlusIcon, SettingsIcon, SearchIcon, Menu2Icon } from 'vue-tabler-icons';
+import { useAuthStore } from '@/stores/auth';
+import { useCustomizerStore } from '@/stores/customizer';
+import { PlusIcon, SettingsIcon, SearchIcon, Menu2Icon } from 'vue-tabler-icons';
 
-// dropdown imports
 import AddTransactionDD from './AddTransactionDD.vue';
-// import NotificationDD from './NotificationDD.vue';
 import ProfileDD from './ProfileDD.vue';
 import Searchbar from './SearchBarPanel.vue';
-import { useAuthStore } from '@/stores/auth';
 
 const customizer = useCustomizerStore();
 const showSearch = ref(false);

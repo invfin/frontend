@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ChevronRightIcon } from 'vue-tabler-icons';
-
 const props = defineProps({
   title: String,
   icon: String
