@@ -47,6 +47,11 @@ const MainRoutes = {
       component: () => import('@/views/news/DetailView.vue')
     },
     {
+      name: 'Dasahboard Creator',
+      path: '/dashboard/creator',
+      component: () => import('@/views/dashboards/DashboardCreator.vue')
+    },
+    {
       name: 'Ayuda',
       path: '/help',
       component: () => import('@/views/dashboards/default/DefaultDashboard.vue')

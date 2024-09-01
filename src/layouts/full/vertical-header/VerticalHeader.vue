@@ -4,7 +4,7 @@ import { useAuthStore } from '@/stores/auth';
 import { useCustomizerStore } from '@/stores/customizer';
 import { PlusIcon, SettingsIcon, SearchIcon, Menu2Icon } from 'vue-tabler-icons';
 
-import AddTransactionDD from './AddTransactionDD.vue';
+import AddInformationDropdown from './AddInformationDropdown.vue';
 import ProfileDD from './ProfileDD.vue';
 import Searchbar from './SearchBarPanel.vue';
 
@@ -76,7 +76,7 @@ const { user } = useAuthStore();
         </v-btn>
       </template>
       <v-sheet rounded="md" width="330" elevation="12">
-        <AddTransactionDD />
+        <AddInformationDropdown />
       </v-sheet>
     </v-menu>
 
@@ -98,7 +98,7 @@ const { user } = useAuthStore();
       <template v-slot:activator="{ props }">
         <v-btn class="profileBtn text-primary" color="lightprimary" variant="flat" rounded="pill" v-bind="props">
           <v-avatar size="30" class="mr-2 py-2">
-            <img :src="user.image" alt="Julia" />
+            <img :src="user.image" alt="user-image" />
           </v-avatar>
           <SettingsIcon stroke-width="1.5" />
         </v-btn>

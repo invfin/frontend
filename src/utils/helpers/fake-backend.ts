@@ -47,7 +47,14 @@ function fakeBackend() {
 
       function getUsers() {
         if (!isAuthenticated()) return unauthorized();
-        return ok([{ username: 'info@codedthemes.com', token: 'admin123', anonymous: false }]);
+        return ok([
+          {
+            username: 'info@codedthemes.com',
+            token: 'admin123',
+            anonymous: false,
+            image: 'src/assets/images/images/avatars/inversorinteligente.webp'
+          }
+        ]);
       }
 
       // helper functions

@@ -3,11 +3,10 @@ import { ref, onMounted, nextTick, type Ref } from 'vue';
 
 import { GridStack } from 'gridstack';
 import DashboardWidget from './DashboardWidget.vue';
+import EditWidget from './EditWidget.vue';
 import DashboardSubNavbar from './DashboardSubNavbar.vue';
 
-import { VueDataUi } from 'vue-data-ui';
-import { DotsVerticalIcon } from 'vue-tabler-icons';
-import type { Widget, WidgetOption } from '@/types/custom-dashboard';
+import type { Widget } from '@/types/custom-dashboard';
 
 function saveConfig() {
   const dataStr = JSON.stringify(items.value, null, 2);
@@ -27,6 +26,7 @@ function saveConfig() {
   URL.revokeObjectURL(url);
 }
 
+const dialog = ref(false);
 const title = ref('Inversiones');
 const count = ref(0);
 let grid: GridStack = null; // DO NOT use ref(null) as proxies GS will break all logic when comparing structures... see https://github.com/gridstack/gridstack.js/issues/2115
@@ -55,6 +55,7 @@ onMounted(() => {
 });
 
 function addNewWidget() {
+  dialog.value = true;
   const node = { id: String(count.value++), x: 0, y: 0, w: 5, h: 5, config: { component: 'VueUi3dBar', data: 'income' } };
   items.value.push(node);
   nextTick(() => {
@@ -62,31 +63,11 @@ function addNewWidget() {
   });
 }
 
-function remove(widget) {
-  const index = items.value.findIndex((w) => w.id == widget.id);
+function remove(widgetId) {
+  const index = items.value.findIndex((w) => w.id == widgetId);
   items.value.splice(index, 1);
-  const selector = `#${widget.id}`;
+  const selector = `#${widgetId}`;
   grid.removeWidget(selector, false);
-}
-
-function generatePdf(widget) {
-  widget.generatePdf();
-}
-
-function generateImage(widget) {
-  widget.generateImage();
-}
-
-function generateCsv(widget) {
-  widget.generateCsv();
-}
-
-function toggleLabels(widget) {
-  widget.toggleLabels();
-}
-
-function toggleTable(widget) {
-  widget.toggleTable();
 }
 
 function editWidget(widget) {}
@@ -98,17 +79,6 @@ function duplicateWidget(widget) {
     grid.makeWidget(node.id);
   });
 }
-
-const widgetOptions: WidgetOption[] = [
-  { title: 'Remove', fn: remove },
-  { title: 'generatePdf', fn: generatePdf },
-  { title: 'generateImage', fn: generateImage },
-  { title: 'generateCsv', fn: generateCsv },
-  { title: 'toggleLabels', fn: toggleLabels },
-  { title: 'toggleTable', fn: toggleTable },
-  { title: 'Edit', fn: editWidget },
-  { title: 'Duplicate', fn: duplicateWidget }
-];
 </script>
 
 <template>
@@ -128,7 +98,8 @@ const widgetOptions: WidgetOption[] = [
       :id="widget.id"
       :key="widget.id"
     >
-      <DashboardWidget :widgetOptions="widgetOptions" :widget="widget" />
+      <DashboardWidget @remove="remove(widget.id)" @edit="editWidget(widget)" @duplicate="duplicateWidget(widget)" :widget="widget" />
     </div>
   </div>
+  <EditWidget v-model="dialog" />
 </template>

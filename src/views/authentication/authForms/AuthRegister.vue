@@ -9,9 +9,10 @@ const valid = ref(false);
 const show1 = ref(false);
 const errors: Ref<string | null> = ref(null);
 
-const username = ref('');
-const password = ref('');
-const email = ref('');
+const username = ref('lucas');
+//TODO: remove default values
+const password = ref('admin123');
+const email = ref('admin@admin.com');
 
 const passwordRules = ref([
   (v: string) => !!v || 'Password is required',

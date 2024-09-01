@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TotalGrowth from './components/TotalGrowth.vue';
+import TotalGrowth from '../budget/components/TotalGrowth.vue';
 </script>
 
 <template>

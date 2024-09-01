@@ -2,10 +2,8 @@
 import { ref } from 'vue';
 import { VueDataUi } from 'vue-data-ui';
 import { DotsVerticalIcon } from 'vue-tabler-icons';
-import type { WidgetOption, Widget } from '@/types/custom-dashboard';
 
 defineProps({
-  widgetOptions: Array as () => WidgetOption[],
   widget: Object as () => Widget
 });
 
@@ -103,6 +101,12 @@ const dataset = ref({
     }
   ]
 });
+
+const widgetOptions = [
+  { title: 'Remove', event: 'remove' },
+  { title: 'Edit', event: 'edit' },
+  { title: 'Duplicate', event: 'duplicate' }
+];
 </script>
 
 <template>
@@ -120,7 +124,7 @@ const dataset = ref({
         </template>
 
         <v-list>
-          <v-list-item @click="option.fn(widget)" v-for="(option, i) in widgetOptions" :key="i">
+          <v-list-item @click="$emit(option.event)" v-for="(option, i) in widgetOptions" :key="i">
             <v-list-item-title>{{ option.title }}</v-list-item-title>
           </v-list-item>
         </v-list>

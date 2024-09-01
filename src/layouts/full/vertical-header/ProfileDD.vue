@@ -5,7 +5,7 @@ import { useAuthStore } from '@/stores/auth';
 
 const swt1 = ref(true);
 const swt2 = ref(false);
-const authStore = useAuthStore();
+const { logout, user } = useAuthStore();
 </script>
 
 <template>
@@ -13,8 +13,12 @@ const authStore = useAuthStore();
   <!-- profile DD -->
   <!-- ---------------------------------------------- -->
   <div class="pa-4">
-    <h4 class="mb-n1">Good Morning, <span class="font-weight-regular">John Doe</span></h4>
-    <span class="text-subtitle-2 text-medium-emphasis">Project admin</span>
+    <h4 class="mb-n1">
+      Hello,
+      <span v-if="user.anonymous" class="font-weight-regular">Inversor</span>
+      <span v-else class="font-weight-regular">{{ user.username }}</span>
+    </h4>
+    <!-- <span class="text-subtitle-2 text-medium-emphasis">Project admin</span> -->
     <!-- 
     <v-text-field persistent-placeholder placeholder="Search" class="my-3" color="primary" variant="outlined" hide-details>
       <template v-slot:prepend-inner>
@@ -70,7 +74,7 @@ const authStore = useAuthStore();
           </template>
         </v-list-item>
 
-        <v-list-item @click="authStore.logout()" color="secondary" rounded="md">
+        <v-list-item @click="logout()" color="secondary" rounded="md">
           <template v-slot:prepend>
             <LogoutIcon size="20" class="mr-2" />
           </template>

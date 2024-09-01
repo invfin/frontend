@@ -1,12 +1,41 @@
-<script setup>
+<script setup lang="ts">
 import { ref, watch } from 'vue';
-import { BuildingStoreIcon, SendIcon, MailboxIcon } from 'vue-tabler-icons';
-import { post } from '@/utils/helpers/fetch-wrapper';
+import { BusinessplanIcon, ArrowsRightLeftIcon } from 'vue-tabler-icons';
+
+import TransactionForm from '../forms/TransactionForm.vue';
+import { defaultAccountResult } from '@/utils';
+import { useAuthStore } from '@/stores/auth';
+import type { AccountResult, AddInformationModalProps, TransactionRequest } from '@/interfaces';
 
 const dialog = ref(false);
-const files = ref([]);
+const { user } = useAuthStore();
+const account = ref<AccountResult>(defaultAccountResult(user.currencyId));
 
-const fileSource = ref('');
+const transactionRequest = ref<TransactionRequest>({
+  details: {
+    description: '',
+    comment: '',
+    original_amount: 0.0,
+    fee: 0.0
+  },
+  transaction: {
+    date: new Date(),
+    amount: 0.0,
+    category: ''
+  },
+  investmentDetails: {
+    quantity: 0,
+    cost: 0
+  },
+  asset: {
+    category: '',
+    name: '',
+    companyId: 0
+  },
+  account: { Id: 0 }
+});
+
+defineProps<AddInformationModalProps>();
 
 watch(dialog, (val) => {
   if (!val) close();
@@ -15,84 +44,37 @@ watch(dialog, (val) => {
 const close = () => {
   dialog.value = false;
 };
-
-function save() {
-  const formData = new FormData();
-
-  files.value.forEach((file, index) => {
-    formData.append(`file${index}`, file);
-  });
-
-  formData.append('source', fileSource.value);
-
-  post('upload/transactions', formData);
-  files.value = [];
-  fileSource.value = '';
-  close();
-}
-
-const propsExt = defineProps({
-  title: String,
-  path: String
-});
 </script>
 
 <template>
   <v-dialog v-model="dialog" max-width="1000px">
     <template v-slot:activator="{ props }">
-      <v-list-item value="" color="secondary" class="no-spacer" v-bind="props">
+      <v-list-item color="secondary" class="no-spacer" v-bind="props">
         <template v-slot:prepend>
           <v-avatar size="40" class="mr-3 py-2">
-            <div v-if="propsExt.title === 'Inversion'"><BuildingStoreIcon /></div>
-            <div v-else-if="propsExt.title === 'Transacción'"><SendIcon /></div>
-            <div v-else><MailboxIcon /></div>
+            <BusinessplanIcon v-if="category === 'investment'" />
+            <ArrowsRightLeftIcon v-else />
           </v-avatar>
         </template>
         <div class="d-inline-flex align-center justify-space-between w-100">
-          <h6 class="text-subtitle-1 font-weight-regular">{{ propsExt.title }}</h6>
+          <h6 class="text-subtitle-1 font-weight-regular">{{ title }}</h6>
         </div>
-        <p class="text-subtitle-2 text-medium-emphasis mt-1">Añade una {{ propsExt.title }}</p>
+        <p class="text-subtitle-2 text-medium-emphasis mt-1">{{ subtitle }}</p>
       </v-list-item>
     </template>
-    <v-card>
-      <v-card-title>
-        <span class="text-h5">{{ propsExt.title }}</span>
-      </v-card-title>
 
-      <v-card-text>
-        <v-container>
-          <v-text-field label="Origen" v-model="fileSource" placeholder="firstrade" variant="outlined"></v-text-field>
+    <TransactionForm :category="category" v-model:transactionRequest="transactionRequest" v-model:account="account">
+      <template #header>
+        <v-card-title>
+          <span class="text-h5">{{ title }}</span>
+        </v-card-title>
+      </template>
 
-          <v-file-input
-            v-model="files"
-            :show-size="1000"
-            color="deep-purple-accent-4"
-            label="File input"
-            placeholder="Select your files"
-            prepend-icon="mdi-paperclip"
-            variant="outlined"
-            counter
-            multiple
-          >
-            <template v-slot:selection="{ fileNames }">
-              <template v-for="(fileName, index) in fileNames" :key="fileName">
-                <v-chip v-if="index < 2" class="me-2" color="deep-purple-accent-4" size="small" label>
-                  {{ fileName }}
-                </v-chip>
-
-                <span v-else-if="index === 2" class="text-overline text-grey-darken-3 mx-2"> +{{ files.length - 2 }} File(s) </span>
-              </template>
-            </template>
-          </v-file-input>
-        </v-container>
-      </v-card-text>
-
-      <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn color="blue-darken-1" variant="text" @click="close"> Cancel </v-btn>
-        <v-btn color="blue-darken-1" variant="text" @click="save"> Save </v-btn>
-      </v-card-actions>
-    </v-card>
+      <template #footer>
+        <v-btn variant="outlined" @click="close"> Cancelar </v-btn>
+        <v-btn variant="outlined" type="submit"> Save </v-btn>
+      </template>
+    </TransactionForm>
   </v-dialog>
   <v-divider></v-divider>
 </template>
